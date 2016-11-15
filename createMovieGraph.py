@@ -43,11 +43,12 @@ class Movie:
 		numericCols = set([2, 3, 4, 7, 24, 5, 8, 12, 13, 15, 18, 22, 23, 25, 26,
 						   27])
 
-		# Removes trailing whitespace, escape characters, and ensures all
-		# numerically-parsed cols are non-empty
+		# Removes trailing whitespace, escape characters, and non-ASCII chars,
+		# and ensures all numerically-parsed cols are non-empty
 		def cleanupRowEntry(args):
 			i, entry = args
 			entry = entry.replace("\xc2\xa0", " ").strip()
+			entry = ''.join([i if ord(i) < 128 else '-' for i in entry])
 			if i in numericCols and len(dataRow[i]) == 0:
 				return "0"
 			else:
@@ -299,7 +300,7 @@ def parseMovieFile(filename, fetchRaceAndGender=True):
 		return movieMap, actorMap
 
 """
-FUNCTION: createGraphForMovies
+FUNCTION: createGraphForMovieInfo
 -------------------------------
 Parameters:
 	movieMap - a map containing all the movies to add to the graph.  The map
@@ -308,7 +309,7 @@ Parameters:
 				should be a map from actor names to Actor objects.
 
 Returns: a tuple of (graph, movieNodeMap, actorNodeMap, movieInfoMap,
-		actorInfoMap).  The graph is a	bipartite Snap.PY TUNGraph (undirected
+		actorInfoMap).  The graph is a bipartite Snap.PY TUNGraph (undirected
 		graph) where nodes are either movies or actors.  An edge indicates that
 		an actor is in a given movie.
 
@@ -323,7 +324,7 @@ Returns: a tuple of (graph, movieNodeMap, actorNodeMap, movieInfoMap,
 		The actorInfoMap is a map from Node ID to Actor objects.
 -------------------------------
 """		
-def createGraphForMovies(movieMap, actorMap):
+def createGraphForMovieInfo(movieMap, actorMap):
 	movieGraph = snap.TUNGraph.New()
 	movieNodeMap = {}
 	actorNodeMap = {}
@@ -415,8 +416,8 @@ In each, the map keys are row[0] and the values are the rest of the row.
 """
 def createMovieGraph():
 	movieMap, actorMap = parseMovieFile("movie_metadata.csv",
-		fetchRaceAndGender=False)
-	graphInfo = createGraphForMovies(movieMap, actorMap)
+		fetchRaceAndGender=True)
+	graphInfo = createGraphForMovieInfo(movieMap, actorMap)
 	graph, movieNodeMap, actorNodeMap, movieInfoMap, actorInfoMap = graphInfo
 
 	# Save to files
