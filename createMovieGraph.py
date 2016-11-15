@@ -222,18 +222,22 @@ class Actor:
 	------------------------------
 	"""
 	def fetchRaceAndGender(self):
+		print "Fetching race/gender for %s..." % self.name
 		name = self.name.split()
 		query = "+".join(name)
 		url = "http://search.nndb.com/search/?type=unspecified&query=%s" % query
 		searchPage = requests.get(url)
 		searchTree = html.fromstring(searchPage.content)
+		condition = '[contains(.//text(), "%s")' % name[0]
 		if len(name) > 1:
-			condition = '[contains(.//text(), "%s")' % name[0]
 			condition += ' and contains(.//text(), "%s")]' % name[1]
 		else:
-			condition = '[contains(.//text(), "%s")]' % name[0]
-		personList = searchTree.xpath('//table')[3].xpath('./tr')[1]
-		personList = personList.xpath('./td' + condition)
+			condition += ']'
+		personList = searchTree.xpath('//table')[3].xpath('./tr')
+		if len(personList) > 1:
+			personList = personList[1].xpath('./td' + condition)
+		else:
+			personList = None
 		if personList:
 			personUrl = personList[0].xpath('.//a/@href')[0]
 		else:
@@ -246,7 +250,7 @@ class Actor:
 		self.race = personTree.xpath(raceStr)[0].strip()
 		genderStr = '//p/b[text()="Gender:"]/following-sibling::text()'
 		self.gender = personTree.xpath(genderStr)[0].strip()
-		print "Fetched race/gender for %s..." % self.name
+		print "Fetched race/gender for %s... (%s, %s)" % (self.name, self.race, self.gender)
 
 	"""
 	METHOD: encode
