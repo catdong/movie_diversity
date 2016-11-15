@@ -238,7 +238,7 @@ class Person:
 			personList = personList[1].xpath('./td' + condition)
 		else:
 			personList = None
-		if personList:
+		if personList and len(personList[0].xpath('.//a/@href')) > 0:
 			personUrl = personList[0].xpath('.//a/@href')[0]
 		else:
 			print "Could not fetch info for %s" % self.name
@@ -272,12 +272,14 @@ Parameters:
 	filename - the name of the Kaggle movie data file to parse
 	fetchRaceAndGender - whether to fetch each actor's race and gender from NNDB
 
-Returns: a tuple (movieMap, actorMap).  movieMap is a map from a movie
-		unique ID to its Movie object.  Note that a movie's unique ID is just
+Returns: a tuple (movieMap, actorMap, directorMap).  movieMap is a map from a
+		movie unique ID to its Movie object.  Note that a movie's unique ID is
 		the concatenation of its title and release year, to avoid conflicts
 		between movie remakes with the same name.
 
 		actorMap is a map from an actor name to a Person object.
+
+		directorMap is a map from a director name to a Person object.
 -------------------------
 """
 def parseMovieFile(filename, fetchRaceAndGender=True):
@@ -287,6 +289,8 @@ def parseMovieFile(filename, fetchRaceAndGender=True):
 
 		movieMap = {}
 		actorMap = {}
+		directorMap = {}
+
 		for row in csvFile:
 			if not firstRow:
 				firstRow = True
@@ -294,6 +298,8 @@ def parseMovieFile(filename, fetchRaceAndGender=True):
 				newMovie = Movie(row)
 				if not newMovie.uniqueID() in movieMap:
 					movieMap[newMovie.uniqueID()] = newMovie
+
+					# Add each actor if needed
 					for actorName in newMovie.actorNames:
 						if not actorName in actorMap:
 							newActor = Person(actorName)
@@ -301,7 +307,14 @@ def parseMovieFile(filename, fetchRaceAndGender=True):
 								newActor.fetchRaceAndGender()
 							actorMap[actorName] = newActor
 
-		return movieMap, actorMap
+					# Add the director if needed
+					if not newMovie.directorName in directorMap:
+						director = Person(newMovie.directorName)
+						if fetchRaceAndGender:
+							director.fetchRaceAndGender()
+						directorMap[director.name] = director
+
+		return movieMap, actorMap, directorMap
 
 """
 FUNCTION: createGraphForMovieInfo
@@ -311,6 +324,8 @@ Parameters:
 				should be a map from unique movie IDs to Movie objects.
 	actorMap - a map containing all the actors to add to the graph.  The map
 				should be a map from actor names to Person objects.
+	directorMap - a map containing all the directors to add to the graph.  The
+				map should be a map from director names to Person objects.
 
 Returns: a tuple of (graph, movieNodeMap, actorNodeMap, movieInfoMap,
 		actorInfoMap).  The graph is a bipartite Snap.PY TUNGraph (undirected
@@ -328,12 +343,14 @@ Returns: a tuple of (graph, movieNodeMap, actorNodeMap, movieInfoMap,
 		The actorInfoMap is a map from Node ID to Person objects.
 -------------------------------
 """		
-def createGraphForMovieInfo(movieMap, actorMap):
+def createGraphForMovieInfo(movieMap, actorMap, directorMap):
 	movieGraph = snap.TUNGraph.New()
 	movieNodeMap = {}
 	actorNodeMap = {}
 	movieInfoMap = {}
 	actorInfoMap = {}
+
+	# TODO: use directorMap
 
 	for movieID in movieMap:
 		movie = movieMap[movieID]
@@ -419,9 +436,9 @@ In each, the map keys are row[0] and the values are the rest of the row.
 ---------------------------
 """
 def createMovieGraph():
-	movieMap, actorMap = parseMovieFile("movie_metadata.csv",
+	movieMap, actorMap, directorMap = parseMovieFile("movie_metadata.csv",
 		fetchRaceAndGender=True)
-	graphInfo = createGraphForMovieInfo(movieMap, actorMap)
+	graphInfo = createGraphForMovieInfo(movieMap, actorMap, directorMap)
 	graph, movieNodeMap, actorNodeMap, movieInfoMap, actorInfoMap = graphInfo
 
 	# Save to files
