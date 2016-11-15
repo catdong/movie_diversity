@@ -156,21 +156,21 @@ class Movie:
 
 
 """
-CLASS: Actor
+CLASS: Person
 -------------
-A class representing information about a single actor.  Contains the actor's
-name, gender, and race.
+A class representing information about a single person (actor/director).
+Contains the person's name, gender, and race.
 -------------
 """
-class Actor:
+class Person:
 
 	"""
 	CLASS METHOD: decode
 	----------------------
 	Parameters:
-		encoding - the encoding of an Actor object
+		encoding - the encoding of a Person object
 
-	Returns: the decoded Actor object
+	Returns: the decoded Person object
 	----------------------
 	"""
 	@classmethod
@@ -189,7 +189,7 @@ class Actor:
 	-------------
 	Parameters: NA
 
-	Returns: a new Actor object with the given name, and no gender or race.
+	Returns: a new Person object with the given name, and no gender or race.
 	-------------
 	"""
 	def __init__(self, name):
@@ -202,7 +202,7 @@ class Actor:
 	-------------
 	Parameters: NA
 
-	Returns: a readable string description of this Actor object.
+	Returns: a readable string description of this object.
 	-------------
 	"""
 	def __str__(self):
@@ -215,7 +215,7 @@ class Actor:
 
 	Returns: NA
 
-	Attempts to fetch the race and gender of this actor from search.nndb.com.
+	Attempts to fetch the race and gender of this person from search.nndb.com.
 	Synchronously fetches, and fills in the race and gender fields on completion
 	with the results (either the race and gender, or None if they could not be
 	found).
@@ -250,15 +250,15 @@ class Actor:
 		self.race = personTree.xpath(raceStr)[0].strip()
 		genderStr = '//p/b[text()="Gender:"]/following-sibling::text()'
 		self.gender = personTree.xpath(genderStr)[0].strip()
-		print "Fetched race/gender for %s... (%s, %s)" % (self.name, self.race, self.gender)
+		print "Fetched %s... (%s, %s)" % (self.name, self.race, self.gender)
 
 	"""
 	METHOD: encode
 	----------------
 	Parameters: NA
 
-	Returns: an array representation of this Actor object.  If you pass this as
-			a parameter to Actor.decode, the Actor object will be decoded.
+	Returns: an array representation of this object.  If you pass this as
+			a parameter to Person.decode, the object will be decoded.
 	----------------
 	"""
 	def encode(self):
@@ -277,7 +277,7 @@ Returns: a tuple (movieMap, actorMap).  movieMap is a map from a movie
 		the concatenation of its title and release year, to avoid conflicts
 		between movie remakes with the same name.
 
-		actorMap is a map from an actor name to an Actor object.
+		actorMap is a map from an actor name to a Person object.
 -------------------------
 """
 def parseMovieFile(filename, fetchRaceAndGender=True):
@@ -296,7 +296,7 @@ def parseMovieFile(filename, fetchRaceAndGender=True):
 					movieMap[newMovie.uniqueID()] = newMovie
 					for actorName in newMovie.actorNames:
 						if not actorName in actorMap:
-							newActor = Actor(actorName)
+							newActor = Person(actorName)
 							if fetchRaceAndGender:
 								newActor.fetchRaceAndGender()
 							actorMap[actorName] = newActor
@@ -310,7 +310,7 @@ Parameters:
 	movieMap - a map containing all the movies to add to the graph.  The map
 				should be a map from unique movie IDs to Movie objects.
 	actorMap - a map containing all the actors to add to the graph.  The map
-				should be a map from actor names to Actor objects.
+				should be a map from actor names to Person objects.
 
 Returns: a tuple of (graph, movieNodeMap, actorNodeMap, movieInfoMap,
 		actorInfoMap).  The graph is a bipartite Snap.PY TUNGraph (undirected
@@ -325,7 +325,7 @@ Returns: a tuple of (graph, movieNodeMap, actorNodeMap, movieInfoMap,
 
 		The movieInfoMap is a map from Node ID to Movie objects.
 
-		The actorInfoMap is a map from Node ID to Actor objects.
+		The actorInfoMap is a map from Node ID to Person objects.
 -------------------------------
 """		
 def createGraphForMovieInfo(movieMap, actorMap):
@@ -413,7 +413,7 @@ graph-snapgraph.txt - created by SNAP storing all graph edge info
 graph-movienodemap.csv - stores movie unique ID -> node ID
 graph-actornodemap.csv - stores actor name -> node ID
 graph-movieinfomap.csv - stores node ID -> encoded Movie object
-graph-actorinfomap.csv - stores node ID -> encoded Actor object
+graph-actorinfomap.csv - stores node ID -> encoded Person object
 
 In each, the map keys are row[0] and the values are the rest of the row.
 ---------------------------
@@ -443,7 +443,7 @@ def createMovieGraph():
 
 	saveDictToFile(movieInfoMap, "graph-movieinfomap", encodeFn=Movie.encode,
 		firstRow=firstRow)
-	saveDictToFile(actorInfoMap, "graph-actorinfomap", encodeFn=Actor.encode,
+	saveDictToFile(actorInfoMap, "graph-actorinfomap", encodeFn=Person.encode,
 		firstRow=["NodeID", "Name", "Race", "Gender"])
 
 """
@@ -493,7 +493,7 @@ Returns: a tuple of (graph, movieNodeMap, actorNodeMap, movieInfoMap,
 
 		The movieInfoMap is a map from Node ID to Movie objects.
 
-		The actorInfoMap is a map from Node ID to Actor objects.
+		The actorInfoMap is a map from Node ID to Person objects.
 ---------------------------------
 """
 def readMovieGraphFromFile():
@@ -505,7 +505,7 @@ def readMovieGraphFromFile():
 	movieInfoMap = readDictFromFile("graph-movieinfomap.csv", True,
 		keyDecodeFn=int, valueDecodeFn=Movie.decode)
 	actorInfoMap = readDictFromFile("graph-actorinfomap.csv", True,
-		keyDecodeFn=int, valueDecodeFn=Actor.decode)
+		keyDecodeFn=int, valueDecodeFn=Person.decode)
 	return (graph, movieNodeMap, actorNodeMap, movieInfoMap, actorInfoMap)
 
 """
