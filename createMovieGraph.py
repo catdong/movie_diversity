@@ -504,7 +504,8 @@ def createMovieGraph():
 	movieMap, actorMap, directorMap = parseMovieFile("movie_metadata.csv",
 		fetchRaceAndGender=False)
 	graphInfo = createGraphForMovieInfo(movieMap, actorMap, directorMap)
-	graph, movieNodeMap, actorNodeMap, directorNodeMap, movieInfoMap, actorInfoMap, directorInfoMap = graphInfo
+	(graph, movieNodeMap, actorNodeMap, directorNodeMap, movieInfoMap,
+		actorInfoMap, directorInfoMap) = graphInfo
 
 	# Save to files
 	snap.SaveEdgeList(graph, "graph-snapgraph.txt", "Tab-separated edge list")
@@ -603,7 +604,8 @@ def readMovieGraphFromFile():
 	directorInfoMap = readDictFromFile("graph-directorinfomap.csv", True,
 		keyDecodeFn=int, valueDecodeFn=Person.decode)
 
-	return (graph, movieNodeMap, actorNodeMap, directorNodeMap, movieInfoMap, actorInfoMap, directorInfoMap)
+	return (graph, movieNodeMap, actorNodeMap, directorNodeMap, movieInfoMap,
+		actorInfoMap, directorInfoMap)
 
 """
 FUNCTION: readDictFromFile
@@ -652,7 +654,8 @@ def readDictFromFile(filename, discardFirstRow, keyDecodeFn=None,
 
 createMovieGraph()
 graphInfo = readMovieGraphFromFile()
-graph, movieNodeMap, actorNodeMap, directorNodeMap, movieInfoMap, actorInfoMap, directorInfoMap = graphInfo
+(graph, movieNodeMap, actorNodeMap, directorNodeMap, movieInfoMap, actorInfoMap,
+	directorInfoMap) = graphInfo
 print "%i nodes in the graph" % graph.GetNodes()
 print movieInfoMap[movieNodeMap["Avatar2009"]]
 print actorInfoMap[actorNodeMap["Morgan Freeman"]]
