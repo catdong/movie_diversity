@@ -1,4 +1,3 @@
-from collections import Counter
 import csv
 from lxml import html
 import requests
@@ -17,6 +16,29 @@ Created from a single length-28 row in the Kaggle movies dataset.
 """
 class Movie:
 
+	"""
+	CLASS METHOD: decode
+	----------------------
+	Parameters:
+		encoding - the encoding for a Movie object
+
+	Returns: the decoded Movie object
+	----------------------
+	"""
+	@classmethod
+	def decode(cls, encoding):
+		return cls(encoding)
+
+	"""
+	METHOD: init
+	--------------
+	Parameters:
+		dataRow - an array of information from the Kaggle movies dataset
+				containing information about a single movie.  Should be len 28.
+
+	Returns: a Movie object storing all the information given in the dataRow.
+	--------------
+	"""
 	def __init__(self, dataRow):
 		numericCols = set([2, 3, 4, 7, 24, 5, 8, 12, 13, 15, 18, 22, 23, 25, 26,
 						   27])
@@ -25,7 +47,7 @@ class Movie:
 		# numerically-parsed cols are non-empty
 		def cleanupRowEntry(args):
 			i, entry = args
-			entry = entry.replace("\xc2\xa0", " ").strip().decode('utf-8')
+			entry = entry.replace("\xc2\xa0", " ").strip()
 			if i in numericCols and len(dataRow[i]) == 0:
 				return "0"
 			else:
@@ -33,6 +55,7 @@ class Movie:
 
 		# Cleanup all data before parsing
 		dataRow = map(cleanupRowEntry, enumerate(dataRow))
+		self.dataRow = dataRow
 
 		self.inColor = dataRow[0] == "Color"
 		self.directorName = dataRow[1]
@@ -71,6 +94,14 @@ class Movie:
 		self.aspectRatio = float(dataRow[26])
 		self.movieFacebookLikes = int(dataRow[27])
 
+	"""
+	METHOD: str
+	----------------
+	Parameters: NA
+
+	Returns: A readable string description of this Movie object.
+	----------------
+	"""
 	def __str__(self):
 		desc = "-----'%s' (%i)-----\n" % (self.title, self.releaseYear)
 		desc += "Color: %s\n"  % self.inColor
@@ -101,6 +132,7 @@ class Movie:
 	FUNCTION: uniqueID
 	-------------------
 	Parameters: NA
+
 	Returns: A unique identifier string for this movie.  This identifier is a
 			concatenation of the title and release year, to guarantee that
 			remakes of movies have unique identifiers from their originals.
@@ -108,6 +140,18 @@ class Movie:
 	"""
 	def uniqueID(self):
 		return "%s%i" % (self.title, self.releaseYear)
+
+	"""
+	FUNCTION: encode
+	-----------------
+	Parameters: NA
+
+	Returns: an array representation of this Movie object.  If you pass this as
+			a parameter to Movie.decode, the Movie object will be decoded.
+	-----------------
+	"""
+	def encode(self):
+		return self.dataRow
 
 
 """
@@ -119,11 +163,47 @@ name, gender, and race.
 """
 class Actor:
 
+	"""
+	CLASS METHOD: decode
+	----------------------
+	Parameters:
+		encoding - the encoding of an Actor object
+
+	Returns: the decoded Actor object
+	----------------------
+	"""
+	@classmethod
+	def decode(cls, encoding):
+		newObj = cls(encoding[0])
+
+		if encoding[1]:
+			newObj.race = encoding[1]
+		if encoding[2]:
+			newObj.gender = encoding[2]
+
+		return newObj
+
+	"""
+	METHOD: init
+	-------------
+	Parameters: NA
+
+	Returns: a new Actor object with the given name, and no gender or race.
+	-------------
+	"""
 	def __init__(self, name):
 		self.name = name
 		self.gender = None
 		self.race = None
 
+	"""
+	METHOD: str
+	-------------
+	Parameters: NA
+
+	Returns: a readable string description of this Actor object.
+	-------------
+	"""
 	def __str__(self):
 		return "%s, Gender: %s, Race: %s" % (self.name, self.gender, self.race)
 
@@ -131,6 +211,7 @@ class Actor:
 	FUNCTION: fetchRaceAndGender
 	------------------------------
 	Parameters: NA
+
 	Returns: NA
 
 	Attempts to fetch the race and gender of this actor from search.nndb.com.
@@ -166,12 +247,25 @@ class Actor:
 		self.gender = personTree.xpath(genderStr)[0].strip()
 		print "Fetched race/gender for %s..." % self.name
 
+	"""
+	METHOD: encode
+	----------------
+	Parameters: NA
+
+	Returns: an array representation of this Actor object.  If you pass this as
+			a parameter to Actor.decode, the Actor object will be decoded.
+	----------------
+	"""
+	def encode(self):
+		return [self.name, self.race, self.gender]
+
 
 """
 FUNCTION: parseMovieFile
 -------------------------
 Parameters:
 	filename - the name of the Kaggle movie data file to parse
+	fetchRaceAndGender - whether to fetch each actor's race and gender from NNDB
 
 Returns: a tuple (movieMap, actorMap).  movieMap is a map from a movie
 		unique ID to its Movie object.  Note that a movie's unique ID is just
@@ -181,7 +275,7 @@ Returns: a tuple (movieMap, actorMap).  movieMap is a map from a movie
 		actorMap is a map from an actor name to an Actor object.
 -------------------------
 """
-def parseMovieFile(filename):
+def parseMovieFile(filename, fetchRaceAndGender=True):
 	with open(filename, 'rb') as csvFile:
 		csvFile = csv.reader(csvFile, delimiter=',')
 		firstRow = False
@@ -198,7 +292,8 @@ def parseMovieFile(filename):
 					for actorName in newMovie.actorNames:
 						if not actorName in actorMap:
 							newActor = Actor(actorName)
-							newActor.fetchRaceAndGender()
+							if fetchRaceAndGender:
+								newActor.fetchRaceAndGender()
 							actorMap[actorName] = newActor
 
 		return movieMap, actorMap
@@ -284,12 +379,104 @@ def addMovieToGraph(graph, movieNodeMap, actorNodeMap, movie):
 
 		graph.AddEdge(movieNodeMap[movie.uniqueID()], actorNodeMap[actorName])
 
+
+
+##### MAIN PROGRAM #####
+# Functions you should care about:
+#
+# createMovieGraph - creates a TUNGraph from movie_metadata.csv and writes out
+# all the necessary data components (graph itself, maps, etc.) to file.
+#
+# readMovieGraphFromFile - reads previously-created graph data component files
+# and rehydrates the TUNGraph object and all necessary dictionaries.
+#
+########################
+
+
+
 """
 FUNCTION: createMovieGraph
 ---------------------------
 Parameters: NA
+
+Returns: NA
+
+Creates a movie SNAP graph, and saves it, along with all associated information
+dictionaries, to files in the current directory.  Files saved include:
+
+graph-snapgraph.txt - created by SNAP storing all graph edge info
+graph-movienodemap.csv - stores movie unique ID -> node ID
+graph-actornodemap.csv - stores actor name -> node ID
+graph-movieinfomap.csv - stores node ID -> encoded Movie object
+graph-actorinfomap.csv - stores node ID -> encoded Actor object
+
+In each, the map keys are row[0] and the values are the rest of the row.
+---------------------------
+"""
+def createMovieGraph():
+	movieMap, actorMap = parseMovieFile("movie_metadata.csv",
+		fetchRaceAndGender=False)
+	graphInfo = createGraphForMovies(movieMap, actorMap)
+	graph, movieNodeMap, actorNodeMap, movieInfoMap, actorInfoMap = graphInfo
+
+	# Save to files
+	snap.SaveEdgeList(graph, "graph-snapgraph.txt", "Tab-separated edge list")
+	saveDictToFile(movieNodeMap, "graph-movienodemap",
+		firstRow=["Movie", "NodeID"])
+	saveDictToFile(actorNodeMap, "graph-actornodemap",
+		firstRow=["Actor", "NodeID"])
+
+	firstRow = ['NodeID', 'color', 'director_name', 'num_critic_for_reviews',
+				'duration', 'director_facebook_likes', 'actor_3_facebook_likes',
+				'actor_2_name', 'actor_1_facebook_likes', 'gross', 'genres',
+				'actor_1_name', 'movie_title', 'num_voted_users',
+				'cast_total_facebook_likes', 'actor_3_name',
+				'facenumber_in_poster', 'plot_keywords', 'movie_imdb_link',
+				'num_user_for_reviews', 'language', 'country', 'content_rating',
+				'budget', 'title_year', 'actor_2_facebook_likes', 'imdb_score',
+				'aspect_ratio', 'movie_facebook_likes']
+
+	saveDictToFile(movieInfoMap, "graph-movieinfomap", encodeFn=Movie.encode,
+		firstRow=firstRow)
+	saveDictToFile(actorInfoMap, "graph-actorinfomap", encodeFn=Actor.encode,
+		firstRow=["NodeID", "Name", "Race", "Gender"])
+
+"""
+FUNCTION: saveDictToFile
+-------------------------
+Parameters:
+	dictToSave - the dict to save to file.
+	filename - the name of the file in which to store 'dictToSave'.
+	encodeFn - an optional encoding function to call on each dictionary value
+				before saving it to file.  MUST return an array.
+	firstRow - the first row to output to file, if any (aka a header row)
+
+Returns: NA
+
+Saves the given dictionary as a CSV file with the given filename.
+-------------------------
+"""
+def saveDictToFile(dictToSave, filename, encodeFn=None, firstRow=None):
+	with open(filename + '.csv', 'wb') as csvfile:
+		csvwriter = csv.writer(csvfile, delimiter=',')
+		if firstRow:
+			csvwriter.writerow(firstRow)
+		for key in dictToSave:
+			value = dictToSave[key]
+			if encodeFn:
+				row = [key]
+				row.extend(encodeFn(value))
+				csvwriter.writerow(row)
+			else:
+				csvwriter.writerow([key, value])
+
+"""
+FUNCTION: readMovieGraphFromFile
+---------------------------------
+Parameters: NA
+
 Returns: a tuple of (graph, movieNodeMap, actorNodeMap, movieInfoMap,
-		actorInfoMap) created from data from "movieData.csv".  The graph is a
+		actorInfoMap), decoded from the given filenames.  The graph is a
 		bipartite Snap.PY TUNGraph (undirected graph) where nodes are either
 		movies or actors.  An edge indicates that an actor is in a given movie.
 
@@ -302,11 +489,68 @@ Returns: a tuple of (graph, movieNodeMap, actorNodeMap, movieInfoMap,
 		The movieInfoMap is a map from Node ID to Movie objects.
 
 		The actorInfoMap is a map from Node ID to Actor objects.
+---------------------------------
+"""
+def readMovieGraphFromFile():
+	graph = snap.LoadEdgeList(snap.PUNGraph, "graph-snapgraph.txt", 0, 1)
+	movieNodeMap = readDictFromFile("graph-movienodemap.csv", True,
+		valueDecodeFn=int)
+	actorNodeMap = readDictFromFile("graph-actornodemap.csv", True,
+		valueDecodeFn=int)
+	movieInfoMap = readDictFromFile("graph-movieinfomap.csv", True,
+		keyDecodeFn=int, valueDecodeFn=Movie.decode)
+	actorInfoMap = readDictFromFile("graph-actorinfomap.csv", True,
+		keyDecodeFn=int, valueDecodeFn=Actor.decode)
+	return (graph, movieNodeMap, actorNodeMap, movieInfoMap, actorInfoMap)
+
+"""
+FUNCTION: readDictFromFile
+---------------------------
+Parameters:
+	filename - the name of the file the dict is stored in
+	discardFirstRow - whether to skip over the first row in the file
+	keyDecodeFn - optional decode function that converts row[0] into the key to
+					put in the decoded dict object we return.
+	valueDecodeFn - optional decode function that converts row[1:] into the
+					value to put in the decoded dict object we return.
+
+Returns: the decoded dict object represented in the file with the given name.
 ---------------------------
 """
-def createMovieGraph():
-	movieMap, actorMap = parseMovieFile("movie_metadata.csv")
-	return createGraphForMovies(movieMap, actorMap)
+def readDictFromFile(filename, discardFirstRow, keyDecodeFn=None,
+	valueDecodeFn=None):
+
+	newDict = {}
+	with open(filename, 'rb') as csvfile:
+		csvreader = csv.reader(csvfile, delimiter=',')
+		isFirstRow = True
+		for row in csvreader:
+			if isFirstRow and discardFirstRow:
+				isFirstRow = False
+				continue
+
+			# Parse the key
+			if not keyDecodeFn:
+				key = row[0]
+			else:
+				key = keyDecodeFn(row[0])
+
+			# Parse the value
+			if not valueDecodeFn:
+				value = row[1:]
+			elif len(row) > 2:
+				value = valueDecodeFn(row[1:])
+			else:
+				value = valueDecodeFn(row[1])
+
+			newDict[key] = value
+
+		return newDict
 
 
 createMovieGraph()
+graphInfo = readMovieGraphFromFile()
+graph, movieNodeMap, actorNodeMap, movieInfoMap, actorInfoMap = graphInfo
+print "%i nodes in the graph" % graph.GetNodes()
+print movieInfoMap[movieNodeMap["Avatar2009"]]
+print actorInfoMap[actorNodeMap["Morgan Freeman"]]
