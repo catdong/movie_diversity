@@ -240,6 +240,10 @@ class Person:
 		notFoundIndices = set()
 		for i in range(len(responses)):
 			response = responses[i]
+			if not response:
+				notFoundIndices.add(i)
+				continue
+
 			name = peopleCopy[i].name.split()
 
 			searchTree = html.fromstring(response.content)
