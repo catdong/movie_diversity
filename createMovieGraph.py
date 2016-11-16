@@ -502,7 +502,7 @@ In each, the map keys are row[0] and the values are the rest of the row.
 """
 def createMovieGraph():
 	movieMap, actorMap, directorMap = parseMovieFile("movie_metadata.csv",
-		fetchRaceAndGender=False)
+		fetchRaceAndGender=True)
 	graphInfo = createGraphForMovieInfo(movieMap, actorMap, directorMap)
 	(graph, movieNodeMap, actorNodeMap, directorNodeMap, movieInfoMap,
 		actorInfoMap, directorInfoMap) = graphInfo
@@ -657,6 +657,11 @@ graphInfo = readMovieGraphFromFile()
 (graph, movieNodeMap, actorNodeMap, directorNodeMap, movieInfoMap, actorInfoMap,
 	directorInfoMap) = graphInfo
 print "%i nodes in the graph" % graph.GetNodes()
+print "%i movies, %i actors, %i directors" % (len(movieNodeMap),
+	len(actorNodeMap), len(directorNodeMap))
 print movieInfoMap[movieNodeMap["Avatar2009"]]
 print actorInfoMap[actorNodeMap["Morgan Freeman"]]
 print directorInfoMap[directorNodeMap["James Cameron"]]
+print "Brad Pitt was in the following movies:\n"
+for id in graph.GetNI(actorNodeMap["Brad Pitt"]).GetOutEdges():
+	print movieInfoMap[id].title
