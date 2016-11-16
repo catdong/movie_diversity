@@ -245,6 +245,9 @@ class Person:
 				continue
 
 			name = peopleCopy[i].name.split()
+			if len(name) == 0:
+				notFoundIndices.add(i)
+				continue
 
 			searchTree = html.fromstring(response.content)
 			condition = '[contains(.//text(), "%s")' % name[0]
@@ -265,12 +268,14 @@ class Person:
 
 			urls.append(personList[0].xpath('.//a/@href')[0])
 
+		# remove the people that we couldn't find info for
 		for i in sorted(list(notFoundIndices), reverse=True):
 			del peopleCopy[i]
 
 		requests = [grequests.get(url) for url in urls]
 		responses = grequests.map(requests)
 
+		# Go through responses and scrape race and gender info
 		for i in range(len(responses)):
 			response = responses[i]
 			person = peopleCopy[i]
@@ -280,13 +285,13 @@ class Person:
 			raceStr = '//p/b[text()="Race or Ethnicity:"]'
 			raceStr += '/following-sibling::text()'
 			if len(personTree.xpath(raceStr)) == 0:
-				print personTree
+				print "%s" % personTree
 			else:
 				person.race = personTree.xpath(raceStr)[0].strip()
 
 			genderStr = '//p/b[text()="Gender:"]/following-sibling::text()'
 			if len(personTree.xpath(genderStr)) == 0:
-				print personTree
+				print "%s" % personTree
 			else:
 				person.gender = personTree.xpath(genderStr)[0].strip()
 
@@ -318,6 +323,9 @@ Returns: a tuple (movieMap, actorMap, directorMap).  movieMap is a map from a
 		actorMap is a map from an actor name to a Person object.
 
 		directorMap is a map from a director name to a Person object.
+
+Reads in the given graph file and stores all its info in the returned graphs.
+Also fetches race/gender info for all referenced directors and actors.
 -------------------------
 """
 def parseMovieFile(filename, fetchRaceAndGender=True):
@@ -354,15 +362,17 @@ def parseMovieFile(filename, fetchRaceAndGender=True):
 
 			FETCH_BLOCK_SIZE = 200
 
+			# Calculate the number of fetches we make
 			numFetches = len(allPeople) / FETCH_BLOCK_SIZE
 			if len(allPeople) % FETCH_BLOCK_SIZE > 0:
 				numFetches += 1
 
+			# Perform each fetch for race/gender info
 			for i in range(numFetches):
 				startIndex = i*FETCH_BLOCK_SIZE
 				endIndex = min((i+1)*FETCH_BLOCK_SIZE, len(allPeople))
 				Person.fetchRaceAndGenderFor(allPeople[startIndex : endIndex])
-				print "Fetched %i of %i" % (((i+1) * FETCH_BLOCK_SIZE), len(allPeople))
+				print "Fetched %i of %i" % (endIndex, len(allPeople))
 
 		return movieMap, actorMap, directorMap
 
