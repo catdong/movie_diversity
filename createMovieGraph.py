@@ -710,6 +710,7 @@ def readDictFromFile(filename, discardFirstRow, keyDecodeFn=None,
 		return newDict
 
 
+# Should be 4919 Movies, 6255 Actors, 2399 Directors
 debug = False
 if debug:
 	createMovieGraph()
