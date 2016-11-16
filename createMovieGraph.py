@@ -1,6 +1,6 @@
 import csv
+import grequests
 from lxml import html
-import requests
 import snap
 
 
@@ -209,48 +209,82 @@ class Person:
 		return "%s, Gender: %s, Race: %s" % (self.name, self.gender, self.race)
 
 	"""
-	FUNCTION: fetchRaceAndGender
-	------------------------------
-	Parameters: NA
+	CLASS METHOD: fetchRaceAndGenderFor
+	-----------------------------------
+	Parameters:
+		people - the array of Person objects to attempt to fetch the race and
+				gender for.
 
 	Returns: NA
 
-	Attempts to fetch the race and gender of this person from search.nndb.com.
-	Synchronously fetches, and fills in the race and gender fields on completion
-	with the results (either the race and gender, or None if they could not be
-	found).
-	------------------------------
+	Attempts to fetch race/gender info from NNDB for all of the provided Person
+	objects.  Fetches information in parallel, and if it finds info for a Person
+	it updates their race and gender fields.
+	-----------------------------------
 	"""
-	def fetchRaceAndGender(self):
-		print "Fetching race/gender for %s..." % self.name
-		name = self.name.split()
-		query = "+".join(name)
-		url = "http://search.nndb.com/search/?type=unspecified&query=%s" % query
-		searchPage = requests.get(url)
-		searchTree = html.fromstring(searchPage.content)
-		condition = '[contains(.//text(), "%s")' % name[0]
-		if len(name) > 1:
-			condition += ' and contains(.//text(), "%s")]' % name[1]
-		else:
-			condition += ']'
-		personList = searchTree.xpath('//table')[3].xpath('./tr')
-		if len(personList) > 1:
-			personList = personList[1].xpath('./td' + condition)
-		else:
-			personList = None
-		if personList and len(personList[0].xpath('.//a/@href')) > 0:
-			personUrl = personList[0].xpath('.//a/@href')[0]
-		else:
-			print "Could not fetch info for %s" % self.name
-			return
+	@classmethod
+	def fetchRaceAndGenderFor(cls, people):
+		peopleCopy = list(people)
 
-		personPage = requests.get(personUrl)
-		personTree = html.fromstring(personPage.content)
-		raceStr = '//p/b[text()="Race or Ethnicity:"]/following-sibling::text()'
-		self.race = personTree.xpath(raceStr)[0].strip()
-		genderStr = '//p/b[text()="Gender:"]/following-sibling::text()'
-		self.gender = personTree.xpath(genderStr)[0].strip()
-		print "Fetched %s... (%s, %s)" % (self.name, self.race, self.gender)
+		# Get the search page for each person
+		urls = list()
+		for person in peopleCopy:
+			url = "http://search.nndb.com/search/?type=unspecified&query="
+			url += "+".join(person.name.split())
+			urls.append(url)
+		requests = [grequests.get(url) for url in urls]
+		responses = grequests.map(requests)
+
+		# Get the profile pages from each search page
+		urls = []
+		notFoundIndices = set()
+		for i in range(len(responses)):
+			response = responses[i]
+			name = peopleCopy[i].name.split()
+
+			searchTree = html.fromstring(response.content)
+			condition = '[contains(.//text(), "%s")' % name[0]
+			if len(name) > 1:
+				condition += ' and contains(.//text(), "%s")' % name[1]
+			condition += ']'
+
+			personList = searchTree.xpath('//table')[3].xpath('./tr')
+			if len(personList) <= 1:
+				notFoundIndices.add(i)
+				continue
+
+			personList = personList[1].xpath('./td' + condition)
+
+			if not personList or len(personList[0].xpath('.//a/@href')) == 0:
+				notFoundIndices.add(i)
+				continue
+
+			urls.append(personList[0].xpath('.//a/@href')[0])
+
+		for i in sorted(list(notFoundIndices), reverse=True):
+			del peopleCopy[i]
+
+		requests = [grequests.get(url) for url in urls]
+		responses = grequests.map(requests)
+
+		for i in range(len(responses)):
+			response = responses[i]
+			person = peopleCopy[i]
+
+			personTree = html.fromstring(response.content)
+
+			raceStr = '//p/b[text()="Race or Ethnicity:"]'
+			raceStr += '/following-sibling::text()'
+			if len(personTree.xpath(raceStr)) == 0:
+				print personTree
+			else:
+				person.race = personTree.xpath(raceStr)[0].strip()
+
+			genderStr = '//p/b[text()="Gender:"]/following-sibling::text()'
+			if len(personTree.xpath(genderStr)) == 0:
+				print personTree
+			else:
+				person.gender = personTree.xpath(genderStr)[0].strip()
 
 	"""
 	METHOD: encode
@@ -301,20 +335,30 @@ def parseMovieFile(filename, fetchRaceAndGender=True):
 					# Add the movie
 					movieMap[newMovie.uniqueID()] = newMovie
 
-					# Add each actor if needed
 					for actorName in newMovie.actorNames:
 						if not actorName in actorMap:
-							newActor = Person(actorName)
-							if fetchRaceAndGender:
-								newActor.fetchRaceAndGender()
-							actorMap[actorName] = newActor
+							actorMap[actorName] = Person(actorName)
 
 					# Add the director if needed
 					if not newMovie.directorName in directorMap:
 						director = Person(newMovie.directorName)
-						if fetchRaceAndGender:
-							director.fetchRaceAndGender()
 						directorMap[director.name] = director
+
+		if fetchRaceAndGender:
+			allPeople = actorMap.values()
+			allPeople.extend(directorMap.values())
+
+			FETCH_BLOCK_SIZE = 200
+
+			numFetches = len(allPeople) / FETCH_BLOCK_SIZE
+			if len(allPeople) % FETCH_BLOCK_SIZE > 0:
+				numFetches += 1
+
+			for i in range(numFetches):
+				startIndex = i*FETCH_BLOCK_SIZE
+				endIndex = min((i+1)*FETCH_BLOCK_SIZE, len(allPeople))
+				Person.fetchRaceAndGenderFor(allPeople[startIndex : endIndex])
+				print "Fetched %i of %i" % (((i+1) * FETCH_BLOCK_SIZE), len(allPeople))
 
 		return movieMap, actorMap, directorMap
 
@@ -652,6 +696,7 @@ def readDictFromFile(filename, discardFirstRow, keyDecodeFn=None,
 		return newDict
 
 
+debug = False
 createMovieGraph()
 graphInfo = readMovieGraphFromFile()
 (graph, movieNodeMap, actorNodeMap, directorNodeMap, movieInfoMap, actorInfoMap,
@@ -659,9 +704,11 @@ graphInfo = readMovieGraphFromFile()
 print "%i nodes in the graph" % graph.GetNodes()
 print "%i movies, %i actors, %i directors" % (len(movieNodeMap),
 	len(actorNodeMap), len(directorNodeMap))
-print movieInfoMap[movieNodeMap["Avatar2009"]]
-print actorInfoMap[actorNodeMap["Morgan Freeman"]]
-print directorInfoMap[directorNodeMap["James Cameron"]]
-print "Brad Pitt was in the following movies:\n"
-for id in graph.GetNI(actorNodeMap["Brad Pitt"]).GetOutEdges():
-	print movieInfoMap[id].title
+
+if debug:
+	print movieInfoMap[movieNodeMap["Avatar2009"]]
+	print actorInfoMap[actorNodeMap["Morgan Freeman"]]
+	print directorInfoMap[directorNodeMap["James Cameron"]]
+	print "Brad Pitt was in the following movies:\n"
+	for id in graph.GetNI(actorNodeMap["Brad Pitt"]).GetOutEdges():
+		print movieInfoMap[id].title
