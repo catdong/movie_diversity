@@ -714,8 +714,8 @@ debug = False
 if debug:
 	createMovieGraph()
 	graphInfo = readMovieGraphFromFile()
-	(graph, movieNodeMap, actorNodeMap, directorNodeMap, movieInfoMap, actorInfoMap,
-		directorInfoMap) = graphInfo
+	(graph, movieNodeMap, actorNodeMap, directorNodeMap, movieInfoMap,
+		actorInfoMap, directorInfoMap) = graphInfo
 	print "%i nodes in the graph" % graph.GetNodes()
 	print "%i movies, %i actors, %i directors" % (len(movieNodeMap),
 		len(actorNodeMap), len(directorNodeMap))
