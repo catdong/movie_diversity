@@ -711,15 +711,15 @@ def readDictFromFile(filename, discardFirstRow, keyDecodeFn=None,
 
 
 debug = False
-createMovieGraph()
-graphInfo = readMovieGraphFromFile()
-(graph, movieNodeMap, actorNodeMap, directorNodeMap, movieInfoMap, actorInfoMap,
-	directorInfoMap) = graphInfo
-print "%i nodes in the graph" % graph.GetNodes()
-print "%i movies, %i actors, %i directors" % (len(movieNodeMap),
-	len(actorNodeMap), len(directorNodeMap))
-
 if debug:
+	createMovieGraph()
+	graphInfo = readMovieGraphFromFile()
+	(graph, movieNodeMap, actorNodeMap, directorNodeMap, movieInfoMap, actorInfoMap,
+		directorInfoMap) = graphInfo
+	print "%i nodes in the graph" % graph.GetNodes()
+	print "%i movies, %i actors, %i directors" % (len(movieNodeMap),
+		len(actorNodeMap), len(directorNodeMap))
+
 	print movieInfoMap[movieNodeMap["Avatar2009"]]
 	print actorInfoMap[actorNodeMap["Morgan Freeman"]]
 	print directorInfoMap[directorNodeMap["James Cameron"]]
