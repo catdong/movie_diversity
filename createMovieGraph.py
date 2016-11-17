@@ -1,7 +1,21 @@
 import csv
 import grequests
 from lxml import html
-import snap
+import networkx as nx
+
+
+# ------ CONSTANTS -------
+
+# NodeType: the different values a node's "type" field can have in the graph.
+NodeTypeActor = "ACTOR"
+NodeTypeDirector = "DIRECTOR"
+NodeTypeMovie = "MOVIE"
+NodeTypeActorDirector = "ACTOR-DIRECTOR"
+
+# Filenames
+datasetFilename = "movie_metadata.csv"
+graphFilename = "graph.gpickle"
+graphDictFilename = "graphdict.csv"
 
 
 """
@@ -15,19 +29,6 @@ Created from a single length-28 row in the Kaggle movies dataset.
 --------------
 """
 class Movie:
-
-	"""
-	CLASS METHOD: decode
-	----------------------
-	Parameters:
-		encoding - the encoding for a Movie object
-
-	Returns: the decoded Movie object
-	----------------------
-	"""
-	@classmethod
-	def decode(cls, encoding):
-		return cls(encoding)
 
 	"""
 	METHOD: init
@@ -56,7 +57,6 @@ class Movie:
 
 		# Cleanup all data before parsing
 		dataRow = map(cleanupRowEntry, enumerate(dataRow))
-		self.dataRow = dataRow
 
 		self.inColor = dataRow[0] == "Color"
 		self.directorName = dataRow[1]
@@ -179,18 +179,6 @@ class Movie:
 	def uniqueID(self):
 		return "%s%i" % (self.title, self.releaseYear)
 
-	"""
-	FUNCTION: encode
-	-----------------
-	Parameters: NA
-
-	Returns: an array representation of this Movie object.  If you pass this as
-			a parameter to Movie.decode, the Movie object will be decoded.
-	-----------------
-	"""
-	def encode(self):
-		return self.dataRow
-
 
 """
 CLASS: Person
@@ -200,26 +188,6 @@ Contains the person's name, gender, and race.
 -------------
 """
 class Person:
-
-	"""
-	CLASS METHOD: decode
-	----------------------
-	Parameters:
-		encoding - the encoding of a Person object
-
-	Returns: the decoded Person object
-	----------------------
-	"""
-	@classmethod
-	def decode(cls, encoding):
-		newObj = cls(encoding[0])
-
-		if encoding[1]:
-			newObj.race = encoding[1]
-		if encoding[2]:
-			newObj.gender = encoding[2]
-
-		return newObj
 
 	"""
 	METHOD: init
@@ -348,18 +316,6 @@ class Person:
 			else:
 				person.gender = personTree.xpath(genderStr)[0].strip()
 
-	"""
-	METHOD: encode
-	----------------
-	Parameters: NA
-
-	Returns: an array representation of this object.  If you pass this as
-			a parameter to Person.decode, the object will be decoded.
-	----------------
-	"""
-	def encode(self):
-		return [self.name, self.race, self.gender]
-
 
 """
 FUNCTION: parseMovieFile
@@ -440,152 +396,142 @@ Parameters:
 	directorMap - a map containing all the directors to add to the graph.  The
 				map should be a map from director names to Person objects.
 
-Returns: a tuple of (graph, movieNodeMap, actorNodeMap, directorNodeMap,
-		movieInfoMap, actorInfoMap, directorInfoMap).  The graph is a tripartite
-		Snap.PY TUNGraph (undirected graph) where nodes are either movies,
-		actors or directors.  An edge indicates a relationship (either actor or
-		director) to a movie.
+Returns: a tuple of (graph, graphDict).  The graph is a tripartite NetworkX
+		undirected graph where nodes are either movies,	actors or directors.
+		An edge indicates a relationship (either actor or director or both)
+		to a movie.
 
-		The movieNodeMap is a map from movie unique IDs to their Node ID in the
-		graph.
-
-		The actorNodeMap is a map from actor names to their Node ID in the
-		graph. 
-
-		The directorNodeMap is a map from director names to their Node ID in the
-		graph.
-
-		The movieInfoMap is a map from Node ID to Movie objects.
-
-		The actorInfoMap is a map from Node ID to Person objects.
-
-		The directorInfoMap is a map from Node ID to Person objects.
+		The graphDict is a map from movie, actor and director names to their
+		NodeIDs in the graph.  Note that while the keys for actors and directors
+		are their names (e.g. "Tom Hanks"), the keys for movies are the
+		concatenation of their title and release year (e.g. "Avatar2009") so
+		that movie remakes are uniquely keyed.
 -------------------------------
 """		
 def createGraphForMovieInfo(movieMap, actorMap, directorMap):
-	movieGraph = snap.TUNGraph.New()
-	movieNodeMap = {}
-	actorNodeMap = {}
-	movieInfoMap = {}
-	actorInfoMap = {}
-	directorNodeMap = {}
-	directorInfoMap = {}
+	graph = nx.Graph()
+	graphDict = {}
 
 	for movieID in movieMap:
 		movie = movieMap[movieID]
-		addMovieToGraph(movieGraph, movieNodeMap, movieInfoMap, movie)
+		addMovieToGraph(graph, graphDict, movie)
 
-		movieNodeID = movieNodeMap[movieID]
+		movieNodeID = graphDict[movieID]
 		actors = [actorMap[name] for name in movie.actorNames]
-		addActorsToGraph(movieGraph, actorNodeMap, actorInfoMap, actors,
+		addActorsToGraph(graph, graphDict, actors, movieNodeID)
+		addDirectorToGraph(graph, graphDict, directorMap[movie.directorName],
 			movieNodeID)
-		addDirectorToGraph(movieGraph, directorNodeMap, directorInfoMap, 
-			directorMap[movie.directorName], movieNodeID)
 
-	return (movieGraph, movieNodeMap, actorNodeMap, directorNodeMap,
-		movieInfoMap, actorInfoMap, directorInfoMap)
+	return graph, graphDict
 
 """
 FUNCTION: addMovieToGraph
 --------------------------
 Parameters:
 	graph - the graph to add the movie to.
-	movieNodeMap - the map of movie unique IDs to graph Node IDs.  Updates this
-					map to add info about the newly-added movie.
-	movieInfoMap - the map of Node IDs to Movie objects.  Updates this map to
-					add info about the newly-added movie.
+	graphDict - the map of movie, actor and director names to graph Node IDs.
+				Updates this map to add info about the newly-added movie.
 	movie - the Movie object to add to the graph
 
 Returns: NA
 
-Adds the given movie info to the given graph.  Updates the movie node map to add
-info about the new movie's node in the graph.
+Adds the given movie info to the given graph by making a new node and adding the
+movie metadata to that node.  Updates the graphDict to add a mapping from this
+movie's unique ID to its Node ID.
 
 Node IDs are added contiguously to the graph starting at 0.
 --------------------------
 """
-def addMovieToGraph(graph, movieNodeMap, movieInfoMap, movie):
-	nextNodeID = graph.GetNodes()
-	graph.AddNode(nextNodeID)
-	movieNodeMap[movie.uniqueID()] = nextNodeID
-	movieInfoMap[nextNodeID] = movie
+def addMovieToGraph(graph, graphDict, movie):
+	nextNodeID = graph.number_of_nodes()
+	graph.add_node(nextNodeID, type="MOVIE", metadata=movie.toDict())
+	graphDict[movie.uniqueID()] = nextNodeID
+	
 
 """
 FUNCTION: addActorsToGraph
 --------------------------
 Parameters:
 	graph - the graph to add the movie to.
-	actorNodeMap - the map of actor names to graph Node IDs.  Updates this
-					map if needed to add info about the newly-added actors.
-	actorInfoMap - the map of Node IDs to Person objects.  Updates this map if
-					needed to add info about the newly-added actors.
+	graphDict - the map of movie, actor and director names to graph Node IDs.
+				Updates this map to add info about new actors.
 	actors - the Person objects to add to the graph
 	movieNodeID - the Node ID of the movie to connect to these actors
 
 Returns: NA
 
 Adds the given actors to the graph with edges to their movie, and updates the
-data maps.  Note that nodes might not be added, and the maps might not be
-updated, if the actor was already added.
+graphDict to record the new actors' node IDs.  Note that nodes might not be
+added, and the map might not be updated, if the actor was already added,
+*either as an actor or as a director*. Also adds Person metadata to any new
+nodes (or updates it if an actor is also a director).
 
 Node IDs are added contiguously to the graph starting at 0.
 --------------------------
 """
-def addActorsToGraph(graph, actorNodeMap, actorInfoMap, actors, movieNodeID):
-	# Add nodes for the main actors if needed, plus edges
+def addActorsToGraph(graph, graphDict, actors, movieNodeID):
 	for actor in actors:
-		if not actor.name in actorNodeMap:
-			nextNodeID = graph.GetNodes()
-			graph.AddNode(nextNodeID)
-			actorNodeMap[actor.name] = nextNodeID
-			actorInfoMap[nextNodeID] = actor
+		# If we've never seen this actor before, add it to our graph
+		if not actor.name in graphDict:
+			nextNodeID = graph.number_of_nodes()
+			graph.add_node(nextNodeID, type=NodeTypeActor,
+				metadata=actor.toDict())
+			graphDict[actor.name] = nextNodeID
 
-		graph.AddEdge(movieNodeID, actorNodeMap[actor.name])
+		# Otherwise, if we've seen this person before as a DIRECTOR, change its
+		# type to both actor & director
+		elif graph.node[graphDict[actor.name]]["type"] == NodeTypeDirector:
+			graph.node[graphDict[actor.name]]["type"] = NodeTypeActorDirector
+
+		# Connect this actor's node to its movie
+		graph.add_edge(movieNodeID, graphDict[actor.name])
 
 """
-FUNCTION addDirectorToGraph
-----------------------------
+FUNCTION: addDirectorToGraph
+--------------------------
 Parameters:
 	graph - the graph to add the movie to.
-	directorNodeMap - the map of director names to graph Node IDs.  Updates
-					this map if needed to add info about the new director.
-	directorInfoMap - the map of Node IDs to Person objects.  Updates this map
-					if needed to add info about the newly-added director.
+	graphDict - the map of movie, actor and director names to graph Node IDs.
+				Updates this map to add info about the director, if needed.
 	director - the Person object to add to the graph
 	movieNodeID - the Node ID of the movie to connect to this director
 
 Returns: NA
 
 Adds the given director to the graph with an edge to their movie, and updates
-the data maps.  Note that a node might not be added, and the maps might not be
-updated, if the director was already added.
+the graphDict to record their node ID.  Note that a node might not be added,
+and the map might not be updated, if the director was already added, *either as
+an actor or director*.  Also adds Person metadata to any new node (or updates it
+if a director is also an actor).
 
 Node IDs are added contiguously to the graph starting at 0.
-----------------------------
+--------------------------
 """
-def addDirectorToGraph(graph, directorNodeMap, directorInfoMap, director,
-	movieNodeID):
+def addDirectorToGraph(graph, graphDict, director, movieNodeID):
+	# If we've never seen this director before, add it to our graph
+	if not director.name in graphDict:
+		nextNodeID = graph.number_of_nodes()
+		graph.add_node(nextNodeID, type=NodeTypeDirector,
+			metadata=director.toDict())
+		graphDict[director.name] = nextNodeID
 
-	# Add node for the director if needed, plus edge
-	if not director.name in directorNodeMap:
-		nextNodeID = graph.GetNodes()
-		graph.AddNode(nextNodeID)
-		directorNodeMap[director.name] = nextNodeID
-		directorInfoMap[nextNodeID] = director
+	# Otherwise, if we've seen this person before as an ACTOR, change its type
+	# to both actor & director
+	elif graph.node[graphDict[director.name]]["type"] == NodeTypeActor:
+		graph.node[graphDict[director.name]]["type"] = NodeTypeActorDirector
 
-	graph.AddEdge(movieNodeID, directorNodeMap[director.name])
+	graph.add_edge(movieNodeID, graphDict[director.name])
 
 
 
 ##### MAIN PROGRAM #####
 # Functions you should care about:
 #
-# createMovieGraph - creates a TUNGraph from movie_metadata.csv and writes out
-# all the necessary data components (graph itself, maps, etc.) to file.
+# createMovieGraph - creates a NetworkX graph from the dataset file and writes
+# 	out the graph to file and map from names to Node IDs to file.
 #
-# readMovieGraphFromFile - reads previously-created graph data component files
-# and rehydrates the TUNGraph object and all necessary dictionaries.
-#
+# readMovieGraphFromFile - reads previously-created graph data files and
+# 	rehydrates the NetworkX graph and graph dictionary of names -> Node IDs.
 ########################
 
 
@@ -597,126 +543,121 @@ Parameters: NA
 
 Returns: NA
 
-Creates a movie SNAP graph, and saves it, along with all associated information
-dictionaries, to files in the current directory.  Files saved include:
+Creates a movie NetworkX graph and saves it to file, along with a map from
+actor, director and movie names to node IDs in that graph.  Files saved include:
 
-graph-snapgraph.txt - created by SNAP storing all graph edge info
-graph-movienodemap.csv - stores movie unique ID -> node ID
-graph-actornodemap.csv - stores actor name -> node ID
-graph-directornodemap.csv - stores director name -> node ID
-graph-movieinfomap.csv - stores node ID -> encoded Movie object
-graph-actorinfomap.csv - stores node ID -> encoded Person object
-graph-directorinfomap.csv - stores node ID -> encoded Person object
-
-In each, the map keys are row[0] and the values are the rest of the row.
+graph file - created by NetworkX storing all nodes + edges and metadata
+graph dict csv file - stores actor, director and movie names -> node ID (NOTE:
+	in this file, the map keys are row[0] and the values are row[1])
 ---------------------------
 """
 def createMovieGraph():
-	movieMap, actorMap, directorMap = parseMovieFile("movie_metadata.csv",
+	movieMap, actorMap, directorMap = parseMovieFile(datasetFilename,
 		fetchRaceAndGender=True)
-	graphInfo = createGraphForMovieInfo(movieMap, actorMap, directorMap)
-	(graph, movieNodeMap, actorNodeMap, directorNodeMap, movieInfoMap,
-		actorInfoMap, directorInfoMap) = graphInfo
+	graph, graphDict = createGraphForMovieInfo(movieMap, actorMap, directorMap)
 
 	# Save to files
-	snap.SaveEdgeList(graph, "graph-snapgraph.txt", "Tab-separated edge list")
-	saveDictToFile(movieNodeMap, "graph-movienodemap",
-		firstRow=["Movie", "NodeID"])
-	saveDictToFile(actorNodeMap, "graph-actornodemap",
-		firstRow=["Actor", "NodeID"])
-
-	firstRow = ['NodeID', 'color', 'director_name', 'num_critic_for_reviews',
-				'duration', 'director_facebook_likes', 'actor_3_facebook_likes',
-				'actor_2_name', 'actor_1_facebook_likes', 'gross', 'genres',
-				'actor_1_name', 'movie_title', 'num_voted_users',
-				'cast_total_facebook_likes', 'actor_3_name',
-				'facenumber_in_poster', 'plot_keywords', 'movie_imdb_link',
-				'num_user_for_reviews', 'language', 'country', 'content_rating',
-				'budget', 'title_year', 'actor_2_facebook_likes', 'imdb_score',
-				'aspect_ratio', 'movie_facebook_likes']
-
-	saveDictToFile(directorNodeMap, "graph-directornodemap",
-		firstRow=["Director", "NodeID"])
-	saveDictToFile(movieInfoMap, "graph-movieinfomap", encodeFn=Movie.encode,
-		firstRow=firstRow)
-	saveDictToFile(actorInfoMap, "graph-actorinfomap", encodeFn=Person.encode,
-		firstRow=["NodeID", "Name", "Race", "Gender"])
-	saveDictToFile(directorInfoMap, "graph-directorinfomap",
-		encodeFn=Person.encode, firstRow=["NodeID", "Name", "Race", "Gender"])
+	nx.write_gpickle(graph, graphFilename)
+	saveDictToFile(graphDict, graphDictFilename, firstRow=["Name", "NodeID"])
 
 """
 FUNCTION: saveDictToFile
 -------------------------
 Parameters:
 	dictToSave - the dict to save to file.
-	filename - the name of the file in which to store 'dictToSave'.
-	encodeFn - an optional encoding function to call on each dictionary value
-				before saving it to file.  MUST return an array.
-	firstRow - the first row to output to file, if any (aka a header row)
+	filename - the name of the file in which to store 'dictToSave' (MUST BE CSV)
+	firstRow - the first row to output to file, if any (aka a header row).
+				Defaults to nothing.
 
 Returns: NA
 
-Saves the given dictionary as a CSV file with the given filename.
+Saves the given dictionary as the given CSV filename.
 -------------------------
 """
-def saveDictToFile(dictToSave, filename, encodeFn=None, firstRow=None):
-	with open(filename + '.csv', 'wb') as csvfile:
+def saveDictToFile(dictToSave, filename, firstRow=None):
+	with open(filename, 'wb') as csvfile:
 		csvwriter = csv.writer(csvfile, delimiter=',')
 		if firstRow:
 			csvwriter.writerow(firstRow)
 		for key in dictToSave:
 			value = dictToSave[key]
-			if encodeFn:
-				row = [key]
-				row.extend(encodeFn(value))
-				csvwriter.writerow(row)
-			else:
-				csvwriter.writerow([key, value])
+			csvwriter.writerow([key, value])
 
 """
 FUNCTION: readMovieGraphFromFile
----------------------------------
+-----------------------------
 Parameters: NA
 
-Returns: a tuple of (graph, movieNodeMap, actorNodeMap, directorNodeMap,
-		movieInfoMap, actorInfoMap, directorInfoMap), decoded from file.  The
-		graph is a tripartite Snap.PY TUNGraph (undirected graph) where nodes
-		are movies, actors or directors.  An edge indicates that a person was
-		involved (either actor or director) with a given movie.
+Returns a (graph, graphDict) tuple where the graph is a tripartite NetworkX
+graph of movies, directors and actors, and the graphDict is a map from movie,
+director and actor names to their corresponding nodeID in the graph.  Each node
+in the graph has metadata associated with it.  Specifically, each node has:
 
-		The movieNodeMap is a map from movie unique IDs to their Node ID in the
-		graph.
+	- a "type" field which can be one of: "ACTOR", "DIRECTOR", "ACTOR-DIRECTOR", 
+		"MOVIE"
 
-		The actorNodeMap is a map from actor names to their Node ID in the
-		graph. 
+	- a "metadata" field which is a dictionary containing attributes about that
+	node.  This differs for people and movies:
 
-		The directorNodeMap is a map from director names to their Node ID in the
-		graph.
+		- Actors and Directors have "name", "gender" and "race" entries.
 
-		The movieInfoMap is a map from Node ID to Movie objects.
+		- Movies have the following entries:
 
-		The actorInfoMap is a map from Node ID to Person objects.
+			inColor (bool): whether the movie was in color or not
 
-		The directorInfoMap is a map from Node ID to Person objects.
----------------------------------
+			directorName (string): name of movie's director
+
+			numReviewCritics (int): number of critics reviewing the movie 
+
+			durationMinutes (int): length of movie in minutes
+
+			directorFacebookLikes (int): number of Facebook likes director has
+
+			actorNames (list of strings): list of at most 3 primary actor names
+
+			actorsFacebookLikes (list of ints): matches actorNames length, where
+				actorsFacebookLikes[i] is the number of Facebook likes
+				actorNames[i] has.
+
+			gross (int): gross income for the movie
+
+			genres (list of strings): list of genres for this movie
+
+			title (string): movie title
+
+			numVotingUsers (int): number of users that voted on this movie
+
+			castFacebookLikes (int): number of Facebook likes the whole cast has
+
+			numPosterFaces (int): number of faces on the movie poster
+
+			plotKeywords (list of strings): list of plot keywords
+
+			imdbURL (string): url of this movie's IMDB page
+
+			numReviewUsers (int): number of users who reviewed this movie
+
+			language (string): the language this movie is in
+
+			country (string): the country this movie was made in
+
+			contentRating (string): the rating of this movie (e.g. "PG-13")
+
+			budget (int): movie's budget
+
+			releaseYear (int): year movie was released
+
+			imdbScore (float): movie's score on IMDB
+
+			aspectRatio (float): movie's aspect ratio (e.g. 1.67)
+
+			movieFacebookLikes (int): number of Facebook likes this movie has
+-----------------------------
 """
 def readMovieGraphFromFile():
-	graph = snap.LoadEdgeList(snap.PUNGraph, "graph-snapgraph.txt", 0, 1)
-	movieNodeMap = readDictFromFile("graph-movienodemap.csv", True,
-		valueDecodeFn=int)
-	actorNodeMap = readDictFromFile("graph-actornodemap.csv", True,
-		valueDecodeFn=int)
-	directorNodeMap = readDictFromFile("graph-directornodemap.csv", True,
-		valueDecodeFn=int)
-	movieInfoMap = readDictFromFile("graph-movieinfomap.csv", True,
-		keyDecodeFn=int, valueDecodeFn=Movie.decode)
-	actorInfoMap = readDictFromFile("graph-actorinfomap.csv", True,
-		keyDecodeFn=int, valueDecodeFn=Person.decode)
-	directorInfoMap = readDictFromFile("graph-directorinfomap.csv", True,
-		keyDecodeFn=int, valueDecodeFn=Person.decode)
-
-	return (graph, movieNodeMap, actorNodeMap, directorNodeMap, movieInfoMap,
-		actorInfoMap, directorInfoMap)
+	graph = nx.read_gpickle(graphFilename)
+	graphDict = readDictFromFile(graphDictFilename, True, valueDecodeFn=int)
+	return graph, graphDict
 
 """
 FUNCTION: readDictFromFile
@@ -762,21 +703,3 @@ def readDictFromFile(filename, discardFirstRow, keyDecodeFn=None,
 
 		return newDict
 
-
-# Should be 4919 Movies, 6255 Actors, 2399 Directors
-debug = False
-if debug:
-	createMovieGraph()
-	graphInfo = readMovieGraphFromFile()
-	(graph, movieNodeMap, actorNodeMap, directorNodeMap, movieInfoMap,
-		actorInfoMap, directorInfoMap) = graphInfo
-	print "%i nodes in the graph" % graph.GetNodes()
-	print "%i movies, %i actors, %i directors" % (len(movieNodeMap),
-		len(actorNodeMap), len(directorNodeMap))
-
-	print movieInfoMap[movieNodeMap["Avatar2009"]]
-	print actorInfoMap[actorNodeMap["Morgan Freeman"]]
-	print directorInfoMap[directorNodeMap["James Cameron"]]
-	print "Brad Pitt was in the following movies:\n"
-	for id in graph.GetNI(actorNodeMap["Brad Pitt"]).GetOutEdges():
-		print movieInfoMap[id].title
