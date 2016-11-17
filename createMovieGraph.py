@@ -130,6 +130,43 @@ class Movie:
 		return desc
 
 	"""
+	METHOD: toDict
+	----------------
+	Parameters: NA
+
+	Returns: A dictionary representation of this movie, with key/value pairs for
+	every stored piece of information.
+	----------------
+	"""
+	def toDict(self):
+		movieDict = {}
+		movieDict["inColor"] = self.inColor
+		movieDict["directorName"] = self.directorName
+		movieDict["numReviewCritics"] = self.numReviewCritics
+		movieDict["durationMinutes"] = self.durationMinutes
+		movieDict["directorFacebookLikes"] = self.directorFacebookLikes
+		movieDict["actorNames"] = self.actorNames
+		movieDict["actorsFacebookLikes"] = self.actorsFacebookLikes
+		movieDict["gross"] = self.gross
+		movieDict["genres"] = self.genres
+		movieDict["title"] = self.title
+		movieDict["numVotingUsers"] = self.numVotingUsers
+		movieDict["castFacebookLikes"] = self.castFacebookLikes
+		movieDict["numPosterFaces"] = self.numPosterFaces
+		movieDict["plotKeywords"] = self.plotKeywords
+		movieDict["imdbURL"] = self.imdbURL
+		movieDict["numReviewUsers"] = self.numReviewUsers
+		movieDict["language"] = self.language
+		movieDict["country"] = self.country
+		movieDict["contentRating"] = self.contentRating
+		movieDict["budget"] = self.budget
+		movieDict["releaseYear"] = self.releaseYear
+		movieDict["imdbScore"] = self.imdbScore
+		movieDict["aspectRatio"] = self.aspectRatio
+		movieDict["movieFacebookLikes"] = self.movieFacebookLikes
+		return movieDict
+
+	"""
 	FUNCTION: uniqueID
 	-------------------
 	Parameters: NA
@@ -207,6 +244,22 @@ class Person:
 	"""
 	def __str__(self):
 		return "%s, Gender: %s, Race: %s" % (self.name, self.gender, self.race)
+
+	"""
+	METHOD: toDict
+	----------------
+	Parameters: NA
+
+	Returns: A dictionary representation of this movie, with key/value pairs for
+	every stored piece of information.
+	----------------
+	"""
+	def toDict(self):
+		personDict = {}
+		personDict["name"] = self.name
+		personDict["gender"] = self.gender
+		personDict["race"] = self.race
+		return personDict
 
 	"""
 	CLASS METHOD: fetchRaceAndGenderFor
