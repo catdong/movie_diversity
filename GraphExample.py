@@ -25,6 +25,7 @@ CreateMovieGraph.py for a complete list.
 
 import CreateMovieGraph
 
+
 graph, graphDict = CreateMovieGraph.readMovieGraphFromFile()
 
 # Print out graph information (see NetworkX documentation for more)

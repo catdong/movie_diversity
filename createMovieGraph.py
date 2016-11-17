@@ -1,8 +1,6 @@
-import networkx as nx
 import csv
-from GraphConstants import NodeTypeActor, NodeTypeDirector, NodeTypeMovie
-from GraphConstants import 	NodeTypeActorDirector
 from GraphConstants import graphFilename, graphDictFilename
+import networkx as nx
 
 
 """
