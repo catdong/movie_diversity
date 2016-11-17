@@ -525,7 +525,7 @@ def addDirectorToGraph(graph, graphDict, director, movieNodeID):
 
 
 ##### MAIN PROGRAM #####
-# Functions you should care about:
+# Functions to care about:
 #
 # createMovieGraph - creates a NetworkX graph from the dataset file and writes
 # 	out the graph to file and map from names to Node IDs to file.
