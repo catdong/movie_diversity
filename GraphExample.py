@@ -11,7 +11,7 @@ their title AND release year (i.e. "Avatar2009").  This is so that movie remakes
 can have unique keys.
 
 The graph is a tripartite NetworkX graph where each node represents either a
-movie, actor or director (or actor-director.  Each node has an accompanying
+movie, actor, director or actor-director.  Each node has an accompanying
 "type" field which is either "ACTOR", "DIRECTOR", "ACTOR-DIRECTOR" or "MOVIE".
 
 Each node also has a "metadata" field which is a dictionary of additional info.
@@ -65,4 +65,23 @@ print "%s is a %s %s" % (stevenMetadata["name"], stevenMetadata["race"],
 oliviaMetadata = graph.node[oliviaNodeId]["metadata"]
 print "%s is a %s %s" % (oliviaMetadata["name"], oliviaMetadata["race"],
 	oliviaMetadata["gender"])
+print "\n\n"
+
+# Get a node's edges
+tomActorMovies = []
+tomDirectorMovies = []
+for i in graph.neighbors(tomNodeId):
+	if graph.node[i]["metadata"]["directorName"] == "Tom Hanks":
+		tomDirectorMovies.append(graph.node[i]["metadata"]["title"])
+	if "Tom Hanks" in graph.node[i]["metadata"]["actorNames"]:
+		tomActorMovies.append(graph.node[i]["metadata"]["title"])
+print "Tom Hanks was an actor in: %s" % tomActorMovies
+print "Tom Hanks directed: %s" % tomDirectorMovies
+
+oliviaMovies = []
+for i in graph.neighbors(oliviaNodeId):
+	oliviaMovies.append(graph.node[i]["metadata"]["title"])
+print "Olivia Munn was an actor in: %s" % oliviaMovies
+
+
 
