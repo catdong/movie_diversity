@@ -45,9 +45,9 @@ print "\n\n"
 
 # Find the type of a node (MOVIE, ACTOR, ACTOR-DIRECTOR or DIRECTOR)
 print "Avatar is a %s" % graph.node[avatarNodeId]["type"]
-print "Tom Hanks is a %s" % graph.node[tomNodeId]["type"]
+print "Tom Hanks is an %s" % graph.node[tomNodeId]["type"]
 print "Steven Spielberg is a %s" % graph.node[stevenNodeId]["type"]
-print  "Olivia Munn is a %s" % grpah.node[oliviaNodeId]["type"]
+print  "Olivia Munn is an %s" % graph.node[oliviaNodeId]["type"]
 print "\n\n"
 
 # Get metadata from a node
