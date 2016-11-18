@@ -1,6 +1,6 @@
 import csv
 from GraphConstants import NodeTypeActor, NodeTypeDirector, NodeTypeMovie
-from GraphConstants import 	NodeTypeActorDirector, datasetFilename
+from GraphConstants import NodeTypeActorDirector, datasetFilename
 from GraphConstants import graphFilename, graphDictFilename
 import grequests
 from lxml import html
