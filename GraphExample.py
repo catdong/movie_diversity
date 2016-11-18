@@ -14,9 +14,9 @@ The graph is a tripartite NetworkX graph where each node represents either a
 movie, actor, director or actor-director.  Each node has an accompanying
 "type" field which is either "ACTOR", "DIRECTOR", "ACTOR-DIRECTOR" or "MOVIE".
 
-Each node also has a "metadata" field which is a dictionary of additional info.
+Each node also has metadata fields which contain additional information.
 
-Each person has a "name", "gender" and "race" field.
+Each person node has a "name", "gender" and "race" field.
 
 Each movie has a variety of fields such as "title", "gross", and others.  See
 ReadMovieGraph.py for a complete list.
@@ -52,36 +52,33 @@ print  "Olivia Munn is an %s" % graph.node[oliviaNodeId]["type"]
 print "\n\n"
 
 # Get metadata from a node
-avatarMetadata = graph.node[avatarNodeId]["metadata"]
-print "%s made $%.2f" % (avatarMetadata["title"], avatarMetadata["gross"])
+print "%s made $%.2f" % (graph.node[avatarNodeId]["title"],
+	graph.node[avatarNodeId]["gross"])
 
-tomMetadata = graph.node[tomNodeId]["metadata"]
-print "%s is a %s %s" % (tomMetadata["name"], tomMetadata["race"],
-	tomMetadata["gender"])
+print "%s is a %s %s" % (graph.node[tomNodeId]["name"],
+	graph.node[tomNodeId]["race"], graph.node[tomNodeId]["gender"])
 
-stevenMetadata = graph.node[stevenNodeId]["metadata"]
-print "%s is a %s %s" % (stevenMetadata["name"], stevenMetadata["race"],
-	stevenMetadata["gender"])
+print "%s is a %s %s" % (graph.node[stevenNodeId]["name"],
+	graph.node[stevenNodeId]["race"], graph.node[stevenNodeId]["gender"])
 
-oliviaMetadata = graph.node[oliviaNodeId]["metadata"]
-print "%s is a %s %s" % (oliviaMetadata["name"], oliviaMetadata["race"],
-	oliviaMetadata["gender"])
+print "%s is a %s %s" % (graph.node[oliviaNodeId]["name"],
+	graph.node[oliviaNodeId]["race"], graph.node[oliviaNodeId]["gender"])
 print "\n\n"
 
 # Get a node's edges
 tomActorMovies = []
 tomDirectorMovies = []
 for i in graph.neighbors(tomNodeId):
-	if graph.node[i]["metadata"]["directorName"] == "Tom Hanks":
-		tomDirectorMovies.append(graph.node[i]["metadata"]["title"])
-	if "Tom Hanks" in graph.node[i]["metadata"]["actorNames"]:
-		tomActorMovies.append(graph.node[i]["metadata"]["title"])
+	if graph.node[i]["directorName"] == "Tom Hanks":
+		tomDirectorMovies.append(graph.node[i]["title"])
+	if "Tom Hanks" in graph.node[i]["actorNames"]:
+		tomActorMovies.append(graph.node[i]["title"])
 print "Tom Hanks was an actor in: %s" % tomActorMovies
 print "Tom Hanks directed: %s" % tomDirectorMovies
 
 oliviaMovies = []
 for i in graph.neighbors(oliviaNodeId):
-	oliviaMovies.append(graph.node[i]["metadata"]["title"])
+	oliviaMovies.append(graph.node[i]["title"])
 print "Olivia Munn was an actor in: %s" % oliviaMovies
 
 
