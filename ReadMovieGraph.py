@@ -77,6 +77,10 @@ in the graph has metadata associated with it.  Specifically, each node has:
 def readMovieGraphFromFile():
 	graph = nx.read_gpickle(graphFilename)
 	graphDict = readDictFromFile(graphDictFilename, True, valueDecodeFn=int)
+	for nodeId in graph.nodes():
+		for key in graph.node[nodeId]["metadata"]:
+			graph.node[nodeId][key] = graph.node[nodeId]["metadata"][key]
+		graph.node[nodeId]["metadata"] = None
 	return graph, graphDict
 
 """
