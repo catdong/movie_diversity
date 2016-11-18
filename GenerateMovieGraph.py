@@ -433,7 +433,11 @@ Node IDs are added contiguously to the graph starting at 0.
 """
 def addMovieToGraph(graph, graphDict, movie):
 	nextNodeID = graph.number_of_nodes()
-	graph.add_node(nextNodeID, type="MOVIE", metadata=movie.toDict())
+	graph.add_node(nextNodeID, type="MOVIE")
+	movieDict = movie.toDict()
+	for key in movieDict:
+		graph.node[nextNodeID][key] = movieDict[key]
+
 	graphDict[movie.uniqueID()] = nextNodeID
 	
 
@@ -463,8 +467,11 @@ def addActorsToGraph(graph, graphDict, actors, movieNodeID):
 		# If we've never seen this actor before, add it to our graph
 		if not actor.name in graphDict:
 			nextNodeID = graph.number_of_nodes()
-			graph.add_node(nextNodeID, type=NodeTypeActor,
-				metadata=actor.toDict())
+			graph.add_node(nextNodeID, type=NodeTypeActor)
+			actorDict = actor.toDict()
+			for key in actorDict:
+				graph.node[nextNodeID][key] = actorDict[key]
+
 			graphDict[actor.name] = nextNodeID
 
 		# Otherwise, if we've seen this person before as a DIRECTOR, change its
@@ -500,8 +507,11 @@ def addDirectorToGraph(graph, graphDict, director, movieNodeID):
 	# If we've never seen this director before, add it to our graph
 	if not director.name in graphDict:
 		nextNodeID = graph.number_of_nodes()
-		graph.add_node(nextNodeID, type=NodeTypeDirector,
-			metadata=director.toDict())
+		graph.add_node(nextNodeID, type=NodeTypeDirector)
+		directorDict = director.toDict()
+		for key in directorDict:
+			graph.node[nextNodeID][key] = directorDict[key]
+
 		graphDict[director.name] = nextNodeID
 
 	# Otherwise, if we've seen this person before as an ACTOR, change its type
