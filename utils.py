@@ -20,3 +20,20 @@ def getRaceAndGender(name):
 	race = personTree.xpath('//p/b[text()="Race or Ethnicity:"]/following-sibling::text()')[0].strip()
 	gender = personTree.xpath('//p/b[text()="Gender:"]/following-sibling::text()')[0].strip()
 	return race, gender
+
+
+from imdb import IMDb
+
+def getMovieInfo(imdbUrl):
+	imdb = IMDb()
+	movieId = getMovieId(imdbUrl)
+	movie = imdb.get_movie(movieId)
+	info = {}
+	info['actors'] = [actor['name'] for actor in movie['cast']]
+	info['production company'] = movie['production company'][0]['name']
+	info['director'] = movie['director'][0]['name']
+	info['year'] = movie['year'][0]['name']
+	return info
+
+def getMovieId(imdbUrl):
+	return imdbUrl.split('/')[4][2:]
