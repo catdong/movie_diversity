@@ -16,8 +16,7 @@ in the graph has metadata associated with it.  Specifically, each node has:
 	- a "type" field which can be one of: "ACTOR", "DIRECTOR", "ACTOR-DIRECTOR", 
 		"MOVIE"
 
-	- a "metadata" field which is a dictionary containing attributes about that
-	node.  This differs for people and movies:
+	- various metadata fields.  These differ for people and movies:
 
 		- Actors and Directors have "name", "gender" and "race" entries.
 
