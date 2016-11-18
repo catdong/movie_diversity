@@ -19,14 +19,14 @@ Each node also has a "metadata" field which is a dictionary of additional info.
 Each person has a "name", "gender" and "race" field.
 
 Each movie has a variety of fields such as "title", "gross", and others.  See
-CreateMovieGraph.py for a complete list.
+ReadMovieGraph.py for a complete list.
 ----------------------
 """
 
-import CreateMovieGraph
+import ReadMovieGraph
 
 
-graph, graphDict = CreateMovieGraph.readMovieGraphFromFile()
+graph, graphDict = ReadMovieGraph.readMovieGraphFromFile()
 
 # Print out graph information (see NetworkX documentation for more)
 print "%i nodes" % graph.number_of_nodes()
