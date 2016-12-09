@@ -5,6 +5,7 @@ from GraphConstants import graphFilename, graphDictFilename
 import grequests
 from lxml import html
 import networkx as nx
+import utils
 
 
 """
