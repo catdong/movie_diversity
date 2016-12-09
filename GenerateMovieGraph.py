@@ -6,7 +6,7 @@ import grequests
 from lxml import html
 import networkx as nx
 import utils
-
+import sexmachine.detector as gender
 
 """
 CLASS: Movie
@@ -535,7 +535,9 @@ Parameters: NA
 Returns: NA
 
 Creates a movie NetworkX graph and saves it to file, along with a map from
-actor, director and movie names to node IDs in that graph.  Files saved include:
+actor, director and movie names to node IDs in that graph.  Uses SexMachine to
+fill in as many unknown person genders as it can, after fetching gender/race
+info from the web.  Files saved include:
 
 graph file - created by NetworkX storing all nodes + edges and metadata
 graph dict csv file - stores actor, director and movie names -> node ID (NOTE:
@@ -546,6 +548,21 @@ def createMovieGraph():
 	movieMap, actorMap, directorMap = parseMovieFile(datasetFilename,
 		fetchRaceAndGender=True)
 	graph, graphDict = createGraphForMovieInfo(movieMap, actorMap, directorMap)
+
+	# Fill in unknown genders with SexMachine
+	genderDetector = gender.Detector(unknown_value=None)
+
+	for nodeId in graph.nodes():
+		node = graph.node[nodeId]
+		nodeType = node["type"]
+		if nodeType != "MOVIE" and not node["gender"] and node["name"] != "":
+
+			firstName = graph.node[nodeId]["name"].split()[0]
+			predictedGender = genderDetector.get_gender(firstName)
+
+			# Fill in only genders we're certain about
+			if predictedGender == "male" or predictedGender == "female":
+				node["gender"] = predictedGender.capitalize()
 
 	# Save to files
 	nx.write_gpickle(graph, graphFilename)
