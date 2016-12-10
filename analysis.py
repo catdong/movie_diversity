@@ -28,6 +28,12 @@ def createNullActorActorGraph(nullModel):
 			aaGraph.add_edge(actorId1, actorId2)
 	return aaGraph
 
+def createActorActorGraph(graph):
+	aaGraph = nx.MultiGraph()
+	movieIds = [nId for nId in graph if graph.node[nId]['type'] == 'MOVIE']
+	for mid in movieIds:
+		actorIds = graph.neighbors(mId)
+
 def nullModel1(graph): 
 	movieIds = [nId for nId in graph if graph.node[nId]['type'] == 'MOVIE']
 	movieDegrees = {mId: graph.degree(mId) - 1 for mId in movieIds}  # minus 1 for director
