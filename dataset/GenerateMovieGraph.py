@@ -5,7 +5,6 @@ from GraphConstants import graphFilename, graphDictFilename
 import grequests
 from lxml import html
 import networkx as nx
-import utils
 import sexmachine.detector as gender
 
 """
@@ -345,10 +344,6 @@ def parseMovieFile(filename, fetchRaceAndGender=True):
 					continue
 
 				if not newMovie.uniqueID() in movieMap:
-					# Fetch additional actors from IMDB
-					newMovie.actorNames, newMovie.studio = utils.getCast(
-						newMovie.imdbURL, newMovie.actorNames)
-
 					# Add the movie
 					movieMap[newMovie.uniqueID()] = newMovie
 
@@ -405,7 +400,7 @@ Returns: a tuple of (graph, graphDict).  The graph is a tripartite NetworkX
 -------------------------------
 """		
 def createGraphForMovieInfo(movieMap, actorMap, directorMap):
-	graph = nx.DiGraph()
+	graph = nx.Graph()
 	graphDict = {}
 
 	for movieID in movieMap:
