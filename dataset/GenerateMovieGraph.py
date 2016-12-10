@@ -346,7 +346,8 @@ def parseMovieFile(filename, fetchRaceAndGender=True):
 
 				if not newMovie.uniqueID() in movieMap:
 					# Fetch additional actors from IMDB
-					newMovie.actorNames = utils.getCast(newMovie.imdbURL, newMovie.actorNames)
+					newMovie.actorNames = utils.getCast(newMovie.imdbURL,
+														newMovie.actorNames)
 
 					# Add the movie
 					movieMap[newMovie.uniqueID()] = newMovie
@@ -392,9 +393,9 @@ Parameters:
 				map should be a map from director names to Person objects.
 
 Returns: a tuple of (graph, graphDict).  The graph is a tripartite NetworkX
-		undirected graph where nodes are either movies,	actors or directors.
+		directed graph where nodes are either movies, actors or directors.
 		An edge indicates a relationship (either actor or director or both)
-		to a movie.
+		to a movie. Edges go from directors to movies and from movies to actors.
 
 		The graphDict is a map from movie, actor and director names to their
 		NodeIDs in the graph.  Note that while the keys for actors and directors
@@ -404,7 +405,7 @@ Returns: a tuple of (graph, graphDict).  The graph is a tripartite NetworkX
 -------------------------------
 """		
 def createGraphForMovieInfo(movieMap, actorMap, directorMap):
-	graph = nx.Graph()
+	graph = nx.DiGraph()
 	graphDict = {}
 
 	for movieID in movieMap:
@@ -459,7 +460,7 @@ Parameters:
 
 Returns: NA
 
-Adds the given actors to the graph with edges to their movie, and updates the
+Adds the given actors to the graph with edges from their movie, and updates the
 graphDict to record the new actors' node IDs.  Note that nodes might not be
 added, and the map might not be updated, if the actor was already added,
 *either as an actor or as a director*. Also adds Person metadata to any new
@@ -485,7 +486,7 @@ def addActorsToGraph(graph, graphDict, actors, movieNodeID):
 		elif graph.node[graphDict[actor.name]]["type"] == NodeTypeDirector:
 			graph.node[graphDict[actor.name]]["type"] = NodeTypeActorDirector
 
-		# Connect this actor's node to its movie
+		# Add an edge from the movie to this actor
 		graph.add_edge(movieNodeID, graphDict[actor.name])
 
 """
@@ -525,7 +526,8 @@ def addDirectorToGraph(graph, graphDict, director, movieNodeID):
 	elif graph.node[graphDict[director.name]]["type"] == NodeTypeActor:
 		graph.node[graphDict[director.name]]["type"] = NodeTypeActorDirector
 
-	graph.add_edge(movieNodeID, graphDict[director.name])
+	# Add an edge from the director to this movie
+	graph.add_edge(graphDict[director.name], movieNodeID)
 
 """
 FUNCTION: createMovieGraph

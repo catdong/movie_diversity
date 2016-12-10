@@ -9,9 +9,10 @@ FUNCTION: readMovieGraphFromFile
 Parameters: NA
 
 Returns a (graph, graphDict) tuple where the graph is a tripartite NetworkX
-graph of movies, directors and actors, and the graphDict is a map from movie,
-director and actor names to their corresponding nodeID in the graph.  Each node
-in the graph has metadata associated with it.  Specifically, each node has:
+directed graph of movies, directors and actors, and the graphDict is a map from
+movie, director and actor names to their corresponding nodeID in the graph.
+Edges go from directors to movies, and from movies to actors.  Each node in the
+graph also has associated metadata.  Specifically, each node has:
 
 	- a "type" field which can be one of: "ACTOR", "DIRECTOR", "ACTOR-DIRECTOR", 
 		"MOVIE"
