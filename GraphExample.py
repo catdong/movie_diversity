@@ -2,7 +2,7 @@
 FILE: GraphExample.py
 ----------------------
 An example of how to use the MovieGraph NetworkX graph and accompanying
-graphDict.
+graphDict, as well as how to calculate diversity scores.
 
 graphDict is a dictionary from actor, director and movie names to node IDs in
 the NetworkX graph.  keys for actors and directors are just their names (i.e.
@@ -26,7 +26,7 @@ Edges go from directors to movies and from movies to actors.  Therefore, for
 actor-directors, there are two edges going to-from the person and their movie.
 ----------------------
 """
-
+import DiversityScore
 from dataset import ReadMovieGraph
 
 
@@ -49,10 +49,16 @@ print "Olivia Munn is node %i" % oliviaNodeId
 print "\n\n"
 
 # Find the type of a node (MOVIE, ACTOR, ACTOR-DIRECTOR or DIRECTOR)
+# Also calculate their diversity scores
 print "Avatar is a %s" % graph.node[avatarNodeId]["type"]
+print "Diversity score: %f" % DiversityScore.scoreForMovie(graph, avatarNodeId)
 print "Tom Hanks is an %s" % graph.node[tomNodeId]["type"]
+print "Diversity score: %f" % DiversityScore.scoreForDirector(graph, tomNodeId)
 print "Steven Spielberg is a %s" % graph.node[stevenNodeId]["type"]
+print "Diversity score: %f" % DiversityScore.scoreForDirector(graph,
+															stevenNodeId)
 print  "Olivia Munn is an %s" % graph.node[oliviaNodeId]["type"]
+print "Div. score: %f" % DiversityScore.scoreForActor(graph.node[oliviaNodeId])
 print "\n\n"
 
 # Get metadata from a node
