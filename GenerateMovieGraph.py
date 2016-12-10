@@ -346,7 +346,8 @@ def parseMovieFile(filename, fetchRaceAndGender=True):
 
 				if not newMovie.uniqueID() in movieMap:
 					# Fetch additional actors from IMDB
-					newMovie.actorNames = utils.getCast(newMovie.imdbURL, newMovie.actorNames)
+					newMovie.actorNames, newMovie.studio = utils.getCast(
+						newMovie.imdbURL, newMovie.actorNames)
 
 					# Add the movie
 					movieMap[newMovie.uniqueID()] = newMovie
@@ -404,7 +405,7 @@ Returns: a tuple of (graph, graphDict).  The graph is a tripartite NetworkX
 -------------------------------
 """		
 def createGraphForMovieInfo(movieMap, actorMap, directorMap):
-	graph = nx.Graph()
+	graph = nx.DiGraph()
 	graphDict = {}
 
 	for movieID in movieMap:
@@ -525,7 +526,7 @@ def addDirectorToGraph(graph, graphDict, director, movieNodeID):
 	elif graph.node[graphDict[director.name]]["type"] == NodeTypeActor:
 		graph.node[graphDict[director.name]]["type"] = NodeTypeActorDirector
 
-	graph.add_edge(movieNodeID, graphDict[director.name])
+	graph.add_edge(graphDict[director.name], movieNodeID)
 
 """
 FUNCTION: createMovieGraph
