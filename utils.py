@@ -26,14 +26,26 @@ from imdb import IMDb
 
 def getMovieInfo(imdbUrl):
 	imdb = IMDb()
-	movieId = getMovieId(imdbUrl)
+	movieId = imdbUrl.split('/')[4][2:]
 	movie = imdb.get_movie(movieId)
 	info = {}
 	info['actors'] = [actor['name'] for actor in movie['cast']]
 	info['production company'] = movie['production company'][0]['name']
 	info['director'] = movie['director'][0]['name']
-	info['year'] = movie['year'][0]['name']
+	info['year'] = movie['year']
 	return info
 
-def getMovieId(imdbUrl):
-	return imdbUrl.split('/')[4][2:]
+def getCast(imdbUrl, topActors):
+	actors = set(topActors)
+	try:
+		imdb = IMDb()
+		movieId = imdbUrl.split('/')[4][2:]
+		movie = imdb.get_movie(movieId)
+		for actor in movie['cast'][:6]:
+			if len(actors) >= 6:
+				continue
+			if actor['name'] not in actors:
+				actors.add(actor['name'])
+	except:
+		return topActors
+	return list(actors)
