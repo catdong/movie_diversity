@@ -5,7 +5,6 @@ from GraphConstants import graphFilename, graphDictFilename
 import grequests
 from lxml import html
 import networkx as nx
-import utils
 import sexmachine.detector as gender
 
 """
@@ -345,6 +344,7 @@ def parseMovieFile(filename, fetchRaceAndGender=True):
 					continue
 
 				if not newMovie.uniqueID() in movieMap:
+
 					# Fetch additional actors from IMDB
 					newMovie.actorNames = utils.getCast(newMovie.imdbURL,
 														newMovie.actorNames)
