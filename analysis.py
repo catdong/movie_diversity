@@ -5,7 +5,18 @@ from networkx.algorithms import bipartite
 from random import shuffle
 import community
 
+"""
+FUNCTION: multiToWeightedGraph
+---------------------------------
+Parameters:
+	graph - MultiGraph
 
+Returns: an undirected Graph in which the 'weight' attribute
+of an edge corresponds to the number times that edge appears
+in the MultiGraph (needed to calculate modularity). 
+Node attributes (excluding weight) are discarded.
+---------------------------------
+"""
 def multiToWeightedGraph(multiGraph):
 	weightedGraph = nx.Graph()
 	for u, v in multiGraph.edges():
@@ -14,6 +25,41 @@ def multiToWeightedGraph(multiGraph):
 		weightedGraph.edge[u][v]['weight'] += 1
 	return weightedGraph
 
+"""
+FUNCTION: bipartiteToDirectedGraph
+---------------------------------
+Parameters:
+	graph - bipartiteGraph
+
+Returns: a DiGraph representation of the bipartiteGraph,
+in which nodes whose 'bipartite' attribute is 0 point to nodes
+whose 'bipartite' attribute is 1. All node attributes preserved.
+---------------------------------
+"""
+def bipartiteToDirectedGraph(bipartiteGraph):
+	directedGraph = nx.DiGraph()
+	for u, v in bipartiteGraph.edges():
+		if u not in directedGraph.nodes():
+			directedGraph.add_node(u, bipartiteGraph.node[u])
+		if v not in directedGraph.nodes():
+			directedGraph.add_node(v, bipartiteGraph.node[v])
+
+		if bipartiteGraph.node[u]['bipartite'] == 0:
+			directedGraph.add_edge(u, v)
+		else:
+			directedGraph.add_edge(v, u)
+	return directedGraph
+
+"""
+FUNCTION: multiToWeightedGraph
+---------------------------------
+Parameters:
+	graph - graph containing actors
+	attribute - remove actors for which this attribute is None
+
+Returns: Graph in which the given attribute for all actors is not None.
+---------------------------------
+"""
 def getGraphWithoutNones(graph, attribute):
 	graph = graph.copy()
 	for nId in graph.nodes():
@@ -21,6 +67,16 @@ def getGraphWithoutNones(graph, attribute):
 			graph.remove_node(nId)
 	return graph
 
+"""
+FUNCTION: getBlackWhiteGraph
+---------------------------------
+Parameters:
+	graph - Graph containing actors
+
+Returns: graph in which the 'race' attribute of all people nodes 
+is either 'White' or 'Non-White' (None races are removed)
+---------------------------------
+"""
 def getBlackWhiteGraph(graph):
 	graph = graph.copy()
 	for nId in graph.nodes():
@@ -32,7 +88,16 @@ def getBlackWhiteGraph(graph):
 				graph.node[nId]['race'] = 'White' if race == 'White' else 'Non-White'
 	return graph
 
+"""
+FUNCTION: actorActorGraph
+---------------------------------
+Parameters:
+	graph - DiGraph including movies and actors
 
+Returns: MultiGraph of actor co-staring relationships.
+All actor node attributes are preserverd.
+---------------------------------
+"""
 def actorActorGraph(graph):
 	aaGraph = nx.MultiGraph()
 	movieIds = [nId for nId in graph if graph.node[nId]['type'] == 'MOVIE']
@@ -45,44 +110,77 @@ def actorActorGraph(graph):
 			aaGraph.add_edge(actorId1, actorId2)
 	return aaGraph
 
-def movieActorNullModel(graph):  # aka null model 1
+"""
+FUNCTION: movieActorNullModel
+---------------------------------
+Parameters:
+	graph - DiGraph including movies and actors
+
+Returns: DiGraph bipartite configuration model of movies and actors,
+in which the edges between movies and actors have been shuffled,
+but the degree of each node remains the same (almost...).
+---------------------------------
+"""
+def movieActorNullModel(graph):
 	movieIds = [nId for nId in graph if graph.node[nId]['type'] == 'MOVIE']
 	movieDegrees = [graph.out_degree(mId) for mId in movieIds]
-	actorIds = [nId for nId in graph if graph.node[nId]['type'] == 'ACTOR' or graph.node[nId]['type'] == 'ACTOR-DIRECTOR']
+	sortedMovieIds = sorted(movieIds, key=lambda mId: graph.out_degree(mId))
+	actorIds = [nId for nId in graph if graph.node[nId]['type'] in ['ACTOR', 'ACTOR-DIRECTOR']]
 	actorDegrees = [graph.in_degree(aId) for aId in actorIds]
-	
-	nullModel = bipartite.configuration_model(movieDegrees, actorDegrees, create_using=nx.Graph())
-	zeroIds = [nId for nId in nullModel if nullModel.node[nId]['bipartite'] == 0]
-	oneIds = [nId for nId in nullModel if nullModel.node[nId]['bipartite'] == 1]
+	sortedActorIds = sorted(actorIds, key=lambda aId: graph.in_degree(aId))
 
-	shuffle(movieIds)
-	shuffle(actorIds)
-	for i in xrange(len(movieIds)):
+	nullModel = bipartite.configuration_model(movieDegrees, actorDegrees, create_using=nx.Graph())
+	zeroIds = [id for id in nullModel if nullModel.node[id]['bipartite'] == 0]
+	sortedZeroIds = sorted(zeroIds, key=lambda nId: nullModel.degree(nId))
+	oneIds = [id for id in nullModel if nullModel.node[id]['bipartite'] == 1]
+	sortedZeroIds = sorted(zeroIds, key=lambda nId: nullModel.degree(nId))
+	for i in range(len(zeroIds)):
 		nullModel.node[zeroIds[i]].update(graph.node[movieIds[i]])
-	for i in xrange(len(actorIds)):
+	for i in range(len(oneIds)):
 		nullModel.node[oneIds[i]].update(graph.node[actorIds[i]])
+	nullModel = bipartiteToDirectedGraph(nullModel)
 	return nullModel
 
+"""
+FUNCTION: directorMovieNullModel
+---------------------------------
+Parameters:
+	graph - DiGraph including directors and movies
+
+Returns: DiGraph bipartite configuration model of directors and movies,
+in which the edges between directors and movies have been shuffled,
+but the degree of each node remains the same (almost...).
+---------------------------------
+"""
 def directorMovieNullModel(graph):
-	movieIds = [nId for nId in graph if graph.node[nId]['type'] == 'MOVIE']
-	movieDegrees = [1 for mId in movieIds]
 	directorIds = [nId for nId in graph if graph.node[nId]['type'] == 'DIRECTOR' or graph.node[nId]['type'] == 'ACTOR-DIRECTOR']
 	directorDegrees = [graph.out_degree(dId) for dId in directorIds]
+	movieIds = [nId for nId in graph if graph.node[nId]['type'] == 'MOVIE']
+	movieDegrees = [1 for mId in movieIds]
 	
 	nullModel = bipartite.configuration_model(directorDegrees, movieDegrees, create_using=nx.Graph())
 	zeroIds = [id for id in nullModel if nullModel.node[id]['bipartite'] == 0]
+	sortedZeroIds = sorted(zeroIds, key=lambda nId: nullModel.degree(nId))
 	oneIds = [id for id in nullModel if nullModel.node[id]['bipartite'] == 1]
-
-	shuffle(directorIds)
-	shuffle(movieIds)
-	for i in xrange(len(directorIds)):
-		nullModel.node[zeroIds[i]].update(graph.node[directorIds[i]])
-	for i in xrange(len(movieIds)):
+	sortedZeroIds = sorted(zeroIds, key=lambda nId: nullModel.degree(nId))
+	for i in range(len(zeroIds)):
+		nullModel.node[zeroIds[i]].update(graph.node[directorId[i]])
+	for i in range(len(oneIds)):
 		nullModel.node[oneIds[i]].update(graph.node[movieIds[i]])
+	nullModel = bipartiteToDirectedGraph(nullModel)
 	return nullModel
 
+"""
+FUNCTION: actorModularity
+---------------------------------
+Parameters:
+	graph - DiGraph including movies and actors
 
-def modularity(graph):
+Returns: tuple of modularity scores for the attributes race, blackWhite, and
+gender.
+---------------------------------
+"""
+def actorModularity(graph, attribute):
 	aaGraph = actorActorGraph(graph)
 	racePartition = {}
 	blackWhitePartition = {}
@@ -108,7 +206,23 @@ def modularity(graph):
 	blackWhiteModularity = community.modularity(blackWhitePartition, aaGraph)
 	return raceModularity, blackWhiteModularity
 
+"""
+FUNCTION: actorAssortativity
+---------------------------------
+Parameters:
+	graph - DiGraph including movies and actors
 
-def assortativity(graph, attribute, nodeSet=None):
+Returns: tuple of assortativity coefficients for the attributes race, blackWhite, and
+gender.
+---------------------------------
+"""
+def actorAssortativity(graph, attribute):
 	aaGraph = actorActorGraph(graph)
-	return nx.attribute_assortativity_coefficient(aaGraph, attribute, nodeSet)
+	raceAssortativity = nx.attribute_assortativity_coefficient(aaGraph, 'race')
+
+	blackWhiteAAGraph = actorActorGraph(getBlackWhiteGraph(graph))
+	blackWhiteAssortativity = nx.attribute_assortativity_coefficient(blackWhiteAAGraph, 'race')
+
+	genderAssortativity = nx.attribute_assortativity_coefficient(aaGraph, 'gender')
+
+	return raceAssortativity, blackWhiteAssortativity, genderAssortativity

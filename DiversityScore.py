@@ -25,12 +25,14 @@ Parameters:
 
 Returns: the diversity score for the given movie in the given graph.  The
 diversity score for a movie is the average diversity score of all actors in that
-movie's cast (aka between 0 and 1).
+movie's cast (aka between 0 and 1). Or None if the size of the movie cast is 0.
 ------------------------
 """
 def scoreForMovie(graph, nodeId):
 	castIds = graph.successors(nodeId)
 	numMinorities = sum(scoreForActor(graph.node[i]) for i in castIds)
+	if len(castIds) == 0:
+		return None
 	return numMinorities / float(len(castIds))
 
 """
