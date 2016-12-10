@@ -1,5 +1,6 @@
 from lxml import html
 import requests
+import unicodedata
 
 def getRaceAndGender(name):
 	name = name.split()
@@ -41,11 +42,13 @@ def getCast(imdbUrl, topActors):
 		imdb = IMDb()
 		movieId = imdbUrl.split('/')[4][2:]
 		movie = imdb.get_movie(movieId)
+		print movie['cast']
 		for actor in movie['cast'][:6]:
 			if len(actors) >= 6:
 				continue
 			if actor['name'] not in actors:
-				actors.add(actor['name'])
+				name = unicodedata.normalize('NFKD', actor['name']).encode('ascii', 'ignore')
+				actors.add(name)
 	except:
 		return topActors
 	return list(actors)

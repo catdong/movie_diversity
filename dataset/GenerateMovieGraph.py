@@ -6,6 +6,8 @@ import grequests
 from lxml import html
 import networkx as nx
 import sexmachine.detector as gender
+import unicodedata
+import utils
 
 """
 CLASS: Movie
@@ -37,8 +39,8 @@ class Movie:
 		# and ensures all numerically-parsed cols are non-empty
 		def cleanupRowEntry(args):
 			i, entry = args
-			entry = entry.replace("\xc2\xa0", " ").strip()
-			entry = ''.join([i if ord(i) < 128 else '-' for i in entry])
+			entry = entry.decode('unicode-escape')
+			entry = unicodedata.normalize('NFKD', entry).encode('ascii', 'ignore')
 			if i in numericCols and len(dataRow[i]) == 0:
 				return "0"
 			else:
@@ -347,6 +349,12 @@ def parseMovieFile(filename, fetchRaceAndGender=True):
 					# Add the movie
 					movieMap[newMovie.uniqueID()] = newMovie
 
+					# Get additional actors from IMDB
+					cast = utils.getCast(newMovie.imdbURL, newMovie.actorNames)
+					print cast
+					newMovie.actorNames = cast
+					print newMovie.actorNames
+
 					for actorName in newMovie.actorNames:
 						if not actorName in actorMap:
 							actorMap[actorName] = Person(actorName)
@@ -400,7 +408,7 @@ Returns: a tuple of (graph, graphDict).  The graph is a tripartite NetworkX
 -------------------------------
 """		
 def createGraphForMovieInfo(movieMap, actorMap, directorMap):
-	graph = nx.Graph()
+	graph = nx.DiGraph()
 	graphDict = {}
 
 	for movieID in movieMap:
@@ -542,7 +550,7 @@ graph dict csv file - stores actor, director and movie names -> node ID (NOTE:
 """
 def createMovieGraph():
 	movieMap, actorMap, directorMap = parseMovieFile(datasetFilename,
-		fetchRaceAndGender=True)
+		fetchRaceAndGender=False)
 	graph, graphDict = createGraphForMovieInfo(movieMap, actorMap, directorMap)
 
 	# Fill in unknown genders with SexMachine
@@ -585,5 +593,6 @@ def saveDictToFile(dictToSave, filename, firstRow=None):
 			csvwriter.writerow(firstRow)
 		for key in dictToSave:
 			value = dictToSave[key]
+			print key, value
 			csvwriter.writerow([key, value])
 
