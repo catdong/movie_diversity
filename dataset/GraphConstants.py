@@ -7,6 +7,7 @@ NodeTypeMovie = "MOVIE"
 NodeTypeActorDirector = "ACTOR-DIRECTOR"
 
 # Filenames
-datasetFilename = "movie_metadata.csv"
-graphFilename = "graph.gpickle"
-graphDictFilename = "graphdict.csv"
+filepath = __file__[0:__file__.rfind("/") + 1]
+datasetFilename = filepath + "movie_metadata.csv"
+graphFilename = filepath + "graph.gpickle"
+graphDictFilename = filepath + "graphdict.csv"

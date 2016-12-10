@@ -23,7 +23,7 @@ ReadMovieGraph.py for a complete list.
 ----------------------
 """
 
-import ReadMovieGraph
+from dataset import ReadMovieGraph
 
 
 graph, graphDict = ReadMovieGraph.readMovieGraphFromFile()
