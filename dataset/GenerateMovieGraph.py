@@ -351,9 +351,7 @@ def parseMovieFile(filename, fetchRaceAndGender=True):
 
 					# Get additional actors from IMDB
 					cast = utils.getCast(newMovie.imdbURL, newMovie.actorNames)
-					print cast
 					newMovie.actorNames = cast
-					print newMovie.actorNames
 
 					for actorName in newMovie.actorNames:
 						if not actorName in actorMap:
@@ -594,7 +592,6 @@ def saveDictToFile(dictToSave, filename, firstRow=None):
 			csvwriter.writerow(firstRow)
 		for key in dictToSave:
 			value = dictToSave[key]
-			print key, value
 			csvwriter.writerow([key, value])
 
 
