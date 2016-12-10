@@ -345,9 +345,10 @@ def parseMovieFile(filename, fetchRaceAndGender=True):
 
 				if not newMovie.uniqueID() in movieMap:
 
-					# Fetch additional actors from IMDB
+					""" Fetch additional actors from IMDB
 					newMovie.actorNames = utils.getCast(newMovie.imdbURL,
 														newMovie.actorNames)
+					"""
 
 					# Add the movie
 					movieMap[newMovie.uniqueID()] = newMovie
@@ -593,3 +594,6 @@ def saveDictToFile(dictToSave, filename, firstRow=None):
 			value = dictToSave[key]
 			csvwriter.writerow([key, value])
 
+
+if __name__ == "__main__":
+	createMovieGraph()

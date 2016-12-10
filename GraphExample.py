@@ -10,9 +10,10 @@ the NetworkX graph.  keys for actors and directors are just their names (i.e.
 their title AND release year (i.e. "Avatar2009").  This is so that movie remakes
 can have unique keys.
 
-The graph is a tripartite NetworkX graph where each node represents either a
-movie, actor, director or actor-director.  Each node has an accompanying
-"type" field which is either "ACTOR", "DIRECTOR", "ACTOR-DIRECTOR" or "MOVIE".
+The graph is a tripartite NetworkX directed graph where each node represents
+either a movie, actor, director, or actor-director.  Each node has an
+accompanying "type" field which is either "ACTOR", "DIRECTOR", "ACTOR-DIRECTOR"
+or "MOVIE".
 
 Each node also has metadata fields which contain additional information.
 
@@ -20,6 +21,9 @@ Each person node has a "name", "gender" and "race" field.
 
 Each movie has a variety of fields such as "title", "gross", and others.  See
 ReadMovieGraph.py for a complete list.
+
+Edges go from directors to movies and from movies to actors.  Therefore, for
+actor-directors, there are two edges going to-from the person and their movie.
 ----------------------
 """
 
@@ -66,20 +70,15 @@ print "%s is a %s %s" % (graph.node[oliviaNodeId]["name"],
 print "\n\n"
 
 # Get a node's edges
-tomActorMovies = []
-tomDirectorMovies = []
-for i in graph.neighbors(tomNodeId):
-	if graph.node[i]["directorName"] == "Tom Hanks":
-		tomDirectorMovies.append(graph.node[i]["title"])
-	if "Tom Hanks" in graph.node[i]["actorNames"]:
-		tomActorMovies.append(graph.node[i]["title"])
+# predecessors are nodes with edges TO a given node.  successors are nodes with
+# edges FROM a given node.
+tomActorMovies = [graph.node[i]["title"] for i in graph.predecessors(tomNodeId)]
+tomDirMovies = [graph.node[i]["title"] for i in graph.successors(tomNodeId)]
 print "Tom Hanks was an actor in: %s" % tomActorMovies
-print "Tom Hanks directed: %s" % tomDirectorMovies
+print "Tom Hanks directed: %s" % tomDirMovies
 
-oliviaMovies = []
-for i in graph.neighbors(oliviaNodeId):
-	oliviaMovies.append(graph.node[i]["title"])
-print "Olivia Munn was an actor in: %s" % oliviaMovies
+OlivMovies = [graph.node[i]["title"] for i in graph.predecessors(oliviaNodeId)]
+print "Olivia Munn was an actor in: %s" % OlivMovies
 
 
 
