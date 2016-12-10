@@ -346,12 +346,6 @@ def parseMovieFile(filename, fetchRaceAndGender=True):
 					continue
 
 				if not newMovie.uniqueID() in movieMap:
-
-					""" Fetch additional actors from IMDB
-					newMovie.actorNames = utils.getCast(newMovie.imdbURL,
-														newMovie.actorNames)
-					"""
-
 					# Add the movie
 					movieMap[newMovie.uniqueID()] = newMovie
 
