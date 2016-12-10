@@ -50,3 +50,28 @@ is considered anyone who is not a white male.
 def scoreForActor(actorDict):
 	minority = (actorDict["race"] == "White" and actorDict["gender"] == "Male")
 	return 0 if minority else 1
+
+
+"""
+FUNCTION: avgScoreForDirectors
+---------------------------------
+Parameters:
+	graph - the tripartite NetworkX DiGraph continaing
+
+Returns: the averge diversity score for all directors in the given graph.
+---------------------------------
+"""
+def avgScoreForDirectors(graph, nodeId):
+	pass
+
+"""
+FUNCTION: avgScoreForMovies
+---------------------------------
+Parameters:
+	graph - the tripartite NetworkX DiGraph continaing
+
+Returns: the averge diversity score for all movies in the given graph.
+---------------------------------
+"""
+def avgScoreForMovies(graph, nodeId):
+	pass
