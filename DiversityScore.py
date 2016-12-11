@@ -266,11 +266,11 @@ def actorStats(graph):
 				numMultiracial += 1
 			if race == "Asian":
 				numAsian += 1
-			if race == "AsianIndian":
+			if race == "Asian Indian":
 				numAsianIndian += 1
-			if race == "MiddleEastern":
+			if race == "Middle Eastern":
 				numMiddleEastern += 1
-			if race == "AmericanAborigine":
+			if race == "American Aborigine":
 				numAmericanAborigine += 1
 			if gender == "Male":
 				numMale += 1 
@@ -297,6 +297,22 @@ def actorStats(graph):
 	actorDict['avgNumMoviesForMaleActor'] = float(sum(male_movies)) / len(male_movies)
 	actorDict['avgNumMoviesForFemaleActor'] = float(sum(female_movies))/ len(female_movies)
 	return actorDict
+
+
+"""
+FUNCTION: profitStats
+---------------------------------
+Parameters:
+	graph - the tripartite NetworkX DiGraph continaing
+	node - movieID
+
+Returns: tuple of (race_score, gender_score, profit ratio) 
+"""
+def profitStats(graph, node):
+	race_score = racialScoreForMovie(graph,node)
+	gender_score = genderScoreForMovie(graph,node)
+	ratio = graph.node[node]["gross"] / float(graph.node[node]["budget"])
+	return (race_score, gender_score, ratio)
 
 
 
