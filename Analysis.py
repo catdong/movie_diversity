@@ -55,16 +55,15 @@ FUNCTION: multiToWeightedGraph
 ---------------------------------
 Parameters:
 	graph - graph containing actors
-	attribute - remove actors for which this attribute is None
 
-Returns: Graph in which the given attribute for all actors is not None.
+Returns: Graph in which all nodes have both race and gender data
 ---------------------------------
 """
 def getGraphWithoutNones(graph, attribute):
-	graph = graph.copy()
 	for nId in graph.nodes():
-		if graph.node[nId]['type'] != 'MOVIE' and graph.node[nId][attribute] is None:
-			graph.remove_node(nId)
+		if graph.node[nId]['type'] != 'MOVIE':
+			if graph.node[nId]['race'] is None or graph.node[nId]['gender'] is None:
+				graph.remove_node(nId)
 	return graph
 
 """
@@ -176,11 +175,10 @@ FUNCTION: actorModularity
 Parameters:
 	graph - DiGraph including movies and actors
 
-Returns: tuple of modularity scores for the attributes race, blackWhite, and
-gender.
+Returns: modularity scores tuple (raceModularity, blackWhiteModularity, genderModularity)
 ---------------------------------
 """
-def actorModularity(graph, attribute):
+def actorModularity(graph):
 	aaGraph = actorActorGraph(graph)
 	racePartition = {}
 	blackWhitePartition = {}
@@ -195,6 +193,7 @@ def actorModularity(graph, attribute):
 		'Middle Eastern': 6,
 		'American Aborigine': 7
 	}
+
 	for nId in aaGraph.nodes():
 		actorRace = aaGraph.node[nId]['race']
 		actorGender = aaGraph.node[nId]['gender']
@@ -202,11 +201,12 @@ def actorModularity(graph, attribute):
 			racePartition[nId] = raceToInt[actorRace]
 			blackWhitePartition[nId] = 0 if raceToInt[actorRace] == 0 else 1
 		genderPartition[nId] = 0 if actorGender == 'Male' else 1
+
 	aaGraph = multiToWeightedGraph(aaGraph)
 	raceModularity = community.modularity(racePartition, aaGraph)
 	blackWhiteModularity = community.modularity(blackWhitePartition, aaGraph)
 	genderModularity = community.modularity(genderPartition, aaGraph)
-	return raceModularity, blackWhiteModularity, genderModularity
+	return (raceModularity, blackWhiteModularity, genderModularity)
 
 """
 FUNCTION: actorAssortativity
@@ -214,17 +214,13 @@ FUNCTION: actorAssortativity
 Parameters:
 	graph - DiGraph including movies and actors
 
-Returns: tuple of assortativity coefficients for the attributes race, blackWhite, and
-gender.
+Returns: Assortativity coefficient tuple (raceAssortativity, blackWhiteAssortativity, genderAssortativity)
 ---------------------------------
 """
-def actorAssortativity(graph, attribute):
+def actorAssortativity(graph):
 	aaGraph = actorActorGraph(graph)
 	raceAssortativity = nx.attribute_assortativity_coefficient(aaGraph, 'race')
-
 	blackWhiteAAGraph = actorActorGraph(getBlackWhiteGraph(graph))
 	blackWhiteAssortativity = nx.attribute_assortativity_coefficient(blackWhiteAAGraph, 'race')
-
 	genderAssortativity = nx.attribute_assortativity_coefficient(aaGraph, 'gender')
-
-	return raceAssortativity, blackWhiteAssortativity, genderAssortativity
+	return (raceAssortativity, blackWhiteAssortativity, genderAssortativity)
