@@ -39,6 +39,7 @@ class Movie:
 		# and ensures all numerically-parsed cols are non-empty
 		def cleanupRowEntry(args):
 			i, entry = args
+			entry = entry.replace("\xc2\xa0", " ").strip()
 			entry = entry.decode('unicode-escape')
 			entry = unicodedata.normalize('NFKD', entry).encode('ascii', 'ignore')
 			if i in numericCols and len(dataRow[i]) == 0:
@@ -549,7 +550,7 @@ graph dict csv file - stores actor, director and movie names -> node ID (NOTE:
 """
 def createMovieGraph():
 	movieMap, actorMap, directorMap = parseMovieFile(datasetFilename,
-		fetchRaceAndGender=False)
+		fetchRaceAndGender=True)
 	graph, graphDict = createGraphForMovieInfo(movieMap, actorMap, directorMap)
 
 	# Fill in unknown genders with SexMachine
