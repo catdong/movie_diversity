@@ -1,5 +1,5 @@
 from dataset import ReadMovieGraph
-import AnalysisUtils as au
-import DiversityScore
+import Analysis as ana
+import DiversityScore as ds
 
 graph, graphDict = ReadMovieGraph.readMovieGraphFromFile()

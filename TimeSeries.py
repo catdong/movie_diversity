@@ -1,4 +1,4 @@
-def getNetworkUpToYear(year):
+def getNetworkUpToYear(graph, year):
 	pass
 
 def addYearToNetwork(graph, yearToAdd):

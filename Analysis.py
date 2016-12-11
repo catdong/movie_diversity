@@ -184,6 +184,7 @@ def actorModularity(graph, attribute):
 	aaGraph = actorActorGraph(graph)
 	racePartition = {}
 	blackWhitePartition = {}
+	genderPartition = {}
 	raceToInt = {
 		'White': 0,
 		'Black': 1,
@@ -196,15 +197,16 @@ def actorModularity(graph, attribute):
 	}
 	for nId in aaGraph.nodes():
 		actorRace = aaGraph.node[nId]['race']
+		actorGender = aaGraph.node[nId]['gender']
 		if actorRace in raceToInt:
 			racePartition[nId] = raceToInt[actorRace]
 			blackWhitePartition[nId] = 0 if raceToInt[actorRace] == 0 else 1
-		else:
-			aaGraph.remove_node(nId)
+		genderPartition[nId] = 0 if actorGender == 'Male' else 1
 	aaGraph = multiToWeightedGraph(aaGraph)
 	raceModularity = community.modularity(racePartition, aaGraph)
 	blackWhiteModularity = community.modularity(blackWhitePartition, aaGraph)
-	return raceModularity, blackWhiteModularity
+	genderModularity = community.modularity(genderPartition, aaGraph)
+	return raceModularity, blackWhiteModularity, genderModularity
 
 """
 FUNCTION: actorAssortativity

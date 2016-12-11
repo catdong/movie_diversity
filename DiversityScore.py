@@ -1,5 +1,5 @@
 """
-FUNCTION: scoreForDirector
+FUNCTION: racialScoreForDirector
 ---------------------------------
 Parameters:
 	graph - the NetworkX DiGraph to use to compute a diversity score
@@ -11,13 +11,31 @@ diversity score for a director is the average diversity score of all movies
 they have directed (aka between 0 and 1).
 ---------------------------------
 """
-def scoreForDirector(graph, nodeId):
+def racialScoreForDirector(graph, nodeId):
 	movieIds = graph.successors(nodeId)
-	movieScores = [scoreForMovie(graph, i) for i in movieIds]
+	movieScores = [racialScoreForMovie(graph, i) for i in movieIds]
 	return sum(movieScores) / float(len(movieScores))
 
 """
-FUNCTION: scoreForMovie
+FUNCTION: genderScoreForDirector
+---------------------------------
+Parameters:
+	graph - the NetworkX DiGraph to use to compute a diversity score
+	nodeId - the nodeId of the director (or actor-director) for which to compute
+				the diversity score.
+
+Returns: the diversity score for the given director in the given graph.  The
+diversity score for a director is the average diversity score of all movies
+they have directed (aka between 0 and 1).
+---------------------------------
+"""
+def genderScoreForDirector(graph, nodeId):
+	movieIds = graph.successors(nodeId)
+	movieScores = [genderScoreForMovie(graph, i) for i in movieIds]
+	return sum(movieScores) / float(len(movieScores))
+
+"""
+FUNCTION: racialScoreForMovie
 ------------------------
 Parameters:
 	graph - the NetworkX DiGraph to use to compute a diversity score
@@ -28,50 +46,132 @@ diversity score for a movie is the average diversity score of all actors in that
 movie's cast (aka between 0 and 1). Or None if the size of the movie cast is 0.
 ------------------------
 """
-def scoreForMovie(graph, nodeId):
+def racialScoreForMovie(graph, nodeId):
 	castIds = graph.successors(nodeId)
-	numMinorities = sum(scoreForActor(graph.node[i]) for i in castIds)
+	numMinorities = sum(racialScoreForActor(graph.node[i]) for i in castIds)
 	if len(castIds) == 0:
 		return None
 	return numMinorities / float(len(castIds))
 
 """
-FUNCTION: scoreForActor
+FUNCTION: genderScoreForMovie
+------------------------
+Parameters:
+	graph - the NetworkX DiGraph to use to compute a diversity score
+	nodeId - the nodeId of the movie for which to compute the diversity score.
+
+Returns: the diversity score for the given movie in the given graph.  The
+diversity score for a movie is the average diversity score of all actors in that
+movie's cast (aka between 0 and 1). Or None if the size of the movie cast is 0.
+------------------------
+"""
+def genderScoreForMovie(graph, nodeId):
+	castIds = graph.successors(nodeId)
+	numMinorities = sum(genderScoreForActor(graph.node[i]) for i in castIds)
+	if len(castIds) == 0:
+		return None
+	return numMinorities / float(len(castIds))
+
+"""
+FUNCTION: racialScoreForActor
 ---------------------
 Parameters:
 	actorDict - a dictionary of attributes for a particular actor, including
 				name, gender and race.
 
-Returns: the diversity score for the given actor/actress.  0 if they are a
-minority, and 1 otherwise.  For the purposes of these calculations, a minority
-is considered anyone who is not a white male.
+Returns: the diversity score for the given actor/actress.  1 if they are non-white,
+and 0 otherwise.
 ---------------------
 """
-def scoreForActor(actorDict):
-	minority = (actorDict["race"] == "White" and actorDict["gender"] == "Male")
-	return 0 if minority else 1
-
+def racialScoreForActor(actorDict):
+	return int(actorDict["race"] != "White")
 
 """
-FUNCTION: avgScoreForDirectors
+FUNCTION: genderScoreForActor
+---------------------
+Parameters:
+	actorDict - a dictionary of attributes for a particular actor, including
+				name, gender and race.
+
+Returns: the gender diversity score for the given actor/actress.  1 if they are a
+female, and 0 otherwise.
+---------------------
+"""
+def genderScoreForActor(actorDict):
+	return int(actorDict["gender"] == "Female")
+
+"""
+FUNCTION: directorStats
 ---------------------------------
 Parameters:
 	graph - the tripartite NetworkX DiGraph continaing
 
-Returns: the averge diversity score for all directors in the given graph.
+Returns: dicts
+{
+	numDirectors: int,
+	avgRacialDiversityScore: float,
+	avgGenderDiversityScore: float,
+	numWhiteDirectors: int,
+	numNonWhiteDirectors: int,
+	numMaleDirectors: int,
+	numFemaleDirectors: int,
+}
 ---------------------------------
 """
-def avgScoreForDirectors(graph, nodeId):
+def directorStats(graph):
 	pass
 
 """
-FUNCTION: avgScoreForMovies
+FUNCTION: movieStats
 ---------------------------------
 Parameters:
 	graph - the tripartite NetworkX DiGraph continaing
 
-Returns: the averge diversity score for all movies in the given graph.
+Returns: dicts
+{
+	numMovies: int,
+	avgRacialDiversityScore: float,
+	avgGenderDiversityScore: float,
+	numAllWhiteMovies: int,
+	numAllNonWhiteMovies: int,
+	numAllMaleMovies: int,
+	numAllFemaleMovies: int,
+}
 ---------------------------------
 """
-def avgScoreForMovies(graph, nodeId):
+def movieStats(graph):
+	pass
+
+"""
+FUNCTION: actorStats
+---------------------------------
+Parameters:
+	graph - the tripartite NetworkX DiGraph continaing
+
+Returns: dict 
+{
+	'numActors': int,
+
+	'numWhite': int, 
+	'numBlack': int,
+	'numHispanic': int,
+	'numMultiracial': int,
+	'numAsian': int,
+	'numAsianIndian': int,
+	'numMiddleEastern': int,
+	'numAmericanAborigine': int,
+	'numNonWhite': int,
+
+	'numMale': int,
+	'numFemale': int,
+
+	'avgNumMoviesForWhiteActor': float,
+	'avgNumMoviesForNonWhiteActor': float,
+
+	'avgNumMoviesForMaleActor': float,
+	'avgNumMoviesForFemaleActor': float,
+}
+---------------------------------
+"""
+def actorStats(graph):
 	pass
