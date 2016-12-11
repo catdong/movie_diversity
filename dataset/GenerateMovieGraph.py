@@ -298,15 +298,11 @@ class Person:
 
 			raceStr = '//p/b[text()="Race or Ethnicity:"]'
 			raceStr += '/following-sibling::text()'
-			if len(personTree.xpath(raceStr)) == 0:
-				print "%s" % personTree
-			else:
+			if len(personTree.xpath(raceStr)) > 0:
 				person.race = personTree.xpath(raceStr)[0].strip()
 
 			genderStr = '//p/b[text()="Gender:"]/following-sibling::text()'
-			if len(personTree.xpath(genderStr)) == 0:
-				print "%s" % personTree
-			else:
+			if len(personTree.xpath(genderStr)) > 0:
 				person.gender = personTree.xpath(genderStr)[0].strip()
 
 
