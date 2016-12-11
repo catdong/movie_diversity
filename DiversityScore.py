@@ -1,3 +1,5 @@
+import collections
+
 """
 FUNCTIONS: racialScoreForDirector and genderScoreForDirector
 ---------------------------------
@@ -13,12 +15,18 @@ they have directed (aka between 0 and 1).
 """
 def racialScoreForDirector(graph, nodeId):
 	movieIds = graph.successors(nodeId)
-	movieScores = [racialScoreForMovie(graph, i) for i in movieIds]
+	movieScoresTemp = [racialScoreForMovie(graph, i) for i in movieIds]
+	movieScores = [score for score in movieScoresTemp if score != None]
+	if len(movieScores) == 0:
+		return None
 	return sum(movieScores) / float(len(movieScores))
 
 def genderScoreForDirector(graph, nodeId):
 	movieIds = graph.successors(nodeId)
-	movieScores = [genderScoreForMovie(graph, i) for i in movieIds]
+	movieScoresTemp = [genderScoreForMovie(graph, i) for i in movieIds]
+	movieScores = [score for score in movieScoresTemp if score != None]
+	if len(movieScores) == 0:
+		return None
 	return sum(movieScores) / float(len(movieScores))
 
 """
@@ -95,8 +103,12 @@ def directorStats(graph):
 	for node in graph.nodes():
 		node_type = graph.node[node]["type"]
 		if node_type == "DIRECTOR" or node_type == "ACTOR-DIRECTOR":
-			race_scores.append(racialScoreForDirector(graph,node))
-			gender_scores.append(genderScoreForDirector(graph,node))
+			race_score = racialScoreForDirector(graph,node)
+			gender_score = genderScoreForDirector(graph,node)
+			if race_score != None:
+				race_scores.append(race_score)
+			if gender_score != None:
+				gender_scores.append(gender_score)
 			numDirectors += 1
 			if graph.node[node]["gender"] == "Male":
 				numMaleDirectors += 1
@@ -150,8 +162,10 @@ def movieStats(graph):
 		if node_type == "MOVIE":
 			race_score = racialScoreForMovie(graph,node)
 			gender_score = genderScoreForMovie(graph,node)
-			race_scores.append(race_score)
-			gender_scores.append(gender_scores)
+			if race_score != None:
+				race_scores.append(race_score)
+			if gender_score != None:
+				gender_scores.append(gender_score)
 			if race_score == 0: # all white cast
 				numAllWhiteMovies += 1
 			else:
@@ -237,12 +251,13 @@ def actorStats(graph):
 		if node_type == "ACTOR" or node_type == "ACTOR-DIRECTOR":
 			race = graph.node[node]["race"]
 			gender = graph.node[node]["gender"]
-			if race == "White":
-				numWhite += 1
-				white_movies.append(len(graph.predecessors(node)))
-			else:
-				numNonWhite += 1
-				nonwhite_movies.append(len(graph.predecessors(node)))
+			if race != None:
+				if race == "White":
+					numWhite += 1
+					white_movies.append(len(graph.predecessors(node)))
+				else:
+					numNonWhite += 1
+					nonwhite_movies.append(len(graph.predecessors(node)))
 			if race == "Black":
 				numBlack += 1
 			if race == "Hispanic":
@@ -280,7 +295,7 @@ def actorStats(graph):
 	actorDict["avgNumMoviesForWhiteActor"] = float(sum(white_movies)) / len(white_movies)
 	actorDict['avgNumMoviesForNonWhiteActor'] = float(sum(nonwhite_movies)) / len(nonwhite_movies)
 	actorDict['avgNumMoviesForMaleActor'] = float(sum(male_movies)) / len(male_movies)
-	actorDict['avgNumMoviesForFemaleActor'] = float(sum(female_movies)) len(female_movies)
+	actorDict['avgNumMoviesForFemaleActor'] = float(sum(female_movies))/ len(female_movies)
 	return actorDict
 
 
