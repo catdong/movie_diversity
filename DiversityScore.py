@@ -1,13 +1,13 @@
 """
-FUNCTION: racialScoreForDirector
+FUNCTIONS: racialScoreForDirector and genderScoreForDirector
 ---------------------------------
 Parameters:
 	graph - the NetworkX DiGraph to use to compute a diversity score
 	nodeId - the nodeId of the director (or actor-director) for which to compute
 				the diversity score.
 
-Returns: the diversity score for the given director in the given graph.  The
-diversity score for a director is the average diversity score of all movies
+Returns: the racial or gender diversity score for the given director in the given graph. 
+The diversity score for a director is the average diversity score of all movies
 they have directed (aka between 0 and 1).
 ---------------------------------
 """
@@ -16,33 +16,20 @@ def racialScoreForDirector(graph, nodeId):
 	movieScores = [racialScoreForMovie(graph, i) for i in movieIds]
 	return sum(movieScores) / float(len(movieScores))
 
-"""
-FUNCTION: genderScoreForDirector
----------------------------------
-Parameters:
-	graph - the NetworkX DiGraph to use to compute a diversity score
-	nodeId - the nodeId of the director (or actor-director) for which to compute
-				the diversity score.
-
-Returns: the diversity score for the given director in the given graph.  The
-diversity score for a director is the average diversity score of all movies
-they have directed (aka between 0 and 1).
----------------------------------
-"""
 def genderScoreForDirector(graph, nodeId):
 	movieIds = graph.successors(nodeId)
 	movieScores = [genderScoreForMovie(graph, i) for i in movieIds]
 	return sum(movieScores) / float(len(movieScores))
 
 """
-FUNCTION: racialScoreForMovie
+FUNCTIONS: racialScoreForMovie and genderScoreForMovie
 ------------------------
 Parameters:
 	graph - the NetworkX DiGraph to use to compute a diversity score
 	nodeId - the nodeId of the movie for which to compute the diversity score.
 
-Returns: the diversity score for the given movie in the given graph.  The
-diversity score for a movie is the average diversity score of all actors in that
+Returns: the racial or gender diversity score for the given movie in the given graph.
+The diversity score for a movie is the average diversity score of all actors in that
 movie's cast (aka between 0 and 1). Or None if the size of the movie cast is 0.
 ------------------------
 """
@@ -53,18 +40,6 @@ def racialScoreForMovie(graph, nodeId):
 		return None
 	return numMinorities / float(len(castIds))
 
-"""
-FUNCTION: genderScoreForMovie
-------------------------
-Parameters:
-	graph - the NetworkX DiGraph to use to compute a diversity score
-	nodeId - the nodeId of the movie for which to compute the diversity score.
-
-Returns: the diversity score for the given movie in the given graph.  The
-diversity score for a movie is the average diversity score of all actors in that
-movie's cast (aka between 0 and 1). Or None if the size of the movie cast is 0.
-------------------------
-"""
 def genderScoreForMovie(graph, nodeId):
 	castIds = graph.successors(nodeId)
 	numMinorities = sum(genderScoreForActor(graph.node[i]) for i in castIds)
@@ -73,30 +48,20 @@ def genderScoreForMovie(graph, nodeId):
 	return numMinorities / float(len(castIds))
 
 """
-FUNCTION: racialScoreForActor
+FUNCTION: racialScoreForActor and genderScoreForActor
 ---------------------
 Parameters:
 	actorDict - a dictionary of attributes for a particular actor, including
 				name, gender and race.
 
-Returns: the diversity score for the given actor/actress.  1 if they are non-white,
-and 0 otherwise.
+Returns: the diversity score for the given actor/actress. 
+Racial diversity: 1 if they are non-white, and 0 otherwise.
+Gender diversity: 1 if they are female, and 0 otherwise.
 ---------------------
 """
 def racialScoreForActor(actorDict):
 	return int(actorDict["race"] != "White")
 
-"""
-FUNCTION: genderScoreForActor
----------------------
-Parameters:
-	actorDict - a dictionary of attributes for a particular actor, including
-				name, gender and race.
-
-Returns: the gender diversity score for the given actor/actress.  1 if they are a
-female, and 0 otherwise.
----------------------
-"""
 def genderScoreForActor(actorDict):
 	return int(actorDict["gender"] == "Female")
 
