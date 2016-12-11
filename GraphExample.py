@@ -51,14 +51,14 @@ print "\n\n"
 # Find the type of a node (MOVIE, ACTOR, ACTOR-DIRECTOR or DIRECTOR)
 # Also calculate their diversity scores
 print "Avatar is a %s" % graph.node[avatarNodeId]["type"]
-print "Diversity score: %f" % DiversityScore.scoreForMovie(graph, avatarNodeId)
+print "Gender diversity score: %f" % DiversityScore.genderScoreForMovie(graph, avatarNodeId)
 print "Tom Hanks is an %s" % graph.node[tomNodeId]["type"]
-print "Diversity score: %f" % DiversityScore.scoreForDirector(graph, tomNodeId)
+print "Racial diversity score: %f" % DiversityScore.racialScoreForDirector(graph, tomNodeId)
 print "Steven Spielberg is a %s" % graph.node[stevenNodeId]["type"]
-print "Diversity score: %f" % DiversityScore.scoreForDirector(graph,
+print "Gender diversity score: %f" % DiversityScore.genderScoreForDirector(graph,
 															stevenNodeId)
 print  "Olivia Munn is an %s" % graph.node[oliviaNodeId]["type"]
-print "Div. score: %f" % DiversityScore.scoreForActor(graph.node[oliviaNodeId])
+print "Racial diversity score: %f" % DiversityScore.racialScoreForActor(graph.node[oliviaNodeId])
 print "\n\n"
 
 # Get metadata from a node
