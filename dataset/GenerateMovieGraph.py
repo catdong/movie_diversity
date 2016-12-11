@@ -5,6 +5,7 @@ from GraphConstants import graphFilename, graphDictFilename
 import grequests
 from lxml import html
 import networkx as nx
+import progressbar
 import sexmachine.detector as gender
 import unicodedata
 import utils
@@ -375,11 +376,12 @@ def parseMovieFile(filename, fetchRaceAndGender=True):
 				numFetches += 1
 
 			# Perform each fetch for race/gender info
-			for i in range(numFetches):
+			bar = progressbar.ProgressBar()
+			for i in bar(range(numFetches)):
 				startIndex = i*FETCH_BLOCK_SIZE
 				endIndex = min((i+1)*FETCH_BLOCK_SIZE, len(allPeople))
-				Person.fetchRaceAndGenderFor(allPeople[startIndex : endIndex])
-				print "Fetched %i of %i" % (endIndex, len(allPeople))
+				fetchBlock = allPeople[startIndex : endIndex]
+				Person.fetchRaceAndGenderFor(fetchBlock)
 
 		return movieMap, actorMap, directorMap
 
