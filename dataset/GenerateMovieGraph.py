@@ -339,7 +339,12 @@ def parseMovieFile(filename, fetchRaceAndGender=True):
 		actorMap = {}
 		directorMap = {}
 
-		for row in csvFile:
+		rows = [row for row in csvFile]
+
+		print("Reading in dataset rows/fetching from IMDB...")
+		bar = progressbar.ProgressBar()
+		for i in bar(range(len(rows))):
+			row = rows[i]
 			if not firstRow:
 				firstRow = True
 			else:
@@ -365,6 +370,7 @@ def parseMovieFile(filename, fetchRaceAndGender=True):
 						directorMap[director.name] = director
 
 		if fetchRaceAndGender:
+			print("Fetching races and genders from NNDB...")
 			allPeople = actorMap.values()
 			allPeople.extend(directorMap.values())
 
