@@ -92,7 +92,7 @@ Returns: dicts
 }
 ---------------------------------
 """
-def directorStats(graph):
+def directorStats(directorMovieGraph, graph, graphDict):
 	directorDict = collections.defaultdict()
 	numDirectors = 0
 	race_scores = []
@@ -101,11 +101,12 @@ def directorStats(graph):
 	numNonWhiteDirectors = 0
 	numMaleDirectors = 0
 	numFemaleDirectors = 0
-	for node in graph.nodes():
+	for node in directorMovieGraph.nodes():
 		node_type = graph.node[node]["type"]
 		if node_type == "DIRECTOR" or node_type == "ACTOR-DIRECTOR":
-			race_score = racialScoreForDirector(graph,node)
-			gender_score = genderScoreForDirector(graph,node)
+			directorName = directorMovieGraph.node[node]['name']
+			race_score = racialScoreForDirector(graph, graphDict[directorName])
+			gender_score = genderScoreForDirector(graph, graphDict[directorName])
 			if race_score != None:
 				race_scores.append(race_score)
 			if gender_score != None:

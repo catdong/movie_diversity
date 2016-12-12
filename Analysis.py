@@ -247,7 +247,7 @@ def actorDirectorAssortativityHeuristic(graph, directorMovieGraph, graphDict):
 	numSameRaceEdges = 0
 	numSameGenderEdges = 0
 	totalEdges = 0
-	for mId in directorMovieGraph.nodes()
+	for mId in directorMovieGraph.nodes():
 		if directorMovieGraph.node[mId]['type'] == 'MOVIE':
 			diredctorId = directorMovieGraph.predecessors(mId)[0]
 			directorRace = directorMovieGraph.node[diredctorId]['race']
