@@ -59,11 +59,15 @@ Parameters:
 Returns: Graph in which all nodes have both race and gender data
 ---------------------------------
 """
-def getGraphWithoutNones(graph, attribute):
+def filterNoneActors(graph):
 	for nId in graph.nodes():
-		if graph.node[nId]['type'] != 'MOVIE':
+		if graph.node[nId]['type'] == 'ACTOR':
 			if graph.node[nId]['race'] is None or graph.node[nId]['gender'] is None:
 				graph.remove_node(nId)
+		elif graph.node[nId]['type'] == 'ACTOR-DIRECTOR':
+			if graph.node[nId]['race'] is None or graph.node[nId]['gender'] is None:
+				graph.remove_edges_from(graph.in_edges(nId))
+				graph.node[nId]['type'] = 'DIRECTOR'
 	return graph
 
 """
@@ -163,7 +167,7 @@ def directorMovieNullModel(graph):
 	oneIds = [id for id in nullModel if nullModel.node[id]['bipartite'] == 1]
 	sortedZeroIds = sorted(zeroIds, key=lambda nId: nullModel.degree(nId))
 	for i in range(len(zeroIds)):
-		nullModel.node[zeroIds[i]].update(graph.node[directorId[i]])
+		nullModel.node[zeroIds[i]].update(graph.node[directorIds[i]])
 	for i in range(len(oneIds)):
 		nullModel.node[oneIds[i]].update(graph.node[movieIds[i]])
 	nullModel = bipartiteToDirectedGraph(nullModel)
@@ -191,7 +195,8 @@ def actorModularity(graph):
 		'Asian': 4,
 		'Asian/Indian': 5,
 		'Middle Eastern': 6,
-		'American Aborigine': 7
+		'American Aborigine': 7,
+		'Other': 8
 	}
 
 	for nId in aaGraph.nodes():
@@ -224,3 +229,32 @@ def actorAssortativity(graph):
 	blackWhiteAssortativity = nx.attribute_assortativity_coefficient(blackWhiteAAGraph, 'race')
 	genderAssortativity = nx.attribute_assortativity_coefficient(aaGraph, 'gender')
 	return (raceAssortativity, blackWhiteAssortativity, genderAssortativity)
+
+"""
+FUNCTION: actorDirectorAssortativityHeuristic
+---------------------------------
+Parameters:
+	graph - tripartite DiGraph of directors, movies, and actors
+
+Returns: Calculates the proportion of director-actor edges in which the director
+and actor have the same race and proportion that have the same gender.
+Returns a tuple of (proportionSameRace, proportionSameGender)
+---------------------------------
+"""
+def actorDirectorAssortativityHeuristic(graph):
+	numSameRaceEdges = 0
+	numSameGenderEdges = 0
+	totalEdges = 0
+	for aId in graph.nodes():
+		if graph.node[aId]['type'] != 'MOVIE':
+			actorRace = graph.node[aId]['race']
+			actorGender = graph.node[aId]['gender']
+			actorMovies = graph.predecessors(aId)
+			actorDirectors = [graph.predecessors(mId)[0] for mId in actorMovies]
+			totalEdges += len(actorDirectors)
+			directorRaces = [graph.node[dId]['race'] for dId in actorDirectors]
+			directorGenders = [graph.node[dId]['gender'] for dId in actorDirectors]
+			numSameRaceEdges += sum(1 for dr in directorRaces 
+				if (dr == 'White' and actorRace == 'White') or (dr != 'White' and actorRace != 'White'))
+			numSameGenderEdges += sum(1 for dg in directorGenders if dg == actorGender)
+	return (numSameRaceEdges / float(totalEdges), numSameGenderEdges / float(totalEdges))
