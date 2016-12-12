@@ -64,14 +64,15 @@ Returns: Graph, graphDict in which all nodes have both race and gender data
 """
 def filterNoneActors(graph, graphDict):
 	for nId in graph.nodes():
-		if graph.node[nId]['type'] == 'ACTOR':
-			if graph.node[nId]['race'] is None or graph.node[nId]['gender'] is None:
-				graphDict.pop(graph.node[nId]["name"], None)
+		node = graph.node[nId]
+		if node['type'] == 'ACTOR':
+			if node['race'] is None or node['gender'] is None:
+				graphDict.pop(node["name"], None)
 				graph.remove_node(nId)
-		elif graph.node[nId]['type'] == 'ACTOR-DIRECTOR':
-			if graph.node[nId]['race'] is None or graph.node[nId]['gender'] is None:
+		elif node['type'] == 'ACTOR-DIRECTOR':
+			if node['race'] is None or node['gender'] is None:
 				graph.remove_edges_from(graph.in_edges(nId))
-				graph.node[nId]['type'] = 'DIRECTOR'
+				node['type'] = 'DIRECTOR'
 	return (graph, graphDict)
 
 """
