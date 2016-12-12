@@ -4,6 +4,7 @@ from dataset import ReadMovieGraph
 from networkx.algorithms import bipartite
 from random import shuffle
 import community
+import DiversityScore as ds
 
 """
 FUNCTION: multiToWeightedGraph
@@ -252,10 +253,34 @@ def actorDirectorAssortativityHeuristic(graph, directorMovieGraph, graphDict):
 			diredctorId = directorMovieGraph.predecessors(mId)[0]
 			directorRace = directorMovieGraph.node[diredctorId]['race']
 			directorGender = directorMovieGraph.node[diredctorId]['gender']
-			actorIds = [graphDict[actorName] for actorName in directorMovieGraph.node[mId]['actorNames'] if actorDict in graphDict]
+			actorIds = [graphDict[actorName] for actorName in directorMovieGraph.node[mId]['actorNames'] if actorName in graphDict]
 			actorRaces = [graph.node[aId]['race'] for aid in actorIds]
 			actorGenders = [graph.node[aId]['gender'] for aid in actorIds]
 			numSameRaceEdges += sum(1 for ar in actorRaces 
 				if (ar == 'White' and directorRace == 'White') or (ar != 'White' and directorRace != 'White'))
 			numSameGenderEdges += sum(1 for ag in actorGenders if ag == directorGender)
 	return (numSameRaceEdges / float(totalEdges), numSameGenderEdges / float(totalEdges))
+
+"""
+FUNCTION: diversityProfitCorrelation
+---------------------------------
+Parameters:
+	graph - the tripartite NetworkX DiGraph continaing
+
+Returns: tuple of (correlation coefficient for race, correlation coefficient for gender) 
+"""
+def diversityProfitCorrelation(graph):
+	raceScores = []
+	genderScores = []
+	profitRatios = []
+	for mId in graph.nodes():
+		if graph.node[mId]["type"] == "MOVIE":
+			data = ds.profitStats(graph, mId)
+			if data[0] != None and data[1] != None and data[2] != None: 
+				raceScores.append(data[0])
+				genderScores.append(data[1])
+				profitRatios.append(data[2])
+
+	correlations = np.corrcoef([raceScores, genderScores, profitRatios])
+
+	return correlations[0,2], correlations[1,2]
