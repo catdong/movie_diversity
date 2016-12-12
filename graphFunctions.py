@@ -6,26 +6,34 @@ def avgDirectorRacialDiversityScore(graph, movieIds):
 	scores = []
 	for dId in graph.nodes():
 		if graph.node[dId]['type'] == 'DIRECTOR' or graph.node[dId]['type'] == 'ACTOR-DIRECTOR':
-			scores.append(ds.racialScoreForDirector(dId))
+			score = ds.racialScoreForDirector(graph, dId)
+			if score is not None:
+				scores.append(score)
 	return [np.mean(scores)]
 
 def avgDirectorGenderDiversityScore(graph, movieIds):
 	scores = []
 	for dId in graph.nodes():
 		if graph.node[dId]['type'] == 'DIRECTOR' or graph.node[dId]['type'] == 'ACTOR-DIRECTOR':
-			scores.append(ds.genderScoreForDirector(dId))
+			score = ds.genderScoreForDirector(graph, dId)
+			if score is not None:
+				scores.append(score)
 	return [np.mean(scores)]
 
 def avgMovieRacialDiversityScore(graph, movieIds):
 	scores = []
 	for mId in movieIds:
-		scores.append(racialScoreForMovie(graph, mId))
+		score = racialScoreForMovie(graph, mId)
+		if score is not None:
+			scores.append(score)
 	return [np.mean(scores)]
 
 def avgMovieGenderDiversityScore(graph, movieIds):
 	scores = []
 	for mId in movieIds:
-		scores.append(GenderScoreForMovie(graph, mId))
+		score = genderScoreForMovie(graph, mId)
+		if score is not None:
+			scores.append(score)
 	return [np.mean(scores)]
 
 def actorModularity(graph, movieIds):
