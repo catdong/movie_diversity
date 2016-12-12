@@ -1,18 +1,12 @@
 from Analysis import filterNoneActors
 from collections import defaultdict
 from dataset import ReadMovieGraph
-from graphFunctions import avgDirectorRacialDiversityScore
+from graphFunctions import avgDirectorGenderDiversityScore as dGDiv
+from graphFunctions import avgDirectorRacialDiversityScore as dRDiv
+from graphFunctions import avgMovieGenderDiversityScore as mGDiv
+from graphFunctions import avgMovieRacialDiversityScore as mRDiv
 from matplotlib import pyplot
 import networkx as nx
-import random
-
-
-def getNetworkUpToYear(graph, year):
-	pass
-
-def addYearToNetwork(graph, yearToAdd):
-	pass
-
 
 """
 FUNCTION: timeSeries
@@ -25,8 +19,10 @@ Parameters:
 					to graph for that time step.
 	title - the title of the graph
 	yLabel - the label for the y axis
+	legendLabels - an array of labels for each plot
 """
-def timeSeries(graph, timeSeriesFunc, title, yLabel):
+def timeSeries(graph, timeSeriesFunc, title, yLabel, legendLabels):
+
 	# Categorize movie nodes by release year
 	movieBuckets = defaultdict(list)
 	for nodeId in graph.nodes():
@@ -38,19 +34,23 @@ def timeSeries(graph, timeSeriesFunc, title, yLabel):
 	years = movieBuckets.keys()
 	years.sort()
 	
-	yValues = []
+	yValues = [[] for i in legendLabels] if legendLabels else [[]]
 
 	# Step through each year and build up our graph and data over time
 	timeSeriesGraph = nx.DiGraph()
 	for year in years:
 		timeSeriesGraph = generateNextTimeStep(timeSeriesGraph, graph, 
 												movieBuckets[year], year)
-		yValues.append(timeSeriesFunc(timeSeriesGraph, movieBuckets[year]))
+		stepYValues = timeSeriesFunc(timeSeriesGraph, movieBuckets[year])
+		for i, y in enumerate(stepYValues):
+			yValues[i].append(y)
 
-	pyplot.plot(years, yValues)
+	for i, ys in enumerate(yValues):
+		pyplot.plot(years, ys, label=legendLabels[i] if legendLabels else "")
 	pyplot.xlabel("Year")
 	pyplot.ylabel(yLabel)
 	pyplot.title(title)
+	pyplot.legend()
 	pyplot.axis([years[0], years[-1], -1 if min(yValues) < 0 else 0, 1])
 	pyplot.show()
 
@@ -96,7 +96,8 @@ Parameters:
 	graphDict - a dict from names -> node ids for the given graph
 
 Returns: (graph, graphDict) cleaned up by removing all actors without
-race/gender info, and any movies that have not been released yet.
+race/gender info, and any movies that have not been released yet or that were
+released before 1980.
 -----------------------
 """
 def filterGraph(graph, graphDict):
@@ -105,7 +106,7 @@ def filterGraph(graph, graphDict):
 	# Remove all movies yet to be released
 	for nodeId in graph.nodes():
 		node = graph.node[nodeId]
-		if node['type'] == 'MOVIE' and node['releaseYear'] == 0:
+		if node['type'] == 'MOVIE' and node['releaseYear'] < 1980:
 			graphDict.pop("%s%i" % (node["title"], node["releaseYear"]), None)
 			graph.remove_node(nodeId)
 
@@ -126,6 +127,7 @@ Parameters:
 						given a graph and list of movies at a time step.
 	title - the title of the graph
 	yLabel - the y-axis label of the graph
+	legendLabels - an array of labels for each plot
 
 Returns: NA
 
@@ -133,14 +135,21 @@ Graphs a time series graph for the movie graph using the given time series
 function.
 --------------------------
 """
-def graphTimeSeries(timeSeriesFunc, title, yLabel):
+def graphTimeSeries(timeSeriesFunc, title, yLabel, legendLabels=None):
 	graph, graphDict = ReadMovieGraph.readMovieGraphFromFile()
 	graph, graphDict = filterGraph(graph, graphDict)
-	g = timeSeries(graph, timeSeriesFunc, title, yLabel)
+	g = timeSeries(graph, timeSeriesFunc, title, yLabel, legendLabels)
 
+def combine(graph, graphDict):
+	return [dGDiv(graph, graphDict), dRDiv(graph, graphDict),
+			mGDiv(graph, graphDict), mRDiv(graph, graphDict)]
 
 if __name__ == "__main__":
-	graphTimeSeries(avgDirectorRacialDiversityScore, "Director Racial Diversity Score", "Racial Diversity Score")
-
+	graphTimeSeries(combine, "Hollywood Diversity Over Time", "Diversity Score",
+					["Director gender", "Director racial", "Movie gender", "Movie racial"])
+	#graphTimeSeries(dGDiv, "Director Gender Diversity Score", "Gender Diversity Score")
+	#graphTimeSeries(dRDiv, "Director Racial Diversity Score", "Racial Diversity Score")
+	#graphTimeSeries(mGDiv, "Movie Gender Diversity Score", "Gender Diversity Score")
+	#graphTimeSeries(mRDiv, "Movie Racial Diversity Score", "Racial Diversity Score")
 
 
