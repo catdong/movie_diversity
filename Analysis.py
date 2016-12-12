@@ -263,6 +263,8 @@ def actorDirectorAssortativityHeuristic(graph, directorMovieGraph, graphDict):
 		if directorMovieGraph.node[mId]['type'] == 'MOVIE':
 			diredctorId = directorMovieGraph.predecessors(mId)[0]
 			directorRace = directorMovieGraph.node[diredctorId]['race']
+			if directorRace is None:
+				continue
 			directorGender = directorMovieGraph.node[diredctorId]['gender']
 			actorIds = [graphDict[actorName] for actorName in directorMovieGraph.node[mId]['actorNames'] if actorName in graphDict]
 			actorRaces = [graph.node[aId]['race'] for aId in actorIds]

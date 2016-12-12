@@ -103,6 +103,8 @@ def directorStats(directorMovieGraph, graph, graphDict):
 	for node in directorMovieGraph.nodes():
 		node_type = directorMovieGraph.node[node]["type"]
 		if node_type == "DIRECTOR" or node_type == "ACTOR-DIRECTOR":
+			if directorMovieGraph.node[node]['race'] is None or directorMovieGraph.node[node]['gender'] is None:
+				continue
 			directorName = directorMovieGraph.node[node]['name']
 			race_score = racialScoreForDirector(graph, graphDict[directorName])
 			gender_score = genderScoreForDirector(graph, graphDict[directorName])
