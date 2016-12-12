@@ -5,8 +5,10 @@ from graphFunctions import avgDirectorGenderDiversityScore as dGDiv
 from graphFunctions import avgDirectorRacialDiversityScore as dRDiv
 from graphFunctions import avgMovieGenderDiversityScore as mGDiv
 from graphFunctions import avgMovieRacialDiversityScore as mRDiv
+from graphFunctions import actorAssortativity
 from matplotlib import pyplot
 import networkx as nx
+import progressbar
 
 """
 FUNCTION: timeSeries
@@ -38,20 +40,22 @@ def timeSeries(graph, timeSeriesFunc, title, yLabel, legendLabels):
 
 	# Step through each year and build up our graph and data over time
 	timeSeriesGraph = nx.DiGraph()
-	for year in years:
+	bar = progressbar.ProgressBar()
+	for i in bar(range(len(years))):
+		year = years[i]
 		timeSeriesGraph = generateNextTimeStep(timeSeriesGraph, graph, 
 												movieBuckets[year], year)
 		stepYValues = timeSeriesFunc(timeSeriesGraph, movieBuckets[year])
-		for i, y in enumerate(stepYValues):
-			yValues[i].append(y)
+		for index, y in enumerate(stepYValues):
+			yValues[index].append(y)
 
 	for i, ys in enumerate(yValues):
 		pyplot.plot(years, ys, label=legendLabels[i] if legendLabels else "")
 	pyplot.xlabel("Year")
 	pyplot.ylabel(yLabel)
 	pyplot.title(title)
-	pyplot.legend()
-	pyplot.axis([years[0], years[-1], -1 if min(yValues) < 0 else 0, 1])
+	if legendLabels: pyplot.legend()
+	pyplot.axis([years[0], years[-1], -1 if min([min(l) for l in yValues]) < 0 else 0, 1])
 	pyplot.show()
 
 """
@@ -96,8 +100,7 @@ Parameters:
 	graphDict - a dict from names -> node ids for the given graph
 
 Returns: (graph, graphDict) cleaned up by removing all actors without
-race/gender info, and any movies that have not been released yet or that were
-released before 1980.
+race/gender info, and any movies that have not been released yet.
 -----------------------
 """
 def filterGraph(graph, graphDict):
@@ -106,7 +109,7 @@ def filterGraph(graph, graphDict):
 	# Remove all movies yet to be released
 	for nodeId in graph.nodes():
 		node = graph.node[nodeId]
-		if node['type'] == 'MOVIE' and node['releaseYear'] < 1980:
+		if node['type'] == 'MOVIE' and node['releaseYear'] == 0:
 			graphDict.pop("%s%i" % (node["title"], node["releaseYear"]), None)
 			graph.remove_node(nodeId)
 
@@ -127,7 +130,7 @@ Parameters:
 						given a graph and list of movies at a time step.
 	title - the title of the graph
 	yLabel - the y-axis label of the graph
-	legendLabels - an array of labels for each plot
+	legendLabels - an optional array of labels for each plot
 
 Returns: NA
 
@@ -145,11 +148,18 @@ def combine(graph, graphDict):
 			mGDiv(graph, graphDict), mRDiv(graph, graphDict)]
 
 if __name__ == "__main__":
+	"""
 	graphTimeSeries(combine, "Hollywood Diversity Over Time", "Diversity Score",
 					["Director gender", "Director racial", "Movie gender", "Movie racial"])
-	#graphTimeSeries(dGDiv, "Director Gender Diversity Score", "Gender Diversity Score")
-	#graphTimeSeries(dRDiv, "Director Racial Diversity Score", "Racial Diversity Score")
-	#graphTimeSeries(mGDiv, "Movie Gender Diversity Score", "Gender Diversity Score")
-	#graphTimeSeries(mRDiv, "Movie Racial Diversity Score", "Racial Diversity Score")
-
+	"""
+	"""
+	graphTimeSeries(dGDiv, "Director Gender Diversity Score", "Gender Diversity Score")
+	graphTimeSeries(dRDiv, "Director Racial Diversity Score", "Racial Diversity Score")
+	graphTimeSeries(mGDiv, "Movie Gender Diversity Score", "Gender Diversity Score")
+	graphTimeSeries(mRDiv, "Movie Racial Diversity Score", "Racial Diversity Score")
+	"""
+	
+	graphTimeSeries(actorAssortativity, "Actor-Actor Assortativity Over Time",
+		"Assortativity", ["Race", "Gender"])
+	
 
