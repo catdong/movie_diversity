@@ -1,0 +1,720 @@
+YEAR: 1916
+--------------
+["Intolerance: Love's Struggle Throughout the Ages"]
+-----------------
+
+[nan, -0.5000000000000001]
+--------------
+
+YEAR: 1920
+--------------
+['Over the Hill to the Poorhouse']
+-----------------
+
+[nan, -0.5000000000000001]
+--------------
+
+YEAR: 1925
+--------------
+['The Big Parade']
+-----------------
+
+[nan, -0.5000000000000001]
+--------------
+
+YEAR: 1929
+--------------
+['The Broadway Melody']
+-----------------
+
+[nan, -0.3500000000000003]
+--------------
+
+YEAR: 1930
+--------------
+["Hell's Angels"]
+-----------------
+
+[nan, -0.37142857142857133]
+--------------
+
+YEAR: 1932
+--------------
+['A Farewell to Arms']
+-----------------
+
+[nan, -0.33928571428571425]
+--------------
+
+YEAR: 1933
+--------------
+['42nd Street', 'She Done Him Wrong']
+-----------------
+
+[0.09999999999999983, -0.20955699352911922]
+--------------
+
+YEAR: 1934
+--------------
+['It Happened One Night']
+-----------------
+
+[0.12727272727272754, -0.12808460634547597]
+--------------
+
+YEAR: 1935
+--------------
+['Top Hat']
+-----------------
+
+[0.1428571428571421, -0.13981762917933116]
+--------------
+
+YEAR: 1936
+--------------
+['Modern Times', 'The Charge of the Light Brigade']
+-----------------
+
+[0.1529411764705866, -0.1483253588516748]
+--------------
+
+YEAR: 1937
+--------------
+['The Prisoner of Zenda', 'Snow White and the Seven Dwarfs']
+-----------------
+
+[0.15999999999999873, -0.15475255302435206]
+--------------
+
+YEAR: 1938
+--------------
+["Alexander's Ragtime Band", "You Can't Take It with You"]
+-----------------
+
+[0.1680000000000017, -0.16636759805178192]
+--------------
+
+YEAR: 1939
+--------------
+['Mr. Smith Goes to Washington', 'The Wizard of Oz', 'Gone with the Wind']
+-----------------
+
+[0.0933333333333326, -0.12382405288583792]
+--------------
+
+YEAR: 1940
+--------------
+['Boom Town', 'Rebecca', 'The Blue Bird', 'Pinocchio', 'Fantasia']
+-----------------
+
+[0.10185633575464054, -0.11450627952529127]
+--------------
+
+YEAR: 1941
+--------------
+['How Green Was My Valley']
+-----------------
+
+[0.10398796087283506, -0.11899040888440193]
+--------------
+
+YEAR: 1942
+--------------
+['Bambi', 'Casablanca']
+-----------------
+
+[0.10584918957012018, -0.10909090909090911]
+--------------
+
+YEAR: 1943
+--------------
+['A Guy Named Joe']
+-----------------
+
+[0.10748840291583558, -0.1137997432605903]
+--------------
+
+YEAR: 1944
+--------------
+['Bathing Beauty']
+-----------------
+
+[0.10809061488672979, -0.1172552853476719]
+--------------
+
+YEAR: 1945
+--------------
+['The Lost Weekend', 'The Valley of Decision', 'Spellbound', 'State Fair']
+-----------------
+
+[0.11219512195122355, -0.1326026685149891]
+--------------
+
+YEAR: 1946
+--------------
+['The Best Years of Our Lives', 'Duel in the Sun', "It's a Wonderful Life"]
+-----------------
+
+[0.11462829736210736, -0.12356902356902329]
+--------------
+
+YEAR: 1947
+--------------
+["Gentleman's Agreement", 'Tycoon', 'The Lady from Shanghai']
+-----------------
+
+[0.1167728237791901, -0.12000000000000005]
+--------------
+
+YEAR: 1948
+--------------
+['Red River', 'Open Secret', 'The Pirate']
+-----------------
+
+[0.11812865497076191, -0.12413292832207436]
+--------------
+
+YEAR: 1949
+--------------
+['She Wore a Yellow Ribbon', 'Sands of Iwo Jima']
+-----------------
+
+[0.10444444444444559, -0.11486078091630735]
+--------------
+
+YEAR: 1950
+--------------
+['Annie Get Your Gun']
+-----------------
+
+[0.10537634408602266, -0.11111640335125816]
+--------------
+
+YEAR: 1951
+--------------
+['Quo Vadis', 'Show Boat', 'A Streetcar Named Desire']
+-----------------
+
+[0.1073333333333311, -0.10217335153684405]
+--------------
+
+YEAR: 1952
+--------------
+['High Noon', 'Deadline - U.S.A.', 'The Greatest Show on Earth', "Singin' in the Rain"]
+-----------------
+
+[0.06756756756756699, -0.09835490410104457]
+--------------
+
+YEAR: 1953
+--------------
+['From Here to Eternity', 'The Beast from 20,000 Fathoms', 'The Robe', 'Niagara']
+-----------------
+
+[0.07024793388429929, -0.09962841578580761]
+--------------
+
+YEAR: 1954
+--------------
+['The Egyptian', 'On the Waterfront', '20,000 Leagues Under the Sea']
+-----------------
+
+[0.07165354330708806, -0.08325717021369212]
+--------------
+
+YEAR: 1955
+--------------
+['The Trouble with Harry']
+-----------------
+
+[0.07230769230769125, -0.08577989175004094]
+--------------
+
+YEAR: 1956
+--------------
+['Trapeze', 'Love Me Tender', 'Moby Dick']
+-----------------
+
+[0.061626514042328294, -0.07600106523680271]
+--------------
+
+YEAR: 1957
+--------------
+['12 Angry Men']
+-----------------
+
+[0.062049062049061326, -0.06826531484065747]
+--------------
+
+YEAR: 1958
+--------------
+['Cat on a Hot Tin Roof']
+-----------------
+
+[0.062459588775381505, -0.07069365797812022]
+--------------
+
+YEAR: 1959
+--------------
+['Solomon and Sheba', 'Some Like It Hot', "The Nun's Story"]
+-----------------
+
+[0.06417112299465208, -0.05100978087913851]
+--------------
+
+YEAR: 1960
+--------------
+['Elmer Gantry', 'Psycho', 'The Apartment']
+-----------------
+
+[0.06530089628681275, -0.05259889890028018]
+--------------
+
+YEAR: 1961
+--------------
+['Judgment at Nuremberg', 'West Side Story', 'The Hustler', 'The Misfits', 'Pocketful of Miracles']
+-----------------
+
+[0.05511526944307511, -0.05807649070214088]
+--------------
+
+YEAR: 1962
+--------------
+['The Man Who Shot Liberty Valance', "The Brain That Wouldn't Die", 'To Kill a Mockingbird', 'The Longest Day']
+-----------------
+
+[0.04004468248506195, -0.051975103223023275]
+--------------
+
+YEAR: 1963
+--------------
+['55 Days at Peking', "It's a Mad, Mad, Mad, Mad World", 'Hud', "Donovan's Reef", 'The Great Escape']
+-----------------
+
+[0.03389310896889778, -0.046335086401202104]
+--------------
+
+YEAR: 1964
+--------------
+['Mary Poppins', 'Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb', 'My Fair Lady', 'Nothing But a Man', 'The Fall of the Roman Empire']
+-----------------
+
+[0.06445707070706992, -0.03971940090097615]
+--------------
+
+YEAR: 1965
+--------------
+['A Charlie Brown Christmas', 'Doctor Zhivago', 'Major Dundee', 'The Greatest Story Ever Told', 'The Sound of Music']
+-----------------
+
+[0.056477566731874394, -0.036476554274349454]
+--------------
+
+YEAR: 1966
+--------------
+['Batman: The Movie', 'Torn Curtain', 'Harper', 'A Funny Thing Happened on the Way to the Forum']
+-----------------
+
+[0.04951190745062503, -0.027425853113926448]
+--------------
+
+YEAR: 1967
+--------------
+['Point Blank', 'In Cold Blood']
+-----------------
+
+[0.05022808652572886, -0.022176329390394236]
+--------------
+
+YEAR: 1968
+--------------
+['Night of the Living Dead', "Rosemary's Baby", 'Charly', 'Yours, Mine and Ours', "Hang 'Em High"]
+-----------------
+
+[0.04977660972404785, -0.027770859277708903]
+--------------
+
+YEAR: 1969
+--------------
+['Paint Your Wagon', 'The Wild Bunch', 'Butch Cassidy and the Sundance Kid', 'Sweet Charity', 'The Stewardesses', 'Midnight Cowboy', 'Topaz']
+-----------------
+
+[0.11465838067821249, -0.02309650543855587]
+--------------
+
+YEAR: 1970
+--------------
+['Patton', 'Woodstock', 'The Ballad of Cable Hogue', 'Catch-22', 'The Molly Maguires', 'Darling Lili', 'Beneath the Planet of the Apes', 'Beyond the Valley of the Dolls', 'Cotton Comes to Harlem']
+-----------------
+
+[0.32263259051477877, -0.021967384650578473]
+--------------
+
+YEAR: 1971
+--------------
+['Willy Wonka & the Chocolate Factory', 'Bananas', 'The Night Visitor', 'Fiddler on the Roof', 'Pink Narcissus', "Sweet Sweetback's Baadasssss Song", 'Escape from the Planet of the Apes', 'The Andromeda Strain', 'The French Connection']
+-----------------
+
+[0.3343395452681463, -0.02283012702824858]
+--------------
+
+YEAR: 1972
+--------------
+['1776', 'Conquest of the Planet of the Apes', 'Silent Running', 'The Godfather', 'Pink Flamingos', 'Everything You Always Wanted to Know About Sex * But Were Afraid to Ask']
+-----------------
+
+[0.33553354127311863, -0.019815724815724817]
+--------------
+
+YEAR: 1973
+--------------
+['Mean Streets', 'High Plains Drifter', 'Sleeper', 'American Graffiti', 'Pat Garrett & Billy the Kid', 'The Exorcist', 'Battle for the Planet of the Apes', 'The Sting']
+-----------------
+
+[0.31127053922703213, -0.021173793280645233]
+--------------
+
+YEAR: 1974
+--------------
+['The Conversation', 'The Godfather: Part II', 'The Texas Chain Saw Massacre', 'The Front Page', 'Young Frankenstein', 'Benji', 'Blazing Saddles']
+-----------------
+
+[0.29979879275653826, -0.026535296534995798]
+--------------
+
+YEAR: 1975
+--------------
+['Death Race 2000', 'Jaws', "One Flew Over the Cuckoo's Nest"]
+-----------------
+
+[0.2951501517212512, -0.029427971487473878]
+--------------
+
+YEAR: 1976
+--------------
+['Silent Movie', 'Family Plot', "Logan's Run", 'Robin and Marian', 'Rocky', 'The Bad News Bears', 'Network', 'Taxi Driver']
+-----------------
+
+[0.2670140174054988, -0.03202826947098512]
+--------------
+
+YEAR: 1977
+--------------
+['Sorcerer', 'Annie Hall', 'Julia', 'High Anxiety', 'Star Wars: Episode IV - A New Hope', 'Capricorn One', 'Kingdom of the Spiders', 'Close Encounters of the Third Kind', 'A Bridge Too Far', 'Damnation Alley', 'New York, New York', 'Eraserhead', 'The Kentucky Fried Movie', 'Exorcist II: The Heretic']
+-----------------
+
+[0.25898884143821527, -0.03551119825975034]
+--------------
+
+YEAR: 1978
+--------------
+['F.I.S.T.', 'Halloween', 'Animal House', 'The Last Waltz', 'Jaws 2', 'Superman', 'Days of Heaven', 'Grease', 'The Wiz', 'Alien Zone']
+-----------------
+
+[0.2606621773288442, -0.03546822446450691]
+--------------
+
+YEAR: 1979
+--------------
+['Escape from Alcatraz', 'The Black Stallion', 'All That Jazz', 'The Rose', 'Prophecy', 'The Black Hole', 'Star Trek: The Motion Picture', 'Meteor', 'Apocalypse Now', '1941', 'Penitentiary']
+-----------------
+
+[0.24689440993788664, -0.037901631355286874]
+--------------
+
+YEAR: 1980
+--------------
+["Coal Miner's Daughter", "Heaven's Gate", 'The Elephant Man', 'Ordinary People', 'The Shining', 'Dressed to Kill', 'Private Benjamin', 'The Long Riders', 'Star Wars: Episode V - The Empire Strikes Back', 'The Blue Lagoon', 'The Blues Brothers', 'The Fog', 'Superman II', 'Galaxina', 'Raging Bull', "Can't Stop the Music", 'Somewhere in Time', 'Airplane!', 'Caddyshack']
+-----------------
+
+[0.2436627057513309, -0.043241679176142]
+--------------
+
+YEAR: 1981
+--------------
+['The Howling', 'Modern Problems', 'Raiders of the Lost Ark', 'Nighthawks', 'The Four Seasons', 'History of the World: Part I', 'Reds', 'Dragonslayer', 'The Evil Dead', 'The Postman Always Rings Twice', 'Blow Out', 'The Legend of the Lone Ranger', 'Heartbeeps', 'Under the Rainbow', 'Roar', 'Stripes', 'Sphinx', 'Mommie Dearest', 'The Pursuit of D.B. Cooper', 'Graduation Day', 'Friday the 13th Part 2']
+-----------------
+
+[0.21680905102747663, -0.04806491034720833]
+--------------
+
+YEAR: 1982
+--------------
+['Cat People', 'The Beastmaster', 'Diner', 'Conan the Barbarian', 'Blade Runner', 'Firefox', 'Megaforce', 'Creepshow', 'Fast Times at Ridgemont High', 'The Best Little Whorehouse in Texas', 'Tootsie', 'The Ballad of Gregorio Cortez', 'Star Trek II: The Wrath of Khan', 'Friday the 13th Part III', 'Butterfly', 'Halloween III: Season of the Witch', 'First Blood', 'E.T. the Extra-Terrestrial', 'The Verdict', 'Poltergeist', 'The Thing', 'Jekyll and Hyde... Together Again']
+-----------------
+
+[0.1880743212219534, -0.048787333197540764]
+--------------
+
+YEAR: 1983
+--------------
+['Scarface', 'A Christmas Story', 'Flashdance', 'Twilight Zone: The Movie', 'The Dead Zone', 'Lone Wolf McQuade', 'Trading Places', 'WarGames', 'The Outsiders', 'The Right Stuff', "National Lampoon's Vacation", 'Love Letters', 'Star Wars: Episode VI - Return of the Jedi']
+-----------------
+
+[0.1754396232284929, -0.040370955710130704]
+--------------
+
+YEAR: 1984
+--------------
+['The Ice Pirates', 'Splash', 'Dune', 'Amadeus', 'The Cotton Club', 'The Toxic Avenger', 'Firestarter', 'C.H.U.D.', 'Indiana Jones and the Temple of Doom', 'A Nightmare on Elm Street', 'Repo Man', 'Star Trek III: The Search for Spock', 'Beverly Hills Cop', 'Body Double', 'Red Dawn', 'Gremlins', 'Police Academy', 'Footloose', 'Conan the Destroyer', 'Friday the 13th: The Final Chapter', 'The Karate Kid']
+-----------------
+
+[0.1687192026696586, -0.04504461926969992]
+--------------
+
+YEAR: 1985
+--------------
+["A Nightmare on Elm Street 2: Freddy's Revenge", 'The Last Dragon', 'Commando', 'Silverado', 'The Color Purple', 'Day of the Dead', 'Invasion U.S.A.', 'Out of Africa', 'Friday the 13th: A New Beginning', 'Krush Groove', 'Rambo: First Blood Part II', 'Back to the Future', 'Ladyhawke', 'Young Sherlock Holmes', 'Witness', 'Pale Rider', 'The Return of the Living Dead']
+-----------------
+
+[0.21515952532077848, -0.039198704272312]
+--------------
+
+YEAR: 1986
+--------------
+["She's Gotta Have It", 'Aliens', 'Howard the Duck', 'Invaders from Mars', 'Star Trek IV: The Voyage Home', "April Fool's Day", 'The Texas Chainsaw Massacre 2', 'Little Shop of Horrors', 'The Golden Child', "River's Edge", 'The Color of Money', 'Jason Lives: Friday the 13th Part VI', 'The Clan of the Cave Bear', 'Top Gun', 'Legal Eagles', 'The Wraith', '9\xc2\xbd Weeks', 'Stand by Me', 'Peggy Sue Got Married', 'Big Trouble in Little China']
+-----------------
+
+[0.20895078802288655, -0.04185211328260532]
+--------------
+
+YEAR: 1987
+--------------
+['Good Morning, Vietnam', 'Malone', 'Creepshow 2', 'La Bamba', 'The Princess Bride', 'The Lost Boys', '3 Men and a Baby', 'Wall Street', 'Spaceballs', 'From a Whisper to a Scream', 'Ishtar', 'American Ninja 2: The Confrontation', 'The Barbarians', 'The Brave Little Toaster', 'Predator', 'The Running Man', 'Radio Days', 'Fatal Attraction', 'Jaws: The Revenge', 'The Untouchables', 'Evil Dead II', 'Beverly Hills Cop II', 'Prison', 'Teen Wolf Too', 'A Nightmare on Elm Street 3: Dream Warriors', 'Hollywood Shuffle']
+-----------------
+
+[0.21566130749746867, -0.04475088753109388]
+--------------
+
+YEAR: 1988
+--------------
+['Rain Man', 'Scrooged', 'The Land Before Time', 'Rambo III', 'Die Hard', "Child's Play", 'My Stepmother Is an Alien', 'Twins', 'School Daze', 'Phantasm II', 'Bright Lights, Big City', 'Action Jackson', 'Young Guns', 'Bloodsport', 'Talk Radio', 'They Live', 'Friday the 13th Part VII: The New Blood', 'Halloween 4: The Return of Michael Myers', 'Dangerous Liaisons', 'Poltergeist III', 'Big', 'Lady in White', 'A Nightmare on Elm Street 4: The Dream Master', 'Midnight Run', 'Beetlejuice', 'Mystic Pizza', 'The Last Temptation of Christ']
+-----------------
+
+[0.22891140345740046, -0.03634030579054599]
+--------------
+
+YEAR: 1989
+--------------
+['Black Rain', 'Roger & Me', 'Glory', 'The Toxic Avenger Part II', 'A Nightmare on Elm Street 5: The Dream Child', 'Sex, Lies, and Videotape', 'Back to the Future Part II', 'Batman', 'Sea of Love', 'Warlock', 'Do the Right Thing', 'Star Trek V: The Final Frontier', "Bill & Ted's Excellent Adventure", 'Driving Miss Daisy', 'UHF', 'Pet Sematary', 'Tango & Cash', 'When Harry Met Sally...', 'Halloween 5', 'Indiana Jones and the Last Crusade', 'Road House', "We're No Angels", 'Troop Beverly Hills', 'The Abyss', 'New York Stories', 'Born on the Fourth of July', 'Major League', 'Dead Poets Society', 'Friday the 13th Part VIII: Jason Takes Manhattan']
+-----------------
+
+[0.2242826477349092, -0.031777649907984123]
+--------------
+
+YEAR: 1990
+--------------
+['Arachnophobia', 'Predator 2', 'Home Alone', 'Die Hard 2', 'Ghost', 'Dances with Wolves', 'The Godfather: Part III', "Child's Play 2", 'Total Recall', 'Tremors', 'Gremlins 2: The New Batch', 'Flatliners', 'Goodfellas', 'Days of Thunder', 'Metropolitan', 'Kindergarten Cop', 'Pretty Woman', 'Edward Scissorhands', "Mo' Better Blues", 'The Hunt for Red October', 'The Adventures of Ford Fairlane', 'Dick Tracy', "Marilyn Hotchkiss' Ballroom Dancing and Charm School", 'Midnight Cabaret', 'Spaced Invaders', 'Back to the Future Part III']
+-----------------
+
+[0.23141368960743644, -0.03168147255102194]
+--------------
+
+YEAR: 1991
+--------------
+['Straight Out of Brooklyn', 'Slacker', 'Hudson Hawk', 'Boyz n the Hood', 'Flight of the Intruder', 'Double Impact', 'Terminator 2: Judgment Day', 'Return to the Blue Lagoon', 'Hook', 'The Silence of the Lambs', 'My Girl', "Bill & Ted's Bogus Journey", 'The Prince of Tides', 'Robin Hood: Prince of Thieves', "Freddy's Dead: The Final Nightmare", 'Star Trek VI: The Undiscovered Country', 'My Own Private Idaho', 'Beastmaster 2: Through the Portal of Time', 'The Addams Family', 'White Fang', 'House Party 2', 'Showdown in Little Tokyo', 'Cape Fear', 'The Naked Gun 2\xc2\xbd: The Smell of Fear', 'Harley Davidson and the Marlboro Man', 'Teenage Mutant Ninja Turtles II: The Secret of the Ooze', 'The Fisher King', 'Stone Cold', 'The Doors']
+-----------------
+
+[0.23541421263546963, -0.034126052752117206]
+--------------
+
+YEAR: 1992
+--------------
+['Boomerang', 'Batman Returns', 'Hoffa', 'Alien 3', 'The Mighty Ducks', 'Death Becomes Her', 'The Muppet Christmas Carol', 'Glengarry Glen Ross', 'Lethal Weapon 3', 'Light Sleeper', 'Patriot Games', 'The Last of the Mohicans', 'A League of Their Own', 'Reservoir Dogs', 'Raising Cain', "Bram Stoker's Dracula", 'El Mariachi', 'Medicine Man', 'My Cousin Vinny', 'Memoirs of an Invisible Man', 'Army of Darkness', 'Unforgiven', 'The Bodyguard', 'Home Alone 2: Lost in New York', 'Aladdin', 'Malcolm X', 'Radio Flyer', 'A Few Good Men', "Wayne's World"]
+-----------------
+
+[0.23916496264620465, -0.030744146876380492]
+--------------
+
+YEAR: 1993
+--------------
+['The Nutcracker', 'The Adventures of Huck Finn', 'Menace II Society', 'Jurassic Park', 'Sugar Hill', 'Groundhog Day', 'The Age of Innocence', 'Warlock: The Armageddon', 'Nowhere to Run', 'Cool Runnings', 'Tombstone', 'Teenage Mutant Ninja Turtles III', 'Mrs. Doubtfire', 'Jason Goes to Hell: The Final Friday', 'Ruby in Paradise', 'Philadelphia', 'Alive', 'Poetic Justice', 'Hocus Pocus', 'Cliffhanger', 'Gettysburg', 'Only the Strong', 'Blood In, Blood Out', "Schindler's List", 'The Fugitive', "What's Eating Gilbert Grape", 'The Pelican Brief', 'Last Action Hero', 'Return of the Living Dead III', "What's Love Got to Do with It", 'Ed and His Dead Mother', 'The Firm', 'Loaded Weapon 1', 'Airborne', 'Dazed and Confused', 'True Romance', 'RoboCop 3', 'Excessive Force']
+-----------------
+
+[0.2650393060015661, -0.03238090525962376]
+--------------
+
+YEAR: 1994
+--------------
+['Little Women', 'Interview with the Vampire: The Vampire Chronicles', 'True Lies', 'The Lion King', 'New Nightmare', 'A Low Down Dirty Shame', 'PCU', 'Ed Wood', 'The Client', 'The Shawshank Redemption', 'The Mask', 'Clear and Present Danger', 'Pulp Fiction', 'Hoop Dreams', 'The Flintstones', 'Men of War', 'Rapa Nui', 'The Crow', 'The Santa Clause', 'Crooklyn', 'Ace Ventura: Pet Detective', 'Legends of the Fall', 'The River Wild', 'Police Academy: Mission to Moscow', 'Speed', 'Wolf', 'Disclosure', "Baby's Day Out", 'Ri\xc2\xa2hie Ri\xc2\xa2h', 'Star Trek: Generations', 'Bullets Over Broadway', 'The Inkwell', 'The Shadow', 'Forrest Gump', 'Clerks', '3 Ninjas Kick Back', 'Don Juan DeMarco', 'On Deadly Ground', 'Serial Mom', 'There Goes My Baby', 'Naked Gun 33 1/3: The Final Insult', 'Renaissance Man', 'Dumb & Dumber', 'Beverly Hills Cop III', 'Wyatt Earp']
+-----------------
+
+[0.278584237344031, -0.03728347422923949]
+--------------
+
+YEAR: 1995
+--------------
+['The Brothers McMullen', 'Friday', 'Toy Story', 'Outbreak', 'Virtuosity', 'Waterworld', 'Hackers', 'To Die For', 'Braveheart', 'The Jerky Boys', 'Bang', 'Die Hard with a Vengeance', 'Pocahontas', 'Apollo 13', 'Desperado', 'Get Shorty', 'The American President', 'The Bridges of Madison County', 'The Scarlet Letter', 'Clueless', 'Casino', 'Sense and Sensibility', 'Tales from the Hood', 'Mortal Kombat', 'Bad Boys', 'The Usual Suspects', 'Crimson Tide', 'Before Sunrise', 'Jade', 'Casper', 'Home for the Holidays', 'Cutthroat Island', 'The Prophecy', 'Tales from the Crypt: Demon Knight', 'Four Rooms', 'Kiss of Death', 'The Incredibly True Adventure of Two Girls in Love', 'Kids', 'Mallrats', 'Ace Ventura: When Nature Calls', 'Leaving Las Vegas', 'Money Train', 'Se7en', 'The Net', "Things to Do in Denver When You're Dead", 'Copycat', 'Congo', 'Tank Girl', 'Halloween: The Curse of Michael Myers', 'Nixon', 'Batman Forever', "Mr. Holland's Opus", 'First Knight', 'The Perez Family', 'Welcome to the Dollhouse', 'Species', 'Rob Roy', 'The Indian in the Cupboard', 'Under Siege 2: Dark Territory', 'Vampire in Brooklyn']
+-----------------
+
+[0.2795809205577223, -0.030585161150626854]
+--------------
+
+YEAR: 1996
+--------------
+['Trees Lounge', 'Eraser', 'The First Wives Club', 'Happy Gilmore', 'Romeo + Juliet', 'Kingpin', 'White Squall', 'Everyone Says I Love You', 'Get on the Bus', 'Jerry Maguire', 'Fled', 'Thinner', 'Flirting with Disaster', 'Executive Decision', 'Broken Arrow', 'Up Close & Personal', 'The Pallbearer', 'The Funeral', 'Eye for an Eye', 'DragonHeart', 'The English Patient', 'Escape from L.A.', 'The Nutty Professor', 'Striptease', 'That Thing You Do!', 'Space Jam', 'Independence Day', 'Scream', 'From Dusk Till Dawn', 'Mrs. Winterbourne', 'The Fan', 'Bound', 'Albino Alligator', 'Extreme Measures', 'The Rock', "She's the One", 'Beavis and Butt-Head Do America', 'A Time to Kill', 'Chain Reaction', 'The Glimmer Man', 'The Craft', 'Mission: Impossible', 'Flipper', 'Mars Attacks!', 'Tin Cup', 'Set It Off', 'Twister', 'Courage Under Fire', 'The Long Kiss Goodnight', 'Harriet the Spy', 'Maximum Risk', 'Sleepers', 'Spy Hard', 'Star Trek: First Contact', 'Bottle Rocket', 'Ghosts of Mississippi', 'Blood and Wine', 'Girl 6', 'A Thin Line Between Love and Hate', 'The Island of Dr. Moreau', 'Basquiat', 'Sgt. Bilko', 'Mary Reilly', 'Kama Sutra: A Tale of Love', 'Lone Star', 'The Mirror Has Two Faces', 'Bogus', 'Sling Blade', 'Jingle All the Way', 'Daylight', 'Phenomenon', 'The Ghost and the Darkness', 'My Fellow Americans', 'The Hunchback of Notre Dame', 'The Cable Guy', "Marvin's Room", 'Ransom', 'Multiplicity', 'Evita', 'Faithful', 'Freeway', 'The Last Big Thing', 'The Juror', 'Waiting for Guffman', 'City Hall', 'Swingers']
+-----------------
+
+[0.2781015228705908, -0.027072839888377647]
+--------------
+
+YEAR: 1997
+--------------
+['Anaconda', 'Steel', 'Kiss the Girls', "The Devil's Advocate", "The Devil's Own", 'Mortal Kombat: Annihilation', 'The Rainmaker', 'The Postman', 'In & Out', 'Speed 2: Cruise Control', 'Starship Troopers', 'Hurricane Streets', 'Air Bud', 'Oscar and Lucinda', 'Kundun', 'The Lost World: Jurassic Park', 'Money Talks', 'Men in Black', '8 Heads in a Duffel Bag', 'I Know What You Did Last Summer', 'Switchback', 'D\xc3\xa9j\xc3\xa0 Vu', 'Warriors of Virtue', 'George of the Jungle', 'A Simple Wish', 'Grosse Pointe Blank', 'Anastasia', 'Face/Off', 'Two Girls and a Guy', 'Seven Years in Tibet', 'The Sticky Fingers of Time', 'Wag the Dog', 'Good Will Hunting', 'Gattaca', 'Boogie Nights', 'I Married a Strange Person!', 'Sparkler', 'The Spanish Prisoner', "Cats Don't Dance", 'The Man Who Knew Too Little', 'Breakdown', 'Austin Powers: International Man of Mystery', 'Volcano', "Dante's Peak", 'Nothing to Lose', 'An Alan Smithee Film: Burn Hollywood Burn', 'Scream 2', 'Hav Plenty', 'Orgazmo', 'The Game', 'Shadow Conspiracy', 'The Jackal', 'Trekkies', 'Alien: Resurrection', 'Donnie Brasco', 'As Good as It Gets', 'Cop Land', 'Con Air', "Eve's Bayou", 'Selena', 'Flubber', 'Amistad', 'Batman & Robin', "Ulee's Gold", 'The Saint', 'Spawn', 'L.A. Confidential', 'First Love, Last Rites', 'Deconstructing Harry', 'Air Force One', 'The Edge', 'The Last Time I Committed Suicide', 'Mad City', 'The Apostle', 'Prefontaine', 'Turbulence', 'Dream with the Fishes', 'Snow White: A Tale of Terror', 'Jackie Brown', 'G.I. Jane', 'Absolute Power', 'Soul Food', 'Contact', 'Midnight in the Garden of Good and Evil', 'The Ice Storm', 'The Peacemaker', 'Titanic', 'Chasing Amy', 'Love Jones', "My Best Friend's Wedding", 'How to Be a Player', "I Love You, Don't Touch Me!", 'Liar Liar', 'Conspiracy Theory']
+-----------------
+
+[0.27792164117945184, -0.03283938690892604]
+--------------
+
+YEAR: 1998
+--------------
+['Lethal Weapon 4', 'Six Days Seven Nights', 'Beloved', 'Holy Man', 'The Truman Show', 'Ever After: A Cinderella Story', 'Small Soldiers', "Buffalo '66", 'Next Stop Wonderland', 'Enemy of the State', 'Antz', 'Mulan', 'Doctor Dolittle', 'The Love Letter', 'Half Baked', 'Deep Impact', 'Taxman', 'The Thin Red Line', 'Dead Man on Campus', 'American History X', 'Happiness', 'The Man in the Iron Mask', 'Chairman of the Board', 'One True Thing', "There's Something About Mary", 'I Still Know What You Did Last Summer', 'Rounders', 'What Dreams May Come', 'Celebrity', 'Mercury Rising', 'Saving Private Ryan', 'The X Files', 'The Big Hit', 'Pi', 'Vampires', 'Meet Joe Black', 'Sphere', 'Home Fries', 'The Object of My Affection', 'Out of Sight', 'Urban Legend', "You've Got Mail", 'The Siege', 'Armageddon', 'The Prince of Egypt', 'Six-String Samurai', 'Rushmore', 'Without Limits', "Can't Hardly Wait", 'The Rugrats Movie', 'Zero Effect', 'Desert Blue', 'Stepmom', "A Bug's Life", 'Naturally Native', 'Woo', 'The Velocity of Gary', 'Hard Rain', 'The Horse Whisperer', 'Wild Things', 'The Replacement Killers', 'Dancer, Texas Pop. 81', 'The Waterboy', 'The Magic Sword: Quest for Camelot', 'Gods and Monsters', 'Lost in Space', 'Very Bad Things', 'Star Trek: Insurrection', 'The Mask of Zorro', 'The Players Club', 'Fear and Loathing in Las Vegas', 'Slam', 'Living Out Loud', 'How Stella Got Her Groove Back', 'He Got Game', 'I Got the Hook Up', 'Bulworth', '54', 'A Night at the Roxbury', 'Mighty Joe Young', 'Meet the Deedles', 'Snake Eyes', 'Patch Adams', 'The Newton Boys', '20 Dates', 'The Faculty', 'Deep Rising', 'The Mighty', 'Shakespeare in Love', 'The Big Lebowski', 'A Civil Action', 'Hope Floats', 'Safe Men', 'Slums of Beverly Hills', 'Simon Birch', 'Broken Vessels', 'Practical Magic', 'Blade']
+-----------------
+
+[0.26685907865725916, -0.03304507460371237]
+--------------
+
+YEAR: 1999
+--------------
+['Superstar', 'Baby Geniuses', 'Pushing Tin', 'Brokedown Palace', 'Idle Hands', 'Snow Falling on Cedars', 'The Matrix', 'Jawbreaker', 'The Thomas Crown Affair', 'Girl, Interrupted', 'Mystery Men', 'Flawless', 'Molly', 'Universal Soldier: The Return', 'In Too Deep', 'The Wood', "But I'm a Cheerleader", 'Blue Streak', 'Galaxy Quest', 'Double Jeopardy', 'The Iron Giant', 'At First Sight', 'American Pie', 'Light It Up', 'Stir of Echoes', "She's All That", 'Smiling Fish & Goat on Fire', 'Ride with the Devil', 'Just Looking', 'Magnolia', 'Runaway Bride', 'Stigmata', 'The Talented Mr. Ripley', 'Love Stinks', 'Mumford', 'The Woman Chaser', 'Go', 'Bringing Out the Dead', 'Blast from the Past', 'Play It to the Bone', 'The Muse', "Trippin'", "Doug's 1st Movie", 'Bicentennial Man', 'Dreaming of Joseph Lees', '200 Cigarettes', 'Summer of Sam', 'Tumbleweeds', 'Dogma', 'House on Haunted Hill', 'The Adventures of Elmo in Grouchland', 'The Limey', 'Beyond the Mat', 'Bats', 'Election', 'Fight Club', 'Instinct', 'The Insider', 'The Corruptor', "The Astronaut's Wife", 'The Basket', 'The Sixth Sense', 'For Love of the Game', '10 Things I Hate About You', 'Anna and the King', 'Muppets from Space', 'Any Given Sunday', 'Crazy in Alabama', 'The Best Man', 'Analyze This', 'The Hurricane', 'Austin Powers: The Spy Who Shagged Me', 'Twin Falls Idaho', 'Cradle Will Rock', 'Dudley Do-Right', 'A Dog of Flanders', 'The Story of Us', 'The Blair Witch Project', 'The Haunting', "Boys Don't Cry", 'Toy Story 2', 'Bowfinger', 'Random Hearts', 'Foolish', 'Limbo', 'Payback', 'Wing Commander', 'The Out-of-Towners', "Jesus' Son", 'Star Wars: Episode I - The Phantom Menace', 'Chill Factor', 'Held Up', 'End of Days', 'Entrapment', 'South Park: Bigger Longer & Uncut', 'Arlington Road', 'In Dreams', 'Three Kings', 'Deuce Bigalow: Male Gigolo', 'The Virgin Suicides', 'Office Space', 'Happy, Texas', 'Drive Me Crazy', 'The Omega Code', 'Inspector Gadget', "Angela's Ashes", 'Speedway Junky', 'Anywhere But Here', 'The Bone Collector', "The General's Daughter", 'The Loss of Sexual Innocence', 'The Deep End of the Ocean', 'Being John Malkovich', 'Message in a Bottle', 'Big Daddy', 'Lake Placid', 'The Green Mile', 'Varsity Blues', 'Breakfast of Champions', 'The 13th Warrior', 'Fantasia 2000', 'American Beauty', 'Cruel Intentions', 'Detroit Rock City', 'Outside Providence', 'A Walk on the Moon', 'Wild Wild West', 'My Favorite Martian', 'Deep Blue Sea', 'The Rage: Carrie 2', 'Edtv']
+-----------------
+
+[0.2656937123449989, -0.03861611101817223]
+--------------
+
+YEAR: 2000
+--------------
+['28 Days', 'Love & Basketball', 'The Adventures of Rocky & Bullwinkle', 'The In Crowd', 'Little Nicky', 'Traffic', 'Tadpole', 'Chuck & Buck', 'The Contender', 'Pay It Forward', 'The 6th Day', 'Here on Earth', 'Memento', 'Thirteen Days', 'My Dog Skip', 'Gone in Sixty Seconds', 'Me, Myself & Irene', 'The Replacements', 'Songcatcher', 'Dinner Rush', 'Frequency', 'Snow Day', 'The Original Kings of Comedy', 'Romeo Must Die', 'Supernova', 'Urban Legends: Final Cut', 'Michael Jordan to the Max', 'Loser', 'Coyote Ugly', 'Hollow Man', 'Return to Me', 'The Road to El Dorado', 'Dracula 2000', 'The Crew', 'What Planet Are You From?', 'Space Cowboys', 'Lisa Picard Is Famous', 'Battlefield Earth', 'Whipped', 'Woman on Top', 'Brother', 'Finding Forrester', 'The Whole Nine Yards', 'Men of Honor', 'Bedazzled', "Charlie's Angels", 'Bring It On', 'Urbania', 'Erin Brockovich', 'The Way of the Gun', 'Unbreakable', 'The Legend of Bagger Vance', 'Next Friday', 'Drowning Mona', 'Vertical Limit', 'Pollock', 'Dinosaur', 'Small Time Crooks', 'Gossip', 'Get Carter', 'How the Grinch Stole Christmas', 'Ready to Rumble', 'Everything Put Together', 'Whatever It Takes', 'The Broken Hearts Club: A Romantic Comedy', 'Book of Shadows: Blair Witch 2', 'Pitch Black', 'Almost Famous', 'The Young Unknowns', 'Shanghai Noon', 'Mercy Streets', 'Gun Shy', 'What Lies Beneath', "The Emperor's New Groove", 'The Art of War', "Big Momma's House", 'Digimon: The Movie', 'The Watcher', 'You Can Count on Me', 'The Ladies Man', 'The Kid', 'Mission: Impossible II', 'Requiem for a Dream', 'Nutty Professor II: The Klumps', 'Wonder Boys', 'Red Planet', 'Groove', 'Miss Congeniality', 'Boiler Room', 'Meet the Parents', 'George Washington', 'Screwed', 'The Cell', 'Where the Heart Is', 'Bamboozled', "Dude, Where's My Car?", 'Duets', 'Gladiator', 'All the Pretty Horses', 'Autumn in New York', 'Cast Away', 'I Dreamed of Africa', 'Final Destination', 'Reindeer Games', '102 Dalmatians', 'Down to You', 'X-Men', 'Keeping the Faith', 'Highlander: Endgame', 'Proof of Life', '3 Strikes', 'Mission to Mars', 'Boys and Girls', 'Center Stage', 'The Skulls', 'Remember the Titans', 'American Psycho', 'Bless the Child', 'The Family Man', 'The Patriot', 'Scream 3', 'Lost Souls', 'An Everlasting Piece', 'The Beach', 'Road Trip', 'Titan A.E.', "Isn't She Great", 'Best in Show', 'The Flintstones in Viva Rock Vegas', 'The Yards', 'The Perfect Storm', 'Luminarias', 'The Specials', 'The Next Best Thing', 'The Tigger Movie', 'What Women Want']
+-----------------
+
+[0.26045478171440545, -0.03612827002019809]
+--------------
+
+YEAR: 2001
+--------------
+['Legally Blonde', 'American Desi', 'Heartbreakers', 'The Fast and the Furious', 'Freddy Got Fingered', 'Thir13en Ghosts', 'Ali', 'The Royal Tenenbaums', 'Kate & Leopold', 'The Mummy Returns', 'Crazy/Beautiful', 'Someone Like You...', 'Novocaine', 'Moulin Rouge!', 'In the Bedroom', 'The Others', 'Save the Last Dance', 'Dogtown and Z-Boys', 'Double Take', 'Pearl Harbor', 'Lovely & Amazing', 'Joe Dirt', 'Tomcats', 'Down and Out with the Dolls', 'Baby Boy', 'Glitter', 'Joe Somebody', 'A Beautiful Mind', 'Shallow Hal', 'Saving Silverman', 'The Animal', 'The Glass House', 'Black Knight', 'How High', 'L.I.E.', 'Harvard Man', 'Jimmy Neutron: Boy Genius', 'On the Line', 'Exit Wounds', 'Head Over Heels', 'The Forsaken', 'Monsters, Inc.', 'Bully', 'Get Over It', 'A.I. Artificial Intelligence', 'Donnie Darko', 'Behind Enemy Lines', 'I Am Sam', 'Ghosts of Mars', 'Corky Romano', 'Jason X', 'The Majestic', 'Texas Rangers', 'The Wash', 'Domestic Disturbance', 'Scary Movie 2', 'Not Another Teen Movie', 'Jurassic Park III', 'Brigham City', 'The Other Side of Heaven', 'See Spot Run', 'Thirteen Conversations About One Thing', 'Antitrust', "America's Sweethearts", 'Pootie Tang', 'Training Day', 'Final Fantasy: The Spirits Within', 'Impostor', 'Swordfish', 'Osmosis Jones', 'Blow', 'Planet of the Apes', 'Hardball', "Max Keeble's Big Move", 'Session 9', 'Angel Eyes', 'Bandits', 'American Outlaws', 'Atlantis: The Lost Empire', "Don't Say a Word", 'The Business of Strangers', "Monster's Ball", 'Joy Ride', 'The Princess Diaries', 'Lara Croft: Tomb Raider', 'American Pie 2', 'Summer Catch', 'Along Came a Spider', 'Monkeybone', 'Soul Survivors', 'The Shipping News', "A Knight's Tale", 'Kissing Jessica Stein', 'The Pledge', 'From Hell', 'Megiddo: The Omega Code 2', "The Caveman's Valentine", 'The One', 'Never Again', "Recess: School's Out", 'The Last Castle', "Say It Isn't So", "What's the Worst That Could Happen?", 'The Mexican', 'Knockaround Guys', 'Made', '3000 Miles to Graceland', 'Black Hawk Down', 'Enemy at the Gates', 'Sweet November', 'Jay and Silent Bob Strike Back', 'The Tailor of Panama', 'Out Cold', "Ocean's Eleven", 'Spy Kids', 'Serendipity', 'The Believer', 'The Brothers', 'The Score', 'Two Can Play That Game', 'O', 'Madison', 'Riding in Cars with Boys', 'The Lost Skeleton of Cadavra', 'Life as a House', 'Frailty', 'K-PAX', '15 Minutes', 'Valentine', 'Rush Hour 2', 'Hedwig and the Angry Inch', 'Super Troopers', 'Dr. Dolittle 2', 'Bubble Boy', 'Cats & Dogs', 'Rock Star', 'The Jimmy Show', 'Shrek', 'Vanilla Sky', 'Driven', 'Down to Earth', 'Hearts in Atlantis', 'The Curse of the Jade Scorpion', 'Ghost World']
+-----------------
+
+[0.25421911146114606, -0.02984874433797476]
+--------------
+
+YEAR: 2002
+--------------
+['Tuck Everlasting', 'The Dangerous Lives of Altar Boys', 'They', 'Spirit: Stallion of the Cimarron', 'Time Changer', 'Clockstoppers', 'The Santa Clause 2', 'Like Mike', 'Crop Circles: Quest for Truth', 'Moonlight Mile', 'Poolhall Junkies', 'Stealing Harvard', 'Stuart Little 2', 'Far from Heaven', 'Drumline', 'Friday After Next', 'Changing Lanes', 'Big Fat Liar', 'Cypher', 'The Mothman Prophecies', 'Crossroads', 'Bad Company', 'Catch Me If You Can', 'Signs', 'Jackass: The Movie', 'Brown Sugar', 'The Bourne Identity', 'Halloween: Resurrection', 'Secretary', 'Undisputed', 'The New Guy', 'Unfaithful', 'John Q', 'One Hour Photo', 'Spun', 'xXx', 'Sex with Strangers', 'Deuces Wild', 'Darkness', '8 Mile', 'Interview with the Assassin', 'Men in Black II', 'About Schmidt', 'Divine Secrets of the Ya-Ya Sisterhood', 'Manito', 'Auto Focus', 'Minority Report', "Hart's War", 'Gerry', 'Sweet Home Alabama', 'The Salton Sea', 'The Lord of the Rings: The Two Towers', 'Two Weeks Notice', 'Equilibrium', 'I Spy', '40 Days and 40 Nights', 'White Oleander', 'Phone Booth', 'The Sum of All Fears', 'Hey Arnold! The Movie', 'Lilo & Stitch', 'Funny Ha Ha', 'City of Ghosts', 'Boat Trip', 'Full Frontal', 'Blue Car', 'Big Trouble', 'Collateral Damage', 'Road to Perdition', 'Star Trek: Nemesis', 'The Hours', 'City by the Sea', 'The Country Bears', 'The Adventures of Pluto Nash', 'Hollywood Ending', 'Star Wars: Episode II - Attack of the Clones', 'My Big Fat Greek Wedding', 'Welcome to Collinwood', 'Spider-Man', 'Swimfan', 'Ice Age', 'The Banger Sisters', 'Blood Work', 'The Wild Thornberrys Movie', 'Blue Crush', 'Fabled', 'Murder by Numbers', 'The Rules of Attraction', 'Sunshine State', 'Ballistic: Ecks vs. Sever', 'Windtalkers', 'We Were Soldiers', 'Treasure Planet', 'Kung Pow: Enter the Fist', 'The Master of Disguise', 'People I Know', 'Life or Something Like It', 'Punch-Drunk Love', 'Spy Kids 2: Island of Lost Dreams', 'Eye See You', 'May', 'Frida', 'Abandon', 'Enough', 'Real Women Have Curves', 'High Crimes', 'All About the Benjamins', 'Return to Never Land', 'The Rookie', 'Undercover Brother', 'Maid in Manhattan', 'Dragonfly', 'The Tuxedo', 'Mr. Deeds', 'Martin Lawrence Live: Runteldat', 'Jonah: A VeggieTales Movie', 'The Business of Fancydancing', 'The Slaughter Rule', 'Bubba Ho-Tep', 'A Walk to Remember', 'Queen of the Damned', 'Civil Brand', 'Eight Legged Freaks', 'Blade II', 'Confessions of a Dangerous Mind', 'The Good Girl', 'Juwanna Mann', 'Reign of Fire', 'Barbershop', 'Dark Blue', 'Insomnia', 'Sorority Boys', 'Scooby-Doo', 'Rollerball', '25th Hour', 'Gangs of New York', 'The Time Machine', "The Emperor's Club", 'Analyze That', 'Austin Powers in Goldmember', 'Stolen Summer', 'The Sweetest Thing', 'The Scorpion King', 'Igby Goes Down', 'Adaptation.', 'Narc', 'Antwone Fisher', 'Ghost Ship', 'The Singles Ward', 'Chicago', 'Panic Room', 'Highway', 'Better Luck Tomorrow']
+-----------------
+
+[0.2523700944216684, -0.03173656259222235]
+--------------
+
+YEAR: 2003
+--------------
+['Bad Boys II', 'The League of Extraordinary Gentlemen', 'Pirates of the Caribbean: The Curse of the Black Pearl', "Something's Gotta Give", 'Thirteen', 'Latter Days', 'Once Upon a Time in Mexico', 'The Order', 'How to Deal', 'Lara Croft Tomb Raider: The Cradle of Life', 'Master and Commander: The Far Side of the World', 'A Mighty Wind', 'Gothika', 'Head of State', 'The Lizzie McGuire Movie', 'Bulletproof Monk', 'American Splendor', 'The Station Agent', 'Bringing Down the House', 'Final Destination 2', "My Boss's Daughter", '21 Grams', 'The Book of Mormon Movie, Volume 1: The Journey', 'House of Sand and Fog', 'American Wedding', 'The Italian Job', 'The Matrix Reloaded', 'Holes', 'S.W.A.T.', 'I Love Your Work', 'Out of Time', '11:14', 'House of 1000 Corpses', 'Gory Gory Hallelujah', 'Lost in Translation', 'Grand Theft Parsons', 'Dumb and Dumberer: When Harry Met Lloyd', 'Honey', 'The Real Cancun', 'Finding Nemo', 'Wonderland', 'Saints and Soldiers', 'Stuck on You', 'Cheaper by the Dozen', 'Freaky Friday', 'The Singing Detective', 'Seabiscuit', 'Bruce Almighty', 'Freddy vs. Jason', 'Cradle 2 the Grave', 'Just Married', 'Duplex', 'Jeepers Creepers II', 'Wrong Turn', 'School of Rock', 'Malevolence', 'Kill Bill: Vol. 1', 'Intolerable Cruelty', 'Shanghai Knights', 'Old School', 'A Man Apart', 'This Thing of Ours', 'Alex & Emma', 'Terminator 3: Rise of the Machines', 'Bad Santa', 'What a Girl Wants', 'Big Fish', 'DysFunktional Family', 'Pieces of April', 'Hulk', 'Confidence', 'The Battle of Shaker Heights', 'Chasing Papi', 'Identity', 'Party Monster', 'Mona Lisa Smile', 'Timeline', 'Dickie Roberts: Former Child Star', 'The Lord of the Rings: The Return of the King', "Charlie's Angels: Full Throttle", 'Beyond Borders', 'Shade', 'Agent Cody Banks', 'Paycheck', 'Legally Blonde 2: Red, White & Blonde', 'Flywheel', 'Daddy Day Care', 'The Jungle Book 2', 'Darkness Falls', 'Under the Tuscan Sun', 'Dreamcatcher', 'Masked and Anonymous', 'Northfork', 'Tarnation', 'Anything Else', 'The Last Samurai', 'Gods and Generals', 'The R.M.', 'Elf', 'The Life of David Gale', "Malibu's Most Wanted", 'Sinbad: Legend of the Seven Seas', 'From Justin to Kelly', 'Monster', 'The Brown Bunny', 'The Rundown', 'Scary Movie 3', 'Kangaroo Jack', 'Open Range', 'Tears of the Sun', 'Cold Mountain', 'The Hunted', 'The Work and the Story', 'Marci X', 'The Core', 'The Hebrew Hammer', 'Hollywood Homicide', 'The Mudge Boy', 'A Guy Thing', 'Spy Kids 3-D: Game Over', 'Gigli', 'The Cooler', 'Secondhand Lions', 'How to Lose a Guy in 10 Days', 'The Haunted Mansion', 'Good Boy!', 'Open Water', 'All the Real Girls', 'Tupac: Resurrection', 'The Cat in the Hat', 'Rugrats Go Wild', 'Radio', '2 Fast 2 Furious', 'Shattered Glass', 'Mystic River']
+-----------------
+
+[0.24493126168357138, -0.028976604013628476]
+--------------
+
+YEAR: 2004
+--------------
+['Cellular', 'Primer', 'Around the World in 80 Days', 'Catwoman', 'You Got Served', 'Christmas with the Kranks', 'The Butterfly Effect', 'Without a Paddle', 'After the Sunset', "Teacher's Pet", 'A Cinderella Story', 'The Work and the Glory', 'Paparazzi', 'The Prince and Me', "My Baby's Daddy", 'An American Girl Holiday', 'Welcome to Mooseport', 'EuroTrip', 'Bobby Jones: Stroke of Genius', 'On the Downlow', 'Envy', 'Brave New Girl', 'Ladder 49', 'Exorcist: The Beginning', 'Meet the Fockers', 'Win a Date with Tad Hamilton!', 'The Princess Diaries 2: Royal Engagement', 'Collateral', 'The Terminal', 'Peace, Propaganda & the Promised Land', 'Riding Giants', 'Along Came Polly', 'Eternal Sunshine of the Spotless Mind', 'Starsky & Hutch', 'The Grudge', 'Chasing Liberty', 'Before Sunset', 'Mean Girls', 'The Notebook', 'Raising Helen', 'Suspect Zero', 'Troy', 'Godsend', 'The Bourne Supremacy', 'Hidalgo', 'AVP: Alien vs. Predator', 'House of D', 'Blade: Trinity', 'Spider-Man 2', 'Fighting Tommy Riley', 'Kill Bill: Vol. 2', 'Anacondas: The Hunt for the Blood Orchid', 'Soul Plane', 'The Passion of the Christ', 'Vanity Fair', 'Ray', 'Dodgeball: A True Underdog Story', 'Secret Window', 'The Ladykillers', 'Mindhunters', 'Short Cut to Nirvana: Kumbh Mela', 'My Date with Drew', 'Sky Captain and the World of Tomorrow', 'D.E.B.S.', 'Against the Ropes', 'Finding Neverland', 'Saving Face', 'The Village', 'De-Lovely', 'The Incredibles', 'Guiana 1838', 'George and the Dragon', 'The Manchurian Candidate', 'Eulogy', 'Little Black Book', 'The Girl Next Door', 'Fahrenheit 9/11', 'Garden State', 'I, Robot', 'Harold & Kumar Go to White Castle', 'The SpongeBob SquarePants Movie', 'Ella Enchanted', 'Miracle', 'Agent Cody Banks 2: Destination London', 'Garfield', 'Napoleon Dynamite', 'Team America: World Police', 'Jersey Girl', 'Raise Your Voice', "Breakin' All the Rules", 'Saved!', 'A Home at the End of the World', 'Walking Tall', '13 Going on 30', 'Anchorman: The Legend of Ron Burgundy', 'White Chicks', 'Hellboy', 'National Treasure', 'New York Minute', 'The Stepford Wives', 'The Whole Ten Yards', 'Shark Tale', 'The Day After Tomorrow', 'The Merchant of Venice', 'Shall We Dance', 'The Big Bounce', 'On the Outs', 'Catch That Kid', 'The Alamo', 'Torque', 'Man on Fire', 'The Last Shot', 'Home on the Range', 'Super Size Me', 'Barbershop 2: Back in Business', 'Sleepover', 'The Polar Express', 'Mean Creek', 'The Life Aquatic with Steve Zissou', 'What the #$*! Do We (K)now!?', 'November', 'I Heart Huckabees', 'Connie and Carla', "Ocean's Twelve", 'Scooby-Doo 2: Monsters Unleashed', 'Spanglish', 'Shrek 2', 'Million Dollar Baby', 'Johnson Family Vacation', 'The Aviator', 'Wicker Park', 'Woman Thou Art Loosed', 'Beyond the Sea', 'Imaginary Heroes', 'Club Dread', 'Mr 3000', 'The Chronicles of Riddick', 'Kinsey', 'Dawn of the Dead', 'Saw', 'The Cookout', 'Flight of the Phoenix', 'Closer', 'Proud', 'In Good Company', 'The Punisher', 'Birth', '50 First Dates', 'Fat Albert', 'Sideways']
+-----------------
+
+[0.250258146487419, -0.026084236021759147]
+--------------
+
+YEAR: 2005
+--------------
+['Guess Who', 'The Dukes of Hazzard', 'Fever Pitch', 'Thumbsucker', 'The Ring Two', 'The Call of Cthulhu', 'The Greatest Game Ever Played', 'Hostel', 'Kingdom of Heaven', 'Rent', 'The Wendell Baker Story', 'A History of Violence', "Pooh's Heffalump Movie", 'BloodRayne', 'The Blood of My Brother', 'Derailed', 'The Island', 'Assault on Precinct 13', 'Mutual Appreciation', 'Flightplan', "Dave Chappelle's Block Party", 'Supercross', 'The Game of Their Lives', 'The Longest Yard', 'The Work and the Glory II: American Zion', 'xXx: State of the Union', 'Batman Begins', 'Harsh Times', 'Ice Princess', 'The Legend of Zorro', 'The Adventures of Sharkboy and Lavagirl 3-D', 'Nanny McPhee', 'The Upside of Anger', 'Sky High', 'Hoodwinked!', 'Hard Candy', 'The Matador', "The Devil's Rejects", 'Four Brothers', 'Trust the Man', 'Charlie and the Chocolate Factory', 'The Skeleton Key', '\xc3\x86on Flux', 'The Wedding Date', 'Star Wars: Episode III - Revenge of the Sith', 'The Brothers Grimm', 'Corpse Bride', 'Serenity', 'Racing Stripes', 'The Mongol King', 'Sin City', 'Walk the Line', 'Chicken Little', 'Mr. & Mrs. Smith', 'End of the Spear', 'The Perfect Man', 'The Weather Man', 'Shopgirl', 'Into the Blue', 'Kiss Kiss Bang Bang', 'The 40-Year-Old Virgin', 'Cry_Wolf', 'Underclassman', 'The Exorcism of Emily Rose', 'Elizabethtown', 'Transamerica', 'The Lost City', 'Miss Congeniality 2: Armed and Fabulous', 'The Puffy Chair', 'Feast', 'Rize', 'The Ballad of Jack and Rose', 'Syriana', 'Hide and Seek', "The Hitchhiker's Guide to the Galaxy", 'Me and You and Everyone We Know', 'Lord of War', 'Mad Hot Ballroom', 'The Family Stone', 'Robots', 'Stealth', 'Coach Carter', 'North Country', 'The Amityville Horror', 'Hustle & Flow', 'My Big Fat Independent Movie', 'Are We There Yet?', 'Dark Water', 'Boogeyman', 'Inside Deep Throat', 'Because of Winn-Dixie', 'The Motel', 'Cinderella Man', 'The Jacket', 'Memoirs of a Geisha', 'Hostage', 'The New World', 'Good Night, and Good Luck.', 'The Producers', 'Insomnia Manica', "King's Ransom", 'The Salon', 'Be Cool', 'Boynton Beach Club', 'Red Eye', 'Beauty Shop', 'Cursed', 'The Chronicles of Narnia: The Lion, the Witch and the Wardrobe', 'Dreamer: Inspired by a True Story', 'Roll Bounce', 'Slow Burn', 'The Californians', 'Must Love Dogs', 'Brokeback Mountain', 'V for Vendetta', 'Diary of a Mad Black Woman', 'The Chumscrubber', 'Thank You for Smoking', 'Goal! The Dream Begins', 'Zathura: A Space Adventure', 'A Lot Like Love', 'Down in the Valley', 'The Quiet', 'Romance & Cigarettes', 'Madagascar', 'Lords of Dogtown', 'The Cave', 'The Sisterhood of the Traveling Pants', 'Deuce Bigalow: European Gigolo', "Get Rich or Die Tryin'", 'Forty Shades of Blue', 'The Great Raid', 'Fun with Dick and Jane', 'Murderball', 'An Unfinished Life', 'Herbie Fully Loaded', 'Cheaper by the Dozen 2', 'War of the Worlds', 'Winter Passing', 'Son of the Mask', 'Hitch', 'Wal-Mart: The High Cost of Low Price', 'Just Like Heaven', 'Duma', 'The Helix... Loaded', 'Kicking & Screaming', 'Lonesome Jim', 'The Squid and the Whale', 'Waiting...', 'Edmond', 'Man of the House', 'Saw II']
+-----------------
+
+[0.2600276328468118, -0.027321697464193277]
+--------------
+
+YEAR: 2006
+--------------
+['Farce of the Penguins', "Charlotte's Web", 'Fur: An Imaginary Portrait of Diane Arbus', 'Sherrybaby', 'Bella', "Love's Abiding Joy", 'Click', 'Step Up', 'ATL', 'Flags of Our Fathers', 'Little Big Top', 'A Good Year', 'Eragon', 'Stranger Than Fiction', 'Copying Beethoven', 'Bobby', 'Last Holiday', 'For Your Consideration', 'Eye of the Dolphin', 'The Devil Wears Prada', 'American Dreamz', 'The Fountain', 'Rocky Balboa', 'Eight Below', 'The Hills Have Eyes', 'Flicka', 'Idiocracy', 'Stay Alive', 'A Prairie Home Companion', 'Wordplay', 'Dreamgirls', 'Underworld: Evolution', 'Wristcutters: A Love Story', 'The Holiday', 'Jackass Number Two', 'The Fast and the Furious: Tokyo Drift', '10th & Wolf', 'The Prestige', 'The Ant Bully', 'The Tooth Fairy', 'Glory Road', 'Over the Hedge', 'Happy Feet', 'Old Joy', 'Facing the Giants', 'Night at the Museum', 'Scary Movie 4', 'The Naked Ape', 'Pulse', 'Shortbus', 'Half Nelson', 'DOA: Dead or Alive', 'The Da Vinci Code', "Valley of the Heart's Delight", 'Aquamarine', 'Journey from the Fall', 'One Night with the King', "Madea's Family Reunion", 'Black Christmas', 'United 93', 'Infamous', 'Come Early Morning', 'Littleman', 'The Departed', 'The Pursuit of Happyness', 'Letters from Iwo Jima', 'The Texas Chainsaw Massacre: The Beginning', "Grandma's Boy", 'The Lake House', 'Keeping Up with the Steins', 'High School Musical', 'Marie Antoinette', 'Special', 'Quincea\xc3\xb1era', 'Take the Lead', 'Jimmy and Judy', 'The Ultimate Gift', 'The Good German', 'Friends with Money', 'Lady in the Water', 'Just My Luck', 'Deck the Halls', 'Hatchet', 'The Grudge 2', 'Running with Scissors', 'The Astronaut Farmer', 'The Nativity Story', '300', 'The Pink Panther', 'I Want Someone to Eat Cheese With', 'Who Killed the Electric Car?', 'Little Children', 'Little Miss Sunshine', 'The Trials of Darryl Hunt', 'Saw III', 'Cars', 'Akeelah and the Bee', 'The Hoax', 'Ultraviolet', 'Unaccompanied Minors', 'The Dead Girl', 'School for Scoundrels', 'Beerfest', 'An Inconvenient Truth', 'The Pet', 'Monster House', 'Failure to Launch', 'Hoot', 'Mission: Impossible III', 'Man of the Year', 'Beer League', 'Talladega Nights: The Ballad of Ricky Bobby', 'Phat Girlz', 'Clerks II', 'Idlewild', 'The Illusionist', 'My Super Ex-Girlfriend', 'Apocalypto', 'Children of Men', 'The Break-Up', 'Alone with Her', 'Iraq for Sale: The War Profiteers', 'A Scanner Darkly', 'Crossover', 'The Shaggy Dog', "Pirates of the Caribbean: Dead Man's Chest", 'Curious George', 'Firewall', 'The Marine', 'When a Stranger Calls', 'Poseidon', "She's the Man", 'Loving Annabelle', 'Ice Age: The Meltdown', 'Borat: Cultural Learnings of America for Make Benefit Glorious Nation of Kazakhstan', 'Doogal', 'Zoom', 'The Benchwarmers', "Happily N'Ever After", 'Date Movie', 'Rescue Dawn', 'Larry the Cable Guy: Health Inspector', 'Black Snake Moan', 'The Oh in Ohio', "Big Momma's House 2", 'World Trade Center', 'Ira & Abby', 'Gridiron Gang', 'Open Season', 'The Night Listener', 'Factory Girl', 'The Sentinel', 'Superman Returns', 'Inside Man', "Let's Go to Prison", 'The Namesake', 'Lake of Fire', 'You, Me and Dupree', 'Crank', 'Employee of the Month', 'The Covenant', 'Poultrygeist: Night of the Chicken Dead', 'We Are Marshall', 'All the Boys Love Mandy Lane']
+-----------------
+
+[0.25948210729474647, -0.02659077548699915]
+--------------
+
+YEAR: 2007
+--------------
+['Enchanted', 'Juno', 'Rendition', 'Shooter', 'Blades of Glory', 'Sublime', 'License to Wed', 'Martian Child', 'Aliens vs. Predator: Requiem', 'Nancy Drew', 'Zodiac', 'Michael Clayton', 'Kiss the Bride', 'High School Musical 2', 'In the Land of Women', 'Good Luck Chuck', 'Arnolds Park', 'Shrek the Third', 'The Ten', 'Into the Wild', 'The Number 23', 'The Hammer', 'Funny Games', '88 Minutes', 'Taxi to the Dark Side', 'Lucky You', 'Saw IV', 'Resurrecting the Champ', 'No Country for Old Men', 'We Own the Night', 'The Hills Have Eyes II', 'Blonde Ambition', 'August Rush', 'Fantastic 4: Rise of the Silver Surfer', 'Why Did I Get Married?', 'Grindhouse', 'The Good Night', 'This Christmas', 'The Golden Compass', 'U2 3D', 'Love in the Time of Cholera', 'The Brothers Solomon', 'Married Life', 'Things We Lost in the Fire', 'September Dawn', 'Reno 911!: Miami', 'Purple Violets', 'Wild Hogs', 'Ta Ra Rum Pum', 'There Will Be Blood', 'I Think I Love My Wife', 'Slacker Uprising', 'The Savages', 'White Noise 2: The Light', 'Awake', 'Charlie Bartlett', 'Across the Universe', 'A Mighty Heart', 'Code Name: The Cleaner', 'Reign Over Me', 'Disturbia', 'Premonition', 'War', 'The Game Plan', 'American Gangster', "Charlie Wilson's War", '1408', 'Georgia Rule', "I'm Not There.", 'Lions for Lambs', 'The Kingdom', 'Daddy Day Camp', 'Finishing the Game: The Search for a New Bruce Lee', 'Because I Said So', 'The Kite Runner', 'You Kill Me', 'Eastern Promises', 'No End in Sight', 'Alvin and the Chipmunks', 'Certifiably Jonathan', 'And Then Came Love', 'Bee Movie', '3:10 to Yuma', 'The Touch', 'In the Valley of Elah', 'The Last Sin Eater', 'The Mist', 'The Reaping', 'Beowulf', 'The Hunting Party', 'Teeth', 'The Great Debaters', 'Brooklyn Rules', 'Epic Movie', 'Bridge to Terabithia', '30 Days of Night', 'Jesus People', 'Timber Falls', "Who's Your Caddy?", 'The Simpsons Movie', 'Hot Rod', 'Aqua Teen Hunger Force Colon Movie Film for Theaters', 'No Reservations', 'Lars and the Real Girl', 'Waitress', 'The Bourne Ultimatum', 'Snow Angels', "Surf's Up", 'I Am Legend', 'Live Free or Die Hard', 'Knocked Up', 'Ghost Rider', 'Spider-Man 3', "The Legend of God's Gun", 'The Life Before Her Eyes', 'Ratatouille', 'Hairspray', 'Rockaway', 'My Name Is Bruce', 'Transformers', 'The Invasion', 'P.S. I Love You', "Ocean's Thirteen", 'Music and Lyrics', 'Superbad', 'The Death and Life of Bobby Z', 'Hostel: Part II', 'Blood and Chocolate', 'Evan Almighty', 'Stomp the Yard', 'Sydney White', 'Paranormal Activity', 'Walk Hard: The Dewey Cox Story', 'Shotgun Stories', 'The Living Wake', 'The Man from Earth', 'Gracie', 'Redacted', 'The Assassination of Jesse James by the Coward Robert Ford', 'The Bucket List', 'Rush Hour 3', 'Death Sentence', 'Death at a Funeral', 'Diary of the Dead', "Pirates of the Caribbean: At World's End", 'Sicko']
+-----------------
+
+[0.26488144392017227, -0.027719118684202595]
+--------------
+
+YEAR: 2008
+--------------
+['Sunday School Musical', 'Redbelt', 'Beverly Hills Chihuahua', 'The Poker House', 'Shutter', 'Frost/Nixon', 'The Forbidden Kingdom', 'Mamma Mia!', 'Sleep Dealer', 'Harold & Kumar Escape from Guantanamo Bay', '21', 'Call + Response', 'Sex Drive', 'War, Inc.', 'Stop-Loss', 'Hellboy II: The Golden Army', 'The Rocker', 'The Brothers Bloom', 'Hamlet 2', 'Baghead', 'The Happening', 'The Spirit', 'The Haunting of Molly Hartley', 'Baby Mama', 'The Incredible Hulk', 'Appaloosa', 'Flash of Genius', 'Burn After Reading', 'Cadillac Records', 'The Midnight Meat Train', 'The Reader', 'Righteous Kill', 'Bedtime Stories', 'Synecdoche, New York', 'The Ruins', 'Impact Point', 'Get Smart', 'Zack and Miri Make a Porno', 'The Chronicles of Narnia: Prince Caspian', 'Revolutionary Road', 'The Love Guru', 'Space Chimps', 'Mirrors', 'Surfer, Dude', 'Mad Money', 'Rachel Getting Married', 'Religulous', 'An American Carol', 'College', 'Punisher: War Zone', 'Childless', 'The Secret Life of Bees', 'Madagascar: Escape 2 Africa', 'Kung Fu Panda', 'Speed Racer', 'Good Dick', 'The Spiderwick Chronicles', 'Cloverfield', 'Trucker', 'Step Brothers', 'The Hurt Locker', 'What Just Happened', "Nick and Norah's Infinite Playlist", 'The Eye', 'Valkyrie', 'City of Ember', 'Pride and Glory', "Nim's Island", "No Man's Land: The Rise of Reeker", '27 Dresses', 'Quarantine', 'Marley & Me', 'Bottle Shock', 'The Express', 'Milk', 'The Women', 'Eagle Eye', 'Street Kings', 'Drillbit Taylor', 'The Curious Case of Benjamin Button', 'Frozen River', 'The Dark Knight', 'Disaster Movie', 'Doubt', 'Meet Dave', "Fool's Gold", 'Choke', 'Bolt', 'Step Up 2: The Streets', 'The Day the Earth Stood Still', 'Wendy and Lucy', 'What Happens in Vegas', 'The Longshots', 'Journey to the Center of the Earth', 'The House Bunny', 'Iron Man', 'Swing Vote', 'The Lucky Ones', 'Leatherheads', 'Strange Wilderness', 'Kit Kittredge: An American Girl', 'Witless Protection', 'Welcome Home, Roscoe Jenkins', 'Indiana Jones and the Kingdom of the Crystal Skull', 'Tropic Thunder', 'Repo! The Genetic Opera', 'Shine a Light', 'Fireproof', 'Delgo', 'Forgetting Sarah Marshall', 'Bangkok Dangerous', 'Never Back Down', 'Yesterday Was a Lie', 'Harrison Montgomery', 'Miracle at St. Anna', 'The Mummy: Tomb of the Dragon Emperor', 'Wanted', 'Sunshine Cleaning', 'Death Race', 'High School Musical 3: Senior Year', 'Pineapple Express', 'Lovely, Still', 'Extreme Movie', 'WALL\xc2\xb7E', 'Vantage Point', 'Train', 'Ghost Town', "My Best Friend's Girl", "You Don't Mess with the Zohan", 'Body of Lies', 'Pathology', 'Untraceable', 'Yes Man', 'Superhero Movie', 'The Yellow Handkerchief', 'Twilight', 'Prom Night', "The Pirates Who Don't Do Anything: A VeggieTales Movie", 'Jumper', 'Meet the Spartans', 'Two Lovers', 'Fuel', 'Lakeview Terrace', 'Standard Operating Procedure', 'Gran Torino', 'The X Files: I Want to Believe', 'Made of Honor', 'The Sisterhood of the Traveling Pants 2', 'Soul Men', 'Semi-Pro', 'Stargate: The Ark of Truth', 'Hancock', 'The Wrestler', 'The Wackness', 'Saw V', 'Seven Pounds', 'Food, Inc.', 'The Betrayed', 'W.', 'Changeling', 'Over Her Dead Body']
+-----------------
+
+[0.2592528384424576, -0.026453437625166148]
+--------------
+
+YEAR: 2009
+--------------
+['City Island', 'Gentlemen Broncos', 'The Hole', 'The Joneses', 'Sorority Row', 'Motherhood', 'Crazy Heart', 'Ice Age: Dawn of the Dinosaurs', 'Chain Letter', '2:13', 'Up', 'Life During Wartime', 'The City of Your Final Destination', 'Madea Goes to Jail', 'Duplicity', "Everybody's Fine", 'Precious', 'Public Enemies', 'The Unborn', 'Avatar', 'Angels & Demons', 'The Fourth Kind', 'The Princess and the Frog', 'Taking Woodstock', 'Adam', 'The Lovely Bones', 'The House of the Devil', 'Don McKay', 'To Save a Life', 'Ninja Assassin', 'Armored', 'The Informant!', "Brooklyn's Finest", 'The Horse Boy', 'Bandslam', 'Did You Hear About the Morgans?', 'Chicago Overcoat', 'Survival of the Dead', 'A Perfect Getaway', "Jennifer's Body", 'A Single Man', 'The International', 'Julie & Julia', 'The Janky Promoters', "Cirque du Freak: The Vampire's Assistant", "The Time Traveler's Wife", 'Mother and Child', 'Old Dogs', 'I Hope They Serve Beer in Hell', 'A Christmas Carol', 'Star Trek', 'Land of the Lost', 'Flying By', 'Transformers: Revenge of the Fallen', 'The Stepfather', 'The Ugly Truth', 'Bad Lieutenant: Port of Call New Orleans', 'Adventureland', 'Miss March', 'The Mighty Macs', 'Orphan', 'Sherlock Holmes', 'Zombieland', 'The Men Who Stare at Goats', 'Invictus', 'Halloween II', 'Drag Me to Hell', 'The Proposal', 'Fantastic Mr. Fox', 'Inglourious Basterds', 'Forget Me Not', 'Race to Witch Mountain', 'The Open Road', 'Tanner Hall', 'My Bloody Valentine', 'The Twilight Saga: New Moon', 'New in Town', 'A Serious Man', 'The Taking of Pelham 1 2 3', "He's Just Not That Into You", 'Terminator Salvation', 'Love Happens', 'Saint John of Las Vegas', "My Sister's Keeper", 'State of Play', 'The Exploding Girl', 'Veronika Decides to Die', 'Dragonball: Evolution', 'My Dog Tulip', 'Brothers', 'The Missing Person', 'Hotel for Dogs', 'Youth in Revolt', 'Couples Retreat', 'Paul Blart: Mall Cop', 'The Greatest', 'The Box', "It's Complicated", 'Black Water Transit', 'ZMD: Zombies of Mass Destruction', 'Law Abiding Citizen', 'Observe and Report', 'Up in the Air', 'Shorts', 'The Hangover', 'Dance Flick', 'X-Men Origins: Wolverine', 'Royal Kill', 'G.I. Joe: The Rise of Cobra', 'G-Force', 'Hannah Montana: The Movie', 'The Goods: Live Hard, Sell Hard', 'Bride Wars', 'Alvin and the Chipmunks: The Squeakquel', '17 Again', 'Get Low', 'Night at the Museum: Battle of the Smithsonian', 'Nine', 'Year One', 'B-Girl', 'Frat Party', '16 to Life', 'Down for Life', 'Cloudy with a Chance of Meatballs', 'Capitalism: A Love Story', 'Post Grad', 'Ink', 'The Messenger', 'Whip It', 'Imagine That', 'Surrogates', 'Br\xc3\xbcno', 'Princess Kaiulani', 'Solitary Man', '12 Rounds', "The Devil's Tomb", 'Underworld: Rise of the Lycans', '2012', 'Knowing', 'Monsters vs. Aliens', 'I Love You, Man', 'Fame', 'Extract', 'The Good Guy', 'Away We Go', 'Funny People', 'Aliens in the Attic', 'The Final Destination', 'Whatever Works', 'Whiteout', '500 Days of Summer', 'Carriers', 'I Can Do Bad All by Myself', 'The Invention of Lying', 'After.Life', 'Coraline', 'Case 39', 'The Deported', 'Steppin: The Movie', 'Chloe', "Hachi: A Dog's Tale", 'This Is It', 'Bled', 'The Boondock Saints II: All Saints Day', 'Gamer', 'The Blind Side', 'All About Steve', 'My Life in Ruins', 'Breaking Upwards', 'Dead Like Me: Life After Death', 'The Road', 'Next Day Air', 'The Last House on the Left', 'Not Easily Broken', 'Watchmen', '9', "World's Greatest Dad", 'Crank: High Voltage']
+-----------------
+
+[0.2613494498939471, -0.02376254595821956]
+--------------
+
+YEAR: 2010
+--------------
+['The Virginity Hit', 'Freakonomics', 'Step Up 3D', 'Takers', 'Paranormal Activity 2', "Meek's Cutoff", 'Please Give', 'Love Ranch', 'The Conspirator', 'The Other Guys', 'Death Calls', 'The Killer Inside Me', 'Blood Done Sign My Name', '127 Hours', 'All Good Things', 'Robin Hood', 'Burlesque', 'The Spy Next Door', 'The Back-up Plan', 'Legion', 'Black Swan', 'Piranha 3D', 'Somewhere', 'Trust', 'Good Intentions', 'Marmaduke', 'Lies in Plain Sight', 'Killers', "Anderson's Cross", 'Super', 'Prince of Persia: The Sands of Time', 'Predators', 'Mooz-Lum', 'The 41-Year-Old Virgin Who Knocked Up Sarah Marshall and Felt Superbad About It', 'Hesher', 'Jonah Hex', 'The Losers', 'The Social Network', 'The Last Airbender', 'Skyline', "The Sorcerer's Apprentice", 'Devil', 'Tangled', 'Scott Pilgrim vs. the World', 'The American', 'Alpha and Omega', 'Date Night', 'Nine Dead', 'Repo Men', 'Shrek Forever After', 'Salt', 'Jackass 3D', 'Dear John', 'Letters to Juliet', 'Lottery Ticket', "It's Kind of a Funny Story", "Gulliver's Travels", '8: The Mormon Proposition', 'Just Wright', 'The Fighter', 'Inside Job', 'Cats & Dogs: The Revenge of Kitty Galore', 'For Colored Girls', 'Eat Pray Love', 'Clash of the Titans', 'Machete', "Don't Be Afraid of the Dark", 'Shutter Island', 'Furry Vengeance', 'The Bounty Hunter', 'Ca$h', 'Going the Distance', 'The Wolfman', 'Yogi Bear', 'The Expendables', 'Toy Story 3', 'The Switch', 'Secretariat', 'The Tourist', "Legend of the Guardians: The Owls of Ga'Hoole", '3 Backyards', 'Vampires Suck', 'Inception', 'Wall Street: Money Never Sleeps', 'Remember Me', 'The Chronicles of Narnia: The Voyage of the Dawn Treader', 'Letters to God', 'How Do You Know', 'The Twilight Saga: Eclipse', 'Amigo', 'Christmas Mail', 'Love & Other Drugs', 'Beginners', 'Tiny Furniture', 'Cop Out', 'Sex and the City 2', 'Stone', 'Everything Must Go', 'The Last Song', 'The Book of Eli', 'The Debt', 'The Christmas Bunny', 'Unstoppable', 'Iron Man 2', 'The Runaways', 'The Extra Man', 'I Spit on Your Grave', "Winter's Bone", 'Blue Valentine', 'Grown Ups', 'Alice in Wonderland', 'Due Date', 'The Grace Card', 'Easy A', 'Insidious', 'Get Him to the Greek', 'Knight and Day', 'My Soul to Take', 'Super Hybrid', 'Despicable Me', 'The 5th Quarter', 'Hereafter', 'Leap Year', 'You Will Meet a Tall Dark Stranger', 'Diary of a Wimpy Kid', 'The Crazies', 'Faster', 'Rabbit Hole', 'I Want Your Money', 'Standing Ovation', 'Our Family Wedding', 'Hot Tub Time Machine', 'Flipped', 'Fair Game', 'Redemption Road', 'Megamind', 'The Tempest', 'The Town', 'You Again', 'Extraordinary Measures', 'Why Did I Get Married Too?', 'The Kids Are All Right', 'The Perfect Host', 'N-Secure', 'TRON: Legacy', 'Barry Munday', "She's Out of My League", 'Cyrus', 'Dinner for Schmucks', 'True Grit', 'Morning Glory', 'RED', "Valentine's Day", 'Ramona and Beezus', 'Stake Land', 'MacGruber', 'The Dead Undead', 'The Next Three Days', 'How to Train Your Dragon', 'Little Fockers', 'Dylan Dog: Dead of Night', 'Charlie St. Cloud']
+-----------------
+
+[0.26584564380228765, -0.025360289640069696]
+--------------
+
+YEAR: 2011
+--------------
+['Mars Needs Moms', 'The Big Year', 'War Horse', 'Some Guy Who Kills People', 'In Time', 'Newlyweds', 'Rise of the Planet of the Apes', 'Diary of a Wimpy Kid: Rodrick Rules', 'Samsara', 'Immortals', 'L!fe Happens', 'The Smurfs', 'Zookeeper', 'Warrior', 'The Roommate', 'Final Destination 5', 'X-Men: First Class', 'Salvation Boulevard', 'Scream 4', 'Hoodwinked Too! Hood vs. Evil', 'Red State', 'Kevin Hart: Laugh at My Pain', 'Jack and Jill', 'Bad Teacher', 'The Beaver', 'Without Men', 'Twixt', 'The Greatest Movie Ever Sold', 'We Have Your Husband', 'Thor', 'Never Back Down 2: The Beatdown', 'The Darkest Hour', 'The Hit List', 'Young Adult', 'The Descendants', 'Margaret', 'Drive', 'The Lion of Judah', 'In the Land of Blood and Honey', 'The Ridges', 'Damsels in Distress', 'Paul', "Your Sister's Sister", 'Sholem Aleichem: Laughing in the Darkness', 'Machine Gun Preacher', 'Like Crazy', "I Don't Know How She Does It", 'Go for It!', 'Alvin and the Chipmunks: Chipwrecked', 'Friends with Benefits', 'Your Highness', 'All Superheroes Must Die', 'The Help', 'The Rite', 'Bucky Larson: Born to Be a Star', 'Green Lantern', 'Super 8', 'Enter Nowhere', 'Rango', 'Soul Surfer', 'Sanctum', 'Mission: Impossible - Ghost Protocol', 'A Better Life', 'Fort McCoy', 'Puss in Boots', 'Take Shelter', 'The Ides of March', 'Johnny English Reborn', 'Glee: The 3D Concert Movie', 'Straw Dogs', 'Tower Heist', 'Just Go with It', 'Killer Joe', 'Jeff, Who Lives at Home', 'Horrible Bosses', 'The Dilemma', 'Apollo 18', 'Beastly', 'Moneyball', 'The Innkeepers', 'Fast Five', 'Real Steel', 'The Green Hornet', 'High Road', 'Spy Kids: All the Time in the World in 4D', 'Water for Elephants', 'The Mechanic', 'Bridesmaids', "New Year's Eve", 'The Girl with the Dragon Tattoo', 'Captain America: The First Avenger', "What's Your Number?", 'Sound of My Voice', 'Rio', 'The Son of No One', 'The Adjustment Bureau', 'Cars 2', 'Priest', 'Take Me Home Tonight', 'Dolphin Tale', 'Justin Bieber: Never Say Never', 'The Adventures of Tintin', 'Battle Los Angeles', 'Dream House', 'No Strings Attached', 'Source Code', 'Martha Marcy May Marlene', 'Margin Call', 'We Bought a Zoo', 'Extremely Loud & Incredibly Close', 'Hanna', 'Detention', 'Big Mommas: Like Father, Like Son', 'Abduction', 'Another Earth', 'Jumping the Broom', "The Legend of Hell's Gate: An American Conspiracy", 'The FP', 'Paranormal Activity 3', 'Cedar Rapids', 'One Day', '50/50', 'Hop', 'Higher Ground', 'The Change-Up', "Mr. Popper's Penguins", 'Drive Angry', 'The Lincoln Lawyer', 'Pirates of the Caribbean: On Stranger Tides', 'Red Riding Hood', 'Absentia', 'Hall Pass', 'Another Happy Day', 'J. Edgar', 'A Very Harold & Kumar 3D Christmas', 'My Last Day Without You', 'The Muppets', 'Transformers: Dark of the Moon', 'August', 'I Am Number Four', 'Fright Night', 'Sherlock Holmes: A Game of Shadows', 'Bernie', 'Contagion', 'Kung Fu Panda 2', 'Prom', 'The Grey', 'Sucker Punch', 'October Baby', 'Winnie the Pooh', 'Hugo', 'Shark Night 3D', 'Larry Crowne', 'The Tree of Life', 'The Sitter', 'The Art of Getting By', 'Something Borrowed', 'Ghost Rider: Spirit of Vengeance', 'Crazy, Stupid, Love.', 'The Hangover Part II', 'Raymond Did It', 'The Harvest/La Cosecha', 'Courageous', 'Our Idiot Brother']
+-----------------
+
+[0.2644594981236771, -0.024190538803492513]
+--------------
+
+YEAR: 2012
+--------------
+['Mirror Mirror', 'Here Comes the Boom', 'Killing Them Softly', 'Lincoln', 'The Hobbit: An Unexpected Journey', 'Rise of the Guardians', "Madagascar 3: Europe's Most Wanted", 'Mud', 'The Cold Light of Day', 'Trade of Innocents', 'Small Apartments', 'Sinister', 'Paranormal Activity 4', 'The Bourne Legacy', 'Journey 2: The Mysterious Island', 'The Odd Life of Timothy Green', 'Alex Cross', 'Premium Rush', 'Hardflip', 'The Hunger Games', 'The Collection', "Tim and Eric's Billion Dollar Movie", 'Casa de mi Padre', 'Arbitrage', 'Abraham Lincoln: Vampire Hunter', 'Savages', 'Underworld: Awakening', 'The Man with the Iron Fists', 'Django Unchained', 'The Campaign', 'Girls Gone Dead', 'The Lords of Salem', '21 Jump Street', 'The Brass Teapot', 'No Vacancy', 'Looper', 'Foodfight!', 'Compliance', 'The Twilight Saga: Breaking Dawn - Part 2', 'Good Deeds', 'The Place Beyond the Pines', 'Argo', 'Playing for Keeps', 'Supercapitalist', 'The Guilt Trip', 'Sparkle', 'The Raven', 'The Vow', 'The Lucky One', 'The Amazing Spider-Man', 'Rock of Ages', 'Think Like a Man', 'Act of Valor', 'Hope Springs', 'LOL', 'Vessel', 'The Dark Knight Rises', 'The Watch', 'Dark Shadows', 'Middle of Nowhere', "Won't Back Down", 'Atlas Shrugged II: The Strike', 'Man on a Ledge', 'The Sessions', 'The Three Stooges', 'The Cabin in the Woods', 'Ted', 'Chronicle', 'Supporting Characters', "2016: Obama's America", 'The Apparition', 'Celeste & Jesse Forever', 'Wrath of the Titans', 'One for the Money', 'The Devil Inside', 'Black Rock', 'The Oogieloves in the Big Balloon Adventure', 'The Five-Year Engagement', 'Fun Size', 'The Dictator', 'American Reunion', 'Run, Hide, Die', 'Step Up Revolution', 'Project X', 'Promised Land', 'The Master', 'Vamps', 'How to Fall in Love', 'Joyful Noise', 'Flight', 'Moonrise Kingdom', 'The Perks of Being a Wallflower', 'Diary of a Wimpy Kid: Dog Days', 'Theresa Is a Mother', 'Zero Dark Thirty', "That's My Boy", 'Deceptive Practice: The Mysteries and Mentors of Ricky Jay', 'Snow White and the Huntsman', 'The Words', 'Men in Black 3', 'Burn', 'The Iceman', 'Robot & Frank', 'Silver Linings Playbook', 'Safe House', 'Dysfunctional Friends', 'Blue Like Jazz', 'Filly Brown', "Should've Been Romeo", 'Trouble with the Curve', 'Stolen', 'Ice Age: Continental Drift', 'Brave', 'Safety Not Guaranteed', 'Seeking a Friend for the End of the World', 'To Rome with Love', 'Bachelorette', "What to Expect When You're Expecting", 'Beasts of the Southern Wild', 'The Avengers', 'Frankenweenie', 'Sanctuary; Quite a Conundrum', 'ParaNorman', 'The Expendables 2', 'Red Tails', 'Contraband', 'Hit and Run', 'Parental Guidance', 'Spring Breakers', 'Safe', 'Chernobyl Diaries', 'The Frozen', 'This Means War', 'End of Watch', 'The Ghastly Love of Johnny X', 'Snow White: A Deadly Summer', 'Darling Companion', 'Big Miracle', 'This Is 40', 'John Carter', 'Wreck-It Ralph', 'Detention of the Dead', 'Hotel Transylvania', 'Pitch Perfect', 'Magic Mike', 'Frances Ha', 'Prometheus', 'Katy Perry: Part of Me', 'Jack Reacher', 'For a Good Time, Call...', 'Archaeology of a Woman', 'Cirque du Soleil: Worlds Away', 'After', 'Deadfall', 'Bullet to the Head', 'Day One', 'Freaky Deaky', 'Les Mis\xc3\xa9rables', 'A Thousand Words', 'The Other Dream Team', 'Hayride', 'Shanghai Calling', "Madea's Witness Protection", 'Wanderlust', 'Life of Pi', 'The Possession', 'Battleship', 'Chasing Mavericks']
+-----------------
+
+[0.26714541066980696, -0.025716736199789845]
+--------------
+
+YEAR: 2013
+--------------
+['Monsters University', 'Last Vegas', 'Broken City', '47 Ronin', 'Before Midnight', 'Texas Chainsaw 3D', 'The Haunting in Connecticut 2: Ghosts of Georgia', 'Parker', 'Escape from Tomorrow', 'G.I. Joe: Retaliation', '42', 'A Good Day to Die Hard', 'The Counselor', 'Her', 'Blue Ruin', 'Anchorman 2: The Legend Continues', 'Evil Dead', 'Frozen', "Legends of Oz: Dorothy's Return", 'The Wolf of Wall Street', 'Hansel & Gretel Get Baked', "Lee Daniels' The Butler", 'All Is Lost', 'Kevin Hart: Let Me Explain', 'Black Nativity', 'White House Down', 'Prisoners', 'A Plague So Pleasant', 'Captain Phillips', 'Enough Said', 'The Hunger Games: Catching Fire', 'Pacific Rim', '30 Nights of Paranormal Activity with the Devil Inside the Girl with the Dragon Tattoo', 'The Lone Ranger', '21 & Over', 'Oculus', 'The Immigrant', 'The Book Thief', 'Bad Grandpa', 'Percy Jackson: Sea of Monsters', 'The Canyons', 'Blue Jasmine', 'Once Upon a Time in Queens', 'The Purge', 'Fruitvale Station', 'Movie 43', 'A True Story', 'Snitch', 'Elysium', 'After Earth', 'Grace Unplugged', 'Begin Again', 'The Smurfs 2', 'Man of Steel', 'Palo Alto', 'Labor Day', '20 Feet from Stardom', 'Plush', 'Homefront', 'All Is Bright', 'Cloudy with a Chance of Meatballs 2', 'Runner Runner', 'Bending Steel', 'Free Birds', 'Olympus Has Fallen', 'Inside Llewyn Davis', 'The Big Wedding', 'Safe Haven', 'Mutual Friends', 'Grown Ups 2', 'Dallas Buyers Club', 'Drinking Buddies', 'Cheap Thrills', 'Turbo', 'RED 2', 'The Green Inferno', 'Saving Mr. Banks', 'The Host', 'Enter the Dangerous Mind', 'One Direction: This Is Us', 'Grudge Match', "Ender's Game", 'Star Trek Into Darkness', 'This Is Martin Bonner', 'Batman: The Dark Knight Returns, Part 2', 'Despicable Me 2', 'Coffee Town', 'Side Effects', 'Treachery', 'Along the Roadside', 'Bad Words', 'Scary Movie 5', 'Kick-Ass 2', 'The Wolverine', 'Joe', 'Identity Thief', 'The Heat', 'Metallica Through the Never', 'Pain & Gain', 'Delivery Man', 'Battle of the Year', 'Don Jon', 'Water & Power', 'R.I.P.D.', 'Escape from Planet Earth', 'Nurse 3D', '2 Guns', 'The Call', 'Jack the Giant Slayer', 'Admission', 'The Secret Life of Walter Mitty', 'Dry Spell', 'Aroused', "Straight A's", 'Beautiful Creatures', 'Warm Bodies', 'Now You See Me', 'Peeples', 'UnDivided', 'The Hobbit: The Desolation of Smaug', 'Iron Man 3', 'This Is the End', 'Echo Dr.', 'Zombie Hunter', 'Epic', 'The Croods', 'Nebraska', '12 Years a Slave', 'Carrie', 'The Frozen Ground', 'The Mortal Instruments: City of Bones', 'Escape Plan', 'Oblivion', 'A Madea Christmas', 'Her Cry: La Llorona Investigation', '1982', 'Dead Man Down', 'The Conjuring', "We're the Millers", 'Living Dark: The Story of Ted the Caver', 'Home Run', 'Insidious: Chapter 2', 'The Way Way Back', 'The Spectacular Now', 'World War Z', 'Walking with Dinosaurs 3D', 'A Haunted House', 'The Internship', 'The Last Stand', 'Oz the Great and Powerful', 'The Knife of Don Juan', 'Thor: The Dark World', 'Sharknado', 'Getaway', 'Roadside', 'Riddick', 'The Incredible Burt Wonderstone', 'Out of the Furnace', 'The Best Man Holiday', 'Lone Survivor', 'The Fifth Estate', "The Maid's Room", 'Gangster Squad', 'The To Do List', 'Baggage Claim', 'American Hustle', 'August: Osage County']
+-----------------
+
+[0.26936812069663657, -0.026403666678444813]
+--------------
+
+YEAR: 2014
+--------------
+['Rosewater', "While We're Young", 'Endless Love', 'Da Sweet Blood of Jesus', 'Hercules', 'The Grand Budapest Hotel', 'Ouija', 'Nightcrawler', '22 Jump Street', 'Tusk', 'Butterfly Girl', 'Into the Woods', 'Dawn of the Crescent Moon', 'Mr. Peabody & Sherman', 'As Above, So Below', 'Annabelle', 'Good Kill', 'A Million Ways to Die in the West', 'The Image Revolution', 'Maleficent', 'The Opposite Sex', 'Muppets Most Wanted', 'The Sisterhood of Night', 'Out of the Dark', 'House at the End of the Drive', 'And So It Goes', "Devil's Due", 'The Hundred-Foot Journey', 'American Sniper', 'The Signal', 'Annie', 'Gone Girl', 'Atlas Shrugged: Who Is John Galt?', 'Top Five', 'Big Hero 6', 'Wish I Was Here', 'Boyhood', 'Penguins of Madagascar', 'A Walk Among the Tombstones', 'Rio 2', 'A Most Violent Year', 'Solitude', 'Ask Me Anything', '3 Days to Kill', '300: Rise of an Empire', 'A Fine Step', 'Edge of Tomorrow', 'Tiger Orange', 'Into the Storm', 'Dracula Untold', 'Son of God', "Dude, Where's My Dog?!", 'I Origins', 'Inherent Vice', 'Left Behind', 'Top Spin', 'Hits', 'How to Train Your Dragon 2', 'Red Sky', 'Something Wicked', 'Obvious Child', 'The Gambler', 'Guardians of the Galaxy', 'No Good Deed', "Amidst the Devil's Wings", 'Dumb and Dumber To', 'The Amazing Spider-Man 2', "Doc Holliday's Revenge", 'The Purge: Anarchy', 'The Best of Me', 'Fury', 'The Maze Runner', 'The Last Five Years', 'Amnesiac', 'The Equalizer', 'The Homesman', 'The Fault in Our Stars', "Let's Be Cops", 'Unfriended', 'Perfect Cowboy', 'Wild', "Winter's Tale", 'Unbroken', 'Heaven Is for Real', 'Locker 13', 'Freedom', 'Born to Fly: Elizabeth Streb vs. Gravity', "Moms' Night Out", 'They Came Together', 'Dawn of the Planet of the Apes', 'Ride Along', 'Elsa & Fred', 'An American in Hollywood', 'This Is Where I Leave You', 'The Monuments Men', 'Horse Camp', 'When the Game Stands Tall', '8 Days', "Let's Kill Ward's Wife", 'X-Men: Days of Future Past', 'Swelter', 'Give Me Shelter', 'Divergent', 'Deliver Us from Evil', 'Tammy', 'Interstellar', 'RoboCop', 'Black or White', 'Dwegons and Leprechauns', 'The Skeleton Twins', 'Alexander and the Terrible, Horrible, No Good, Very Bad Day', 'Big Eyes', 'Not Cool', 'Jersey Boys', 'The November Man', 'Seventh Son', 'That Awkward Moment', 'Rudderless', 'The Past is a Grotesque Animal', 'Happy Christmas', 'Destiny', 'Night at the Museum: Secret of the Tomb', 'Whiplash', 'The Hunger Games: Mockingjay - Part 1', 'The Hadza: Last of the First', 'St. Vincent', 'Sex Tape', 'The Expendables 3', 'Kill the Messenger', 'Wicked Blood', 'Blended', 'Always Woodstock', 'Addicted', 'Unsullied', 'Light from the Darkroom', 'Food Chains', 'Dolphin Tale 2', 'Beyond the Lights', 'It Follows', 'The Judge', 'Noah', 'The Boxtrolls', 'Neighbors', 'The Prince', 'Get on Up', 'About Last Night', 'Million Dollar Arm', 'The Outrageous Sophie Tucker', 'Need for Speed', 'Captain America: The Winter Soldier', 'If I Stay', 'Falcon Rising', 'The Sound and the Shadow', 'Animals', 'Paranormal Activity: The Marked Ones', 'Teenage Mutant Ninja Turtles', 'The Other Woman', 'The Legend of Hercules', 'Rise of the Entrepreneur: The Search for a Better Way', 'Song One', 'Birdman or (The Unexpected Virtue of Ignorance)', 'Earth to Echo', 'Horrible Bosses 2', 'The Interview', 'Transformers: Age of Extinction', 'Think Like a Man Too', 'Draft Day', 'The Calling', 'Alpha and Omega 4: The Legend of the Saw Toothed Cave', 'Henry & Me', 'Sabotage', 'H.', 'The Algerian', 'Still Alice', 'Love in the Time of Monsters', 'Sin City: A Dame to Kill For', 'The Book of Life', 'Jack Ryan: Shadow Recruit', 'A Haunted House 2']
+-----------------
+
+[0.2661943941101392, -0.02850326181406616]
+--------------
+
+YEAR: 2015
+--------------
+['Alvin and the Chipmunks: The Road Chip', 'Diamond Ruff', 'Goddess of Love', 'The Gallows', 'The Last Witch Hunter', 'Insurgent', 'The Gift', 'Shooting the Warwicks', 'Cinderella', 'By the Sea', 'Re-Kill', 'Hot Pursuit', 'Run All Night', 'Exeter', 'The Big Short', 'Fantastic Four', "R.L. Stine's Monsterville: The Cabinet of Souls", 'Jupiter Ascending', 'Inside Out', 'Focus', 'Walter', 'Pan', 'Bridge of Spies', 'Bleeding Hearts', 'Zipper', 'Goosebumps', 'Love the Coopers', 'Tomorrowland', 'The Wicked Within', 'The Age of Adaline', 'Navy Seals vs. Zombies', 'Green Room', 'Avengers: Age of Ultron', 'Dutch Kills', 'Hot Tub Time Machine 2', 'No Escape', 'Point Break', 'Wind Walkers', 'Creative Control', 'Demonic', 'The Scorch Trials', 'The Horror Network Vol. 1', 'The SpongeBob Movie: Sponge Out of Water', 'In the Heart of the Sea', 'Time to Choose', 'Checkmate', 'The Witch', 'Courage', 'Adulterers', 'Brotherly Love', 'Antarctic Edge: 70\xc2\xb0 South', 'Chappie', 'Rotor DR1', 'Joy', 'The Intern', 'Do You Believe?', 'Terminator Genisys', 'The Gunman', 'Wild Card', 'Shark Lake', 'Me You and Five Bucks', 'Pixels', '90 Minutes in Heaven', 'Road Hard', 'The Diary of a Teenage Girl', 'Criminal Activities', 'Krampus', 'The Walk', '#Horror', 'Queen Crab', 'Max', 'Ted 2', 'Southpaw', 'Secret in Their Eyes', 'Paul Blart: Mall Cop 2', 'The Timber', 'Fifty Shades of Grey', 'Freeheld', 'Captive', 'The Vatican Tapes', 'Anomalisa', 'The Martian', 'The Walking Deceased', 'Unnatural', 'Sinister 2', 'American Hero', 'Minions', 'Project Almanac', 'The Marine 4: Moving Target', 'Windsor Drive', 'Pitch Perfect 2', 'Broken Horses', 'The Hunger Games: Mockingjay - Part 2', 'Black Mass', 'Creed', 'Christmas Eve', 'Self/less', 'Mi America', 'Furious 7', 'Stonewall', 'Counting', 'Romantic Schemer', 'Jurassic World', 'America Is Still the Place', 'Sharkskin', 'Subconscious', 'Circle', 'Our Brand Is Crisis', 'Ant-Man', "Dancin' It's On", 'The Hateful Eight', 'Unfinished Business', 'Spotlight', '10 Days in a Madhouse', 'Blackhat', 'Sicario', 'Vacation', 'The Longest Ride', 'Hotel Transylvania 2', 'San Andreas', 'Home', 'Western Religion', 'Maggie', 'Close Range', 'Chain of Command', 'Victor Frankenstein', 'Magic Mike XXL', 'Into the Grizzly Maze', 'Burnt', 'Danny Collins', 'McFarland, USA', 'The Boy Next Door', "Daddy's Home", 'Heroes of Dirt', 'The Peanuts Movie', 'The Ridiculous 6', 'The Good Dinosaur', 'The Looking Glass', 'Accidental Love', 'Area 51', 'AWOL-72', 'The DUFF', 'Aloha', 'Straight Outta Compton', 'Survivor', 'Teeth and Blood', 'The Curse of Downers Grove', 'The Revenant', 'Get Hard', 'Paper Towns', 'The Lazarus Effect', 'Growing Up Smith', 'The Visit', 'Running Forever', 'Dope', 'Fear Clinic', 'The Man from U.N.C.L.E.', 'Heist']
+-----------------
+
+[0.2614108697183874, -0.02925045627710031]
+--------------
+
+YEAR: 2016
+--------------
+["God's Not Dead 2", 'Warcraft', 'Jane Got a Gun', 'Keanu', 'My Big Fat Greek Wedding 2', 'Nerve', 'Mr. Church', 'Risen', 'Kicks', '10 Cloverfield Lane', 'Free State of Jones', 'The Perfect Match', 'Triple 9', 'Batman v Superman: Dawn of Justice', 'Code of Honor', 'The Little Ponderosa Zoo', 'The 5th Wave', 'The Boss', 'The Birth of a Nation', 'The Finest Hours', 'The Shallows', 'Kickboxer: Vengeance', 'X-Men: Apocalypse', 'Bad Moms', 'Neighbors 2: Sorority Rising', 'The Dog Lover', "The Huntsman: Winter's War", 'Central Intelligence', 'Captain America: Civil War', 'Alice Through the Looking Glass', 'Gods of Egypt', 'Lights Out', 'Indignation', 'Allegiant', 'Ghostbusters', 'Rodeo Girl', 'The Boy', 'Star Trek Beyond', 'Fifty Shades of Black', 'The Veil', '13 Hours', 'Miracles from Heaven', 'Money Monster', 'Teenage Mutant Ninja Turtles: Out of the Shadows', 'Ben-Hur', 'Antibirth', 'Deadpool', 'The Young Messiah', 'I Am Wrath', 'Cabin Fever', "Pete's Dragon", 'Sausage Party', 'Kung Fu Panda 3', 'Suicide Squad', "Alleluia! The Devil's Carnival", 'Pride and Prejudice and Zombies', 'Now You See Me 2', "A Beginner's Guide to Snuff", 'Yoga Hosers', 'The Legend of Tarzan', 'Fight Valley', 'Misconduct', 'Fight to the Finish', 'The Forest', 'Independence Day: Resurgence', 'Restoration', 'The Conjuring 2', 'The Angry Birds Movie', 'Dirty Grandpa', 'Ride Along 2', 'How to Be Single', 'Zoolander 2']
+-----------------
+
+[0.25917407003407306, -0.029780174681952536]
+--------------
+

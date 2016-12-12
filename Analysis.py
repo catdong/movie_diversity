@@ -267,8 +267,8 @@ def actorDirectorAssortativityHeuristic(graph, directorMovieGraph, graphDict):
 				continue
 			directorGender = directorMovieGraph.node[diredctorId]['gender']
 			actorIds = [graphDict[actorName] for actorName in directorMovieGraph.node[mId]['actorNames'] if actorName in graphDict]
-			actorRaces = [graph.node[aId]['race'] for aId in actorIds]
-			actorGenders = [graph.node[aId]['gender'] for aId in actorIds]
+			actorRaces = [graph.node[aId]['race'] for aId in actorIds if aId in graph.node and "race" in graph.node[aId]]
+			actorGenders = [graph.node[aId]['gender'] for aId in actorIds if aId in graph.node and "gender" in graph.node[aId]]
 			numSameRaceEdges += sum(1 for ar in actorRaces 
 				if (ar == 'White' and directorRace == 'White') or (ar != 'White' and directorRace != 'White'))
 			numSameGenderEdges += sum(1 for ag in actorGenders if ag == directorGender)

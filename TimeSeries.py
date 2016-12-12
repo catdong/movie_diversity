@@ -6,6 +6,9 @@ from graphFunctions import avgDirectorRacialDiversityScore as dRDiv
 from graphFunctions import avgMovieGenderDiversityScore as mGDiv
 from graphFunctions import avgMovieRacialDiversityScore as mRDiv
 from graphFunctions import actorAssortativity
+from graphFunctions import actorDirectorAssortativity
+from graphFunctions import racialDiversityScoreProfitCorrelation
+from graphFunctions import genderDiversityScoreProfitCorrelation
 from matplotlib import pyplot
 import networkx as nx
 import progressbar
@@ -23,7 +26,7 @@ Parameters:
 	yLabel - the label for the y axis
 	legendLabels - an array of labels for each plot
 """
-def timeSeries(graph, timeSeriesFunc, title, yLabel, legendLabels):
+def timeSeries(graph, graphDict, timeSeriesFunc, title, yLabel, legendLabels):
 
 	# Categorize movie nodes by release year
 	movieBuckets = defaultdict(list)
@@ -45,7 +48,7 @@ def timeSeries(graph, timeSeriesFunc, title, yLabel, legendLabels):
 		year = years[i]
 		timeSeriesGraph = generateNextTimeStep(timeSeriesGraph, graph, 
 												movieBuckets[year], year)
-		stepYValues = timeSeriesFunc(timeSeriesGraph, movieBuckets[year])
+		stepYValues = timeSeriesFunc(timeSeriesGraph, movieBuckets[year], graphDict)
 		for index, y in enumerate(stepYValues):
 			yValues[index].append(y)
 
@@ -109,7 +112,7 @@ def filterGraph(graph, graphDict):
 	# Remove all movies yet to be released
 	for nodeId in graph.nodes():
 		node = graph.node[nodeId]
-		if node['type'] == 'MOVIE' and node['releaseYear'] == 0:
+		if node['type'] == 'MOVIE' and node['releaseYear'] < 1970:
 			graphDict.pop("%s%i" % (node["title"], node["releaseYear"]), None)
 			graph.remove_node(nodeId)
 
@@ -141,11 +144,15 @@ function.
 def graphTimeSeries(timeSeriesFunc, title, yLabel, legendLabels=None):
 	graph, graphDict = ReadMovieGraph.readMovieGraphFromFile()
 	graph, graphDict = filterGraph(graph, graphDict)
-	g = timeSeries(graph, timeSeriesFunc, title, yLabel, legendLabels)
+	g = timeSeries(graph, graphDict, timeSeriesFunc, title, yLabel, legendLabels)
 
-def combine(graph, graphDict):
-	return [dGDiv(graph, graphDict), dRDiv(graph, graphDict),
-			mGDiv(graph, graphDict), mRDiv(graph, graphDict)]
+def combine(graph, ids):
+	return [dGDiv(graph, ids), dRDiv(graph, ids),
+			mGDiv(graph, ids), mRDiv(graph, ids)]
+
+def combine2(graph, ids, graphDict):
+	return [racialDiversityScoreProfitCorrelation(graph, ids),
+	genderDiversityScoreProfitCorrelation(graph, ids)]
 
 if __name__ == "__main__":
 	"""
@@ -158,8 +165,13 @@ if __name__ == "__main__":
 	graphTimeSeries(mGDiv, "Movie Gender Diversity Score", "Gender Diversity Score")
 	graphTimeSeries(mRDiv, "Movie Racial Diversity Score", "Racial Diversity Score")
 	"""
-	
+	"""
 	graphTimeSeries(actorAssortativity, "Actor-Actor Assortativity Over Time",
 		"Assortativity", ["Race", "Gender"])
-	
+	"""
+	"""
+	graphTimeSeries(actorDirectorAssortativity, "Actor-Director Assortativity Over Time",
+		"Assortativity", ["Race", "Gender"])
+	"""
+	graphTimeSeries(combine2, "Profit Correlations", "Revenue/Budget", ["Race", "Gender"])
 

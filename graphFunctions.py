@@ -46,11 +46,11 @@ def actorAssortativity(graph, movieIds):
 	raceAssorativity, blackWhiteAssorativity, genderAssorativity = ana.actorAssortativity(graph)
 	return [blackWhiteAssorativity, genderAssorativity]
 
-def actorDirectorAssortativity(graph, movieIds):
-	return ana.actorDirectorAssortativityHeuristic(graph, directorMovieNullModel, graphDict)
+def actorDirectorAssortativity(graph, movieIds, graphDict):
+	return ana.actorDirectorAssortativityHeuristic(graph, ana.directorMovieNullModel(graph), graphDict)
 
 def racialDiversityScoreProfitCorrelation(graph, movieIds):
-	return diversityProfitCorrelation(graph, movieIds)[0]
+	return ana.diversityProfitCorrelation(graph, movieIds)[0]
 
 def genderDiversityScoreProfitCorrelation(graph, movieIds):
-	return diversityProfitCorrelation(graph, movieIds)[1]
+	return ana.diversityProfitCorrelation(graph, movieIds)[1]
