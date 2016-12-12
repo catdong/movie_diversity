@@ -1,6 +1,7 @@
 from Analysis import filterNoneActors
 from collections import defaultdict
 from dataset import ReadMovieGraph
+from graphFunctions import avgDirectorRacialDiversityScore
 from matplotlib import pyplot
 import networkx as nx
 import random
@@ -139,7 +140,7 @@ def graphTimeSeries(timeSeriesFunc, title, yLabel):
 
 
 if __name__ == "__main__":
-	graphTimeSeries()
+	graphTimeSeries(avgDirectorRacialDiversityScore, "Director Racial Diversity Score", "Racial Diversity Score")
 
 
 
