@@ -23,7 +23,7 @@ def avgDirectorGenderDiversityScore(graph, movieIds):
 def avgMovieRacialDiversityScore(graph, movieIds):
 	scores = []
 	for mId in movieIds:
-		score = racialScoreForMovie(graph, mId)
+		score = ds.racialScoreForMovie(graph, mId)
 		if score is not None:
 			scores.append(score)
 	return [np.mean(scores)]
@@ -31,7 +31,7 @@ def avgMovieRacialDiversityScore(graph, movieIds):
 def avgMovieGenderDiversityScore(graph, movieIds):
 	scores = []
 	for mId in movieIds:
-		score = genderScoreForMovie(graph, mId)
+		score = ds.genderScoreForMovie(graph, mId)
 		if score is not None:
 			scores.append(score)
 	return [np.mean(scores)]
