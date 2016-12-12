@@ -55,20 +55,22 @@ FUNCTION: multiToWeightedGraph
 ---------------------------------
 Parameters:
 	graph - graph containing actors
+	graphDict - dict containing name->nodeId
 
-Returns: Graph in which all nodes have both race and gender data
+Returns: Graph, graphDict in which all nodes have both race and gender data
 ---------------------------------
 """
-def filterNoneActors(graph):
+def filterNoneActors(graph, graphDict):
 	for nId in graph.nodes():
 		if graph.node[nId]['type'] == 'ACTOR':
 			if graph.node[nId]['race'] is None or graph.node[nId]['gender'] is None:
 				graph.remove_node(nId)
+				graphDict.pop(graph.node[nId]["name"], None)
 		elif graph.node[nId]['type'] == 'ACTOR-DIRECTOR':
 			if graph.node[nId]['race'] is None or graph.node[nId]['gender'] is None:
 				graph.remove_edges_from(graph.in_edges(nId))
 				graph.node[nId]['type'] = 'DIRECTOR'
-	return graph
+	return (graph, graphDict)
 
 """
 FUNCTION: getBlackWhiteGraph
