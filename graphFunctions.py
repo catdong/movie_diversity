@@ -42,7 +42,7 @@ def actorModularity(graph, movieIds):
 	raceModularity, blackWhiteModularity, genderModularity = ana.actorModularity(graph)
 	return [blackWhiteModularity, genderModularity]
 
-def actorAssorativity(graph, movieIds):
+def actorAssortativity(graph, movieIds):
 	raceAssorativity, blackWhiteAssorativity, genderAssorativity = ana.actorAssortativity(graph)
 	return [blackWhiteAssorativity, genderAssorativity]
 
