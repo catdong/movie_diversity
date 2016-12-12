@@ -241,20 +241,19 @@ and actor have the same race and proportion that have the same gender.
 Returns a tuple of (proportionSameRace, proportionSameGender)
 ---------------------------------
 """
-def actorDirectorAssortativityHeuristic(graph):
+def actorDirectorAssortativityHeuristic(graph, directorMovieGraph, graphDict):
 	numSameRaceEdges = 0
 	numSameGenderEdges = 0
 	totalEdges = 0
-	for aId in graph.nodes():
-		if graph.node[aId]['type'] != 'MOVIE':
-			actorRace = graph.node[aId]['race']
-			actorGender = graph.node[aId]['gender']
-			actorMovies = graph.predecessors(aId)
-			actorDirectors = [graph.predecessors(mId)[0] for mId in actorMovies]
-			totalEdges += len(actorDirectors)
-			directorRaces = [graph.node[dId]['race'] for dId in actorDirectors]
-			directorGenders = [graph.node[dId]['gender'] for dId in actorDirectors]
-			numSameRaceEdges += sum(1 for dr in directorRaces 
-				if (dr == 'White' and actorRace == 'White') or (dr != 'White' and actorRace != 'White'))
-			numSameGenderEdges += sum(1 for dg in directorGenders if dg == actorGender)
+	for mId in directorMovieGraph.nodes()
+		if directorMovieGraph.node[mId]['type'] == 'MOVIE':
+			diredctorId = directorMovieGraph.predecessors(mId)[0]
+			directorRace = directorMovieGraph.node[diredctorId]['race']
+			directorGender = directorMovieGraph.node[diredctorId]['gender']
+			actorIds = [graphDict[actorName] for actorName in directorMovieGraph.node[mId]['actorNames'] if actorDict in graphDict]
+			actorRaces = [graph.node[aId]['race'] for aid in actorIds]
+			actorGenders = [graph.node[aId]['gender'] for aid in actorIds]
+			numSameRaceEdges += sum(1 for ar in actorRaces 
+				if (ar == 'White' and directorRace == 'White') or (ar != 'White' and directorRace != 'White'))
+			numSameGenderEdges += sum(1 for ag in actorGenders if ag == directorGender)
 	return (numSameRaceEdges / float(totalEdges), numSameGenderEdges / float(totalEdges))
