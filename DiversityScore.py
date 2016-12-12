@@ -1,5 +1,4 @@
 import collections
-import numpy as np
 
 """
 FUNCTIONS: racialScoreForDirector and genderScoreForDirector
@@ -102,7 +101,7 @@ def directorStats(directorMovieGraph, graph, graphDict):
 	numMaleDirectors = 0
 	numFemaleDirectors = 0
 	for node in directorMovieGraph.nodes():
-		node_type = graph.node[node]["type"]
+		node_type = directorMovieGraph.node[node]["type"]
 		if node_type == "DIRECTOR" or node_type == "ACTOR-DIRECTOR":
 			directorName = directorMovieGraph.node[node]['name']
 			race_score = racialScoreForDirector(graph, graphDict[directorName])
@@ -112,11 +111,11 @@ def directorStats(directorMovieGraph, graph, graphDict):
 			if gender_score != None:
 				gender_scores.append(gender_score)
 			numDirectors += 1
-			if graph.node[node]["gender"] == "Male":
+			if directorMovieGraph.node[node]["gender"] == "Male":
 				numMaleDirectors += 1
-			if graph.node[node]["gender"] == "Female":
+			if directorMovieGraph.node[node]["gender"] == "Female":
 				numFemaleDirectors += 1
-			if graph.node[node]["race"] == "White":
+			if directorMovieGraph.node[node]["race"] == "White":
 				numWhiteDirectors += 1
 			else:
 				numNonWhiteDirectors += 1

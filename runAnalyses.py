@@ -39,7 +39,7 @@ print ''
 
 # Director statistics for the director-movie null model
 directorMovieNullModel = ana.directorMovieNullModel(graph)
-directorStatsBaseline = ds.directorStats(movieActorNullModel, graph, graphDict)
+directorStatsBaseline = ds.directorStats(directorMovieNullModel, graph, graphDict)
 print 'directorStatsBaseline:', directorStatsBaseline
 print ''
 proportionSameRace, proportionSameGender = ana.actorDirectorAssortativityHeuristic(graph, directorMovieNullModel, graphDict)

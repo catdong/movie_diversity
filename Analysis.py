@@ -5,6 +5,7 @@ from networkx.algorithms import bipartite
 from random import shuffle
 import community
 import DiversityScore as ds
+import numpy as np
 
 """
 FUNCTION: multiToWeightedGraph
@@ -139,11 +140,11 @@ def movieActorNullModel(graph):
 	zeroIds = [id for id in nullModel if nullModel.node[id]['bipartite'] == 0]
 	sortedZeroIds = sorted(zeroIds, key=lambda nId: nullModel.degree(nId))
 	oneIds = [id for id in nullModel if nullModel.node[id]['bipartite'] == 1]
-	sortedZeroIds = sorted(zeroIds, key=lambda nId: nullModel.degree(nId))
-	for i in range(len(zeroIds)):
-		nullModel.node[zeroIds[i]].update(graph.node[movieIds[i]])
-	for i in range(len(oneIds)):
-		nullModel.node[oneIds[i]].update(graph.node[actorIds[i]])
+	sortedOneIds = sorted(zeroIds, key=lambda nId: nullModel.degree(nId))
+	for i in range(len(sortedZeroIds)):
+		nullModel.node[sortedZeroIds[i]].update(graph.node[sortedMovieIds[i]])
+	for i in range(len(sortedOneIds)):
+		nullModel.node[sortedOneIds[i]].update(graph.node[sortedActorIds[i]])
 	nullModel = bipartiteToDirectedGraph(nullModel)
 	return nullModel
 
@@ -161,6 +162,7 @@ but the degree of each node remains the same (almost...).
 def directorMovieNullModel(graph):
 	directorIds = [nId for nId in graph if graph.node[nId]['type'] == 'DIRECTOR' or graph.node[nId]['type'] == 'ACTOR-DIRECTOR']
 	directorDegrees = [graph.out_degree(dId) for dId in directorIds]
+	sortedDirectorDegrees = sorted(directorIds, key=lambda dId: graph.out_degree(dId))
 	movieIds = [nId for nId in graph if graph.node[nId]['type'] == 'MOVIE']
 	movieDegrees = [1 for mId in movieIds]
 	
@@ -168,9 +170,8 @@ def directorMovieNullModel(graph):
 	zeroIds = [id for id in nullModel if nullModel.node[id]['bipartite'] == 0]
 	sortedZeroIds = sorted(zeroIds, key=lambda nId: nullModel.degree(nId))
 	oneIds = [id for id in nullModel if nullModel.node[id]['bipartite'] == 1]
-	sortedZeroIds = sorted(zeroIds, key=lambda nId: nullModel.degree(nId))
-	for i in range(len(zeroIds)):
-		nullModel.node[zeroIds[i]].update(graph.node[directorIds[i]])
+	for i in range(len(sortedZeroIds)):
+		nullModel.node[sortedZeroIds[i]].update(graph.node[sortedDirectorDegrees[i]])
 	for i in range(len(oneIds)):
 		nullModel.node[oneIds[i]].update(graph.node[movieIds[i]])
 	nullModel = bipartiteToDirectedGraph(nullModel)
@@ -254,11 +255,12 @@ def actorDirectorAssortativityHeuristic(graph, directorMovieGraph, graphDict):
 			directorRace = directorMovieGraph.node[diredctorId]['race']
 			directorGender = directorMovieGraph.node[diredctorId]['gender']
 			actorIds = [graphDict[actorName] for actorName in directorMovieGraph.node[mId]['actorNames'] if actorName in graphDict]
-			actorRaces = [graph.node[aId]['race'] for aid in actorIds]
-			actorGenders = [graph.node[aId]['gender'] for aid in actorIds]
+			actorRaces = [graph.node[aId]['race'] for aId in actorIds]
+			actorGenders = [graph.node[aId]['gender'] for aId in actorIds]
 			numSameRaceEdges += sum(1 for ar in actorRaces 
 				if (ar == 'White' and directorRace == 'White') or (ar != 'White' and directorRace != 'White'))
 			numSameGenderEdges += sum(1 for ag in actorGenders if ag == directorGender)
+			totalEdges += len(actorIds)
 	return (numSameRaceEdges / float(totalEdges), numSameGenderEdges / float(totalEdges))
 
 """
@@ -269,11 +271,13 @@ Parameters:
 
 Returns: tuple of (correlation coefficient for race, correlation coefficient for gender) 
 """
-def diversityProfitCorrelation(graph):
+def diversityProfitCorrelation(graph, movieIds=None):
 	raceScores = []
 	genderScores = []
 	profitRatios = []
-	for mId in graph.nodes():
+	if not movieIds:
+		movieIds = [nId for nId in graph.nodes() if graph.node[nId]["type"] == "MOVIE"]
+	for mId in movieIds:
 		if graph.node[mId]["type"] == "MOVIE":
 			data = ds.profitStats(graph, mId)
 			if data[0] != None and data[1] != None and data[2] != None: 
