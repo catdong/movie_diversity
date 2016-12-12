@@ -130,23 +130,32 @@ but the degree of each node remains the same (almost...).
 ---------------------------------
 """
 def movieActorNullModel(graph):
-	movieIds = [nId for nId in graph if graph.node[nId]['type'] == 'MOVIE']
-	movieDegrees = [graph.out_degree(mId) for mId in movieIds]
-	sortedMovieIds = sorted(movieIds, key=lambda mId: graph.out_degree(mId))
-	actorIds = [nId for nId in graph if graph.node[nId]['type'] in ['ACTOR', 'ACTOR-DIRECTOR']]
-	actorDegrees = [graph.in_degree(aId) for aId in actorIds]
-	sortedActorIds = sorted(actorIds, key=lambda aId: graph.in_degree(aId))
+	nullModel = graph.copy()
+	actorIds = [nId for nId in nullModel.nodes() if nullModel.node[nId]['type'] in ['ACTOR', 'ACTOR-DIRECTOR']]
+	movieIds = [nId for nId in nullModel.nodes() if nullModel.node[nId]['type'] == 'MOVIE']
+	for mId in movieIds:
+		castSize = nullModel.out_degree(mId)
+		nullModel.remove_edges_from(nullModel.out_edges(mId))
+		randomCast = np.random.choice(actorIds, castSize, replace=False)
+		nullModel.add_edges_from([(mId, aId) for aId in randomCast])
 
-	nullModel = bipartite.configuration_model(movieDegrees, actorDegrees, create_using=nx.Graph())
-	zeroIds = [id for id in nullModel if nullModel.node[id]['bipartite'] == 0]
-	sortedZeroIds = sorted(zeroIds, key=lambda nId: nullModel.degree(nId))
-	oneIds = [id for id in nullModel if nullModel.node[id]['bipartite'] == 1]
-	sortedOneIds = sorted(zeroIds, key=lambda nId: nullModel.degree(nId))
-	for i in range(len(sortedZeroIds)):
-		nullModel.node[sortedZeroIds[i]].update(graph.node[sortedMovieIds[i]])
-	for i in range(len(sortedOneIds)):
-		nullModel.node[sortedOneIds[i]].update(graph.node[sortedActorIds[i]])
-	nullModel = bipartiteToDirectedGraph(nullModel)
+	# movieIds = [nId for nId in graph if graph.node[nId]['type'] == 'MOVIE']
+	# movieDegrees = [graph.out_degree(mId) for mId in movieIds]
+	# sortedMovieIds = sorted(movieIds, key=lambda mId: graph.out_degree(mId))
+	# actorIds = [nId for nId in graph if graph.node[nId]['type'] in ['ACTOR', 'ACTOR-DIRECTOR']]
+	# actorDegrees = [graph.in_degree(aId) for aId in actorIds]
+	# sortedActorIds = sorted(actorIds, key=lambda aId: graph.in_degree(aId))
+
+	# nullModel = bipartite.configuration_model(movieDegrees, actorDegrees, create_using=nx.Graph())
+	# zeroIds = [id for id in nullModel if nullModel.node[id]['bipartite'] == 0]
+	# sortedZeroIds = sorted(zeroIds, key=lambda nId: nullModel.degree(nId))
+	# oneIds = [id for id in nullModel if nullModel.node[id]['bipartite'] == 1]
+	# sortedOneIds = sorted(oneIds, key=lambda nId: nullModel.degree(nId))
+	# for i in range(len(sortedZeroIds)):
+	# 	nullModel.node[sortedZeroIds[i]].update(graph.node[sortedMovieIds[i]])
+	# for i in range(len(sortedOneIds)):
+	# 	nullModel.node[sortedOneIds[i]].update(graph.node[sortedActorIds[i]])
+	# nullModel = bipartiteToDirectedGraph(nullModel)
 	return nullModel
 
 """

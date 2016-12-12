@@ -5,25 +5,25 @@ import DiversityScore as ds
 graph, graphDict = ReadMovieGraph.readMovieGraphFromFile()
 graph, graphDict = ana.filterNoneActors(graph, graphDict)
 
-# Statistics for the real network
-actorStats = ds.actorStats(graph)
-print 'actorStats:', actorStats
-print ''
-movieStats = ds.movieStats(graph)
-print 'movieStats:', movieStats
-print ''
-directorStats = ds.directorStats(graph, graph, graphDict)
-print 'directorStats:', directorStats
-print ''
-raceModularity, blackWhiteModularity, genderModularity = ana.actorModularity(graph)
-print 'raceModularity, blackWhiteModularity, genderModularity:', raceModularity, blackWhiteModularity, genderModularity
-print ''
-raceAssorativity, blackWhiteAssorativity, genderAssorativity = ana.actorAssortativity(graph)
-print 'raceAssorativity, blackWhiteAssorativity, genderAssorativity:', raceAssorativity, blackWhiteAssorativity, genderAssorativity
-print ''
-proportionSameRace, proportionSameGender = ana.actorDirectorAssortativityHeuristic(graph, graph, graphDict)
-print 'proportionSameRace, proportionSameGender:', proportionSameRace, proportionSameGender
-print ''
+# # Statistics for the real network
+# actorStats = ds.actorStats(graph)
+# print 'actorStats:', actorStats
+# print ''
+# movieStats = ds.movieStats(graph)
+# print 'movieStats:', movieStats
+# print ''
+# directorStats = ds.directorStats(graph, graph, graphDict)
+# print 'directorStats:', directorStats
+# print ''
+# raceModularity, blackWhiteModularity, genderModularity = ana.actorModularity(graph)
+# print 'raceModularity, blackWhiteModularity, genderModularity:', raceModularity, blackWhiteModularity, genderModularity
+# print ''
+# raceAssorativity, blackWhiteAssorativity, genderAssorativity = ana.actorAssortativity(graph)
+# print 'raceAssorativity, blackWhiteAssorativity, genderAssorativity:', raceAssorativity, blackWhiteAssorativity, genderAssorativity
+# print ''
+# proportionSameRace, proportionSameGender = ana.actorDirectorAssortativityHeuristic(graph, graph, graphDict)
+# print 'proportionSameRace, proportionSameGender:', proportionSameRace, proportionSameGender
+# print ''
 
 # Movie statistics for the movie-actor null model
 movieActorNullModel = ana.movieActorNullModel(graph)

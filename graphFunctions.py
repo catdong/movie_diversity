@@ -22,18 +22,20 @@ def avgDirectorGenderDiversityScore(graph, movieIds):
 
 def avgMovieRacialDiversityScore(graph, movieIds):
 	scores = []
-	for mId in movieIds:
-		score = racialScoreForMovie(graph, mId)
-		if score is not None:
-			scores.append(score)
+	for mId in graph.nodes():
+		if graph.node[mId]['type'] == 'MOVIE':
+			score = racialScoreForMovie(graph, mId)
+			if score is not None:
+				scores.append(score)
 	return [np.mean(scores)]
 
 def avgMovieGenderDiversityScore(graph, movieIds):
 	scores = []
-	for mId in movieIds:
-		score = genderScoreForMovie(graph, mId)
-		if score is not None:
-			scores.append(score)
+	for mId in graph.nodes():
+		if graph.node[mId]['type'] == 'MOVIE':
+			score = genderScoreForMovie(graph, mId)
+			if score is not None:
+				scores.append(score)
 	return [np.mean(scores)]
 
 def actorModularity(graph, movieIds):
