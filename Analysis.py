@@ -64,8 +64,8 @@ def filterNoneActors(graph, graphDict):
 	for nId in graph.nodes():
 		if graph.node[nId]['type'] == 'ACTOR':
 			if graph.node[nId]['race'] is None or graph.node[nId]['gender'] is None:
-				graph.remove_node(nId)
 				graphDict.pop(graph.node[nId]["name"], None)
+				graph.remove_node(nId)
 		elif graph.node[nId]['type'] == 'ACTOR-DIRECTOR':
 			if graph.node[nId]['race'] is None or graph.node[nId]['gender'] is None:
 				graph.remove_edges_from(graph.in_edges(nId))
